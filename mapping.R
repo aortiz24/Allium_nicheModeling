@@ -136,13 +136,13 @@ unzip("cb_2015_us_state_20m.zip", exdir="shapefiles")
 state <- readShapePoly("shapefiles/cb_2015_us_state_20m.shp") 
 projection(state) <- CRS("+proj=longlat +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +no_defs")
 # extract shapefiles of interest and save to file 
-midUSCap <- c("texas", "louisiana", "oklahoma", "arkansas", "kansas", "missouri", "nebraska", "iowa")
-middleUS <- state[as.character(state@data$NAME) %in% midUSCap, ]#(error)
-writeSpatialShape(middleUS, "shapefiles/middleUS")
+midUSCap <- c("Texas", "Louisiana", "Oklahoma", "Arkansas", "Kansas", "Missouri", "Nebraska", "Iowa")
+middleUS <- state[as.character(state@data$NAME) %in% midUSCap, ]
+writeSpatialShape(middleUS, max_nchar = 4000, "shapefiles/middleUS")
 
 # map using custom shapefile and save to file
 dir.create("figures")
-pdf(file="figures/mapping.pdf")
+pdf(file="figures/midUSmapping.pdf")
 map(middleUS)
 points(alliumcanadense1$Longitude, alliumcanadense1$Latitude, col='purple', pch=20, cex=2)
 points(alliumcanadense5$Longitude, alliumcanadense5$Latitude, col='red', pch=20, cex=2)
