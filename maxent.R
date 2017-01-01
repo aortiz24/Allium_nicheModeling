@@ -27,60 +27,48 @@ target1<-c("Allium canadense var. canadense")
 
 #filtered allium canadense canadense csv file
 alliumcanadense1<-alliumcanadense %>%
-  select(Taxon,Latitude,Longitude) %>%
+  select(Taxon,Collector,Latitude,Longitude) %>%
   filter(Taxon == target1)
-#convert to format required by maxent
-alliumcanadense1 <- alliumcanadense1[,c(3,2)]
 
 #assign scientific name to an object
 target2<-c("Allium canadense var. ecristatum")
 
 #filtered allium canadense ecristatum csv file
 alliumcanadense2<-alliumcanadense %>%
-  select(Taxon,Latitude,Longitude) %>%
+  select(Taxon,Collector,Latitude,Longitude) %>%
   filter(Taxon == target2)
-#convert to format required by maxent
-alliumcanadense2 <- alliumcanadense2[,c(3,2)]
 
 #assign scientific name to an object
 target3<-c("Allium canadense var. Fraseri")
 
 #filtered allium canadense Fraseri csv file
 alliumcanadense3<-alliumcanadense %>%
-  select(Taxon,Latitude,Longitude) %>%
+  select(Taxon,Collector,Latitude,Longitude) %>%
   filter(Taxon == target3)
-#convert to format required by maxent
-alliumcanadense3 <- alliumcanadense3[,c(3,2)]
 
 #assign scientific name to an object
 target4<-c("Allium canadense var. hyacinthoides")
 
 #filtered allium canadense hyacinthoides csv file
 alliumcanadense4<-alliumcanadense %>%
-  select(Taxon,Latitude,Longitude) %>%
+  select(Taxon,Collector,Latitude,Longitude) %>%
   filter(Taxon == target4)
-#convert to format required by maxent
-alliumcanadense4 <- alliumcanadense4[,c(3,2)]
 
 #assign scientific name to an object
 target5<-c("Allium canadense var. lavendulare")
 
 #filtered allium canadense lavendulare csv file
 alliumcanadense5<-alliumcanadense %>%
-  select(Taxon,Latitude,Longitude) %>%
+  select(Taxon,Collector,Latitude,Longitude) %>%
   filter(Taxon == target5)
-#convert to format required by maxent
-alliumcanadense5 <- alliumcanadense5[,c(3,2)]
 
 #assign scientific name to an object
 target6<-c("Allium canadense var. mobilense")
 
 #filtered allium canadense mobilense csv file
 alliumcanadense6<-alliumcanadense %>%
-  select(Taxon,Latitude,Longitude) %>%
+  select(Taxon,Collector,Latitude,Longitude) %>%
   filter(Taxon == target6)
-#convert to format required by maxent
-alliumcanadense6 <- alliumcanadense6[,c(3,2)]
 
 ##using file made from herbarium websites
 #importing species csv files into R
@@ -94,40 +82,64 @@ target7<-c("ecristatum")
 
 #filtered allium canadense ecristatum csv file
 alliumcanadense7<-alliumcanadense0 %>%
-  select(Subspecies,Latitude,Longitude) %>%
+  select(Subspecies,Collector,Latitude,Longitude) %>%
   filter(Subspecies == target7)
-#convert to format required by maxent
-alliumcanadense7 <- alliumcanadense7[,c(3,2)]
 
 #assign scientific name to an object
 target8<-c("fraseri")
 
 #filtered allium canadense fraseri csv file
 alliumcanadense8<-alliumcanadense0 %>%
-  select(Subspecies,Latitude,Longitude) %>%
+  select(Subspecies,Collector,Latitude,Longitude) %>%
   filter(Subspecies == target8)
-#convert to format required by maxent
-alliumcanadense8 <- alliumcanadense8[,c(3,2)]
 
 #assign scientific name to an object
 target9<-c("mobilense")
 
 #filtered allium canadense mobilense csv file
 alliumcanadense9<-alliumcanadense0 %>%
-  select(Subspecies,Latitude,Longitude) %>%
+  select(Subspecies,Collector,Latitude,Longitude) %>%
   filter(Subspecies == target9)
-#convert to format required by maxent
-alliumcanadense9 <- alliumcanadense9[,c(3,2)]
 
 #assign scientific name to an object
 target10<-c("hyacinthoides")
 
 #filtered allium canadense hyacinthoides csv file
 alliumcanadense10<-alliumcanadense0 %>%
-  select(Subspecies,Latitude,Longitude) %>%
+  select(Subspecies,Collector,Latitude,Longitude) %>%
   filter(Subspecies == target10)
-#convert to format required by maxent
-alliumcanadense10 <- alliumcanadense10[,c(3,2)]
+
+##merging occurrence data
+#merging occurrence data for a variety into one R object
+ecristatum<- merge(alliumcanadense2,alliumcanadense7, by="Collector",all=TRUE)
+fraseri<- merge(alliumcanadense3,alliumcanadense8, by="Collector",all=TRUE)
+hyacinthoides <- merge(alliumcanadense4,alliumcanadense10, by="Collector",all=TRUE)
+mobilense <- merge(alliumcanadense6,alliumcanadense9, by="Collector",all=TRUE)
+
+#merging occurrence data for parentals(mobilense,fraseri) into one R object
+parentals<- merge(mobilense, fraseri, by="Collector", all=TRUE)
+
+#merging occurrence data for hybrids(hyacinthoides,ecristatum,lavendulare) into one R object
+hybrid<- merge(hyacinthoides, ecristatum, by="Collector", all=TRUE)
+hybrids<- merge(hybrid, alliumcanadense5, by="Collector", all=TRUE)
+ 
+##prepare varieties,parentals,and hybrids for modeling
+alliumcanadense1 <- alliumcanadense1[,c(3,2)]
+alliumcanadense2 <- alliumcanadense2[,c(3,2)]
+alliumcanadense3 <- alliumcanadense3[,c(3,2)]
+alliumcanadense4 <- alliumcanadense4[,c(3,2)]
+alliumcanadense5 <- alliumcanadense5[,c(3,2)]
+alliumcanadense6 <- alliumcanadense6[,c(3,2)]
+alliumcanadense7 <- alliumcanadense7[,c(3,2)]
+alliumcanadense8 <- alliumcanadense8[,c(3,2)]
+alliumcanadense9 <- alliumcanadense9[,c(3,2)]
+alliumcanadense10<- alliumcanadense10[,c(3,2)]
+ecristatum<- ecristatum[,c(3,2)]
+fraseri<- fraseri[,c(3,2)]
+hyacinthoides<- hyacinthoides[,c(3,2)]
+mobilense<- mobilense[,c(3,2)]
+parentals<- parentals[,c(3,2)]
+hybrids<- hybrids[,c(3,2)]
 
 #layers ending in 0 are for PRISM1930
 #layers ending in 1 are for PRISM2014
