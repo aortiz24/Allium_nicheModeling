@@ -138,11 +138,11 @@ projection(state) <- CRS("+proj=longlat +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +no_
 # extract shapefiles of interest and save to file 
 midUSCap <- c("Texas", "Louisiana", "Oklahoma", "Arkansas", "Kansas", "Missouri", "Nebraska", "Iowa")
 middleUS <- state[as.character(state@data$NAME) %in% midUSCap, ]
-writeSpatialShape(middleUS, max_nchar = 4000, "shapefiles/middleUS")
+writeSpatialShape(middleUS, "shapefiles/middleUS")
 
 # map using custom shapefile and save to file
 dir.create("figures")
-pdf(file="figures/midUSmapping.pdf")
+pdf(file="figures/midUSmapping1.pdf")
 map(middleUS)
 points(alliumcanadense1$Longitude, alliumcanadense1$Latitude, col='purple', pch=20, cex=2)
 points(alliumcanadense5$Longitude, alliumcanadense5$Latitude, col='red', pch=20, cex=2)
