@@ -124,16 +124,8 @@ hybrid<- merge(hyacinthoides, ecristatum, by="Collector", all=TRUE)
 hybrids<- merge(hybrid, alliumcanadense5, by="Collector", all=TRUE)
  
 ##prepare varieties,parentals,and hybrids for modeling
-alliumcanadense1 <- alliumcanadense1[,c(3,2)]
-alliumcanadense2 <- alliumcanadense2[,c(3,2)]
-alliumcanadense3 <- alliumcanadense3[,c(3,2)]
-alliumcanadense4 <- alliumcanadense4[,c(3,2)]
-alliumcanadense5 <- alliumcanadense5[,c(3,2)]
-alliumcanadense6 <- alliumcanadense6[,c(3,2)]
-alliumcanadense7 <- alliumcanadense7[,c(3,2)]
-alliumcanadense8 <- alliumcanadense8[,c(3,2)]
-alliumcanadense9 <- alliumcanadense9[,c(3,2)]
-alliumcanadense10<- alliumcanadense10[,c(3,2)]
+canadense <- alliumcanadense1[,c(3,2)]
+lavendulare <- alliumcanadense5[,c(3,2)]
 ecristatum<- ecristatum[,c(3,2)]
 fraseri<- fraseri[,c(3,2)]
 hyacinthoides<- hyacinthoides[,c(3,2)]
