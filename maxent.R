@@ -17,16 +17,16 @@ dir.create("models")
 ### import occurrence data and convert to format required by maxent
 ##using file made from textbook source
 #importing species csv files into R
-alliumlavendulare<-read.csv("alliumdataset_map_data.csv")
+alliumcanadense<-read.csv("alliumdataset_map_data.csv")
 
-#remove missing data in alliumlavendulare
-alliumlavendulare <- na.omit(alliumlavendulare)
+#remove missing data in alliumcanadense
+alliumcanadense <- na.omit(alliumcanadense)
 
 #assign scientific name to an object
 target1<-c("Allium lavendulare var. lavendulare")
 
 #filtered allium lavendulare lavendulare csv file
-alliumlavendulare1<-alliumlavendulare %>%
+alliumcanadense1<-alliumcanadense %>%
   select(Taxon,Collector,Latitude,Longitude) %>%
   filter(Taxon == target1)
 
@@ -34,7 +34,7 @@ alliumlavendulare1<-alliumlavendulare %>%
 target2<-c("Allium lavendulare var. ecristatum")
 
 #filtered allium lavendulare ecristatum csv file
-alliumlavendulare2<-alliumlavendulare %>%
+alliumcanadense2<-alliumcanadense %>%
   select(Taxon,Collector,Latitude,Longitude) %>%
   filter(Taxon == target2)
 
@@ -42,7 +42,7 @@ alliumlavendulare2<-alliumlavendulare %>%
 target3<-c("Allium lavendulare var. Fraseri")
 
 #filtered allium lavendulare Fraseri csv file
-alliumlavendulare3<-alliumlavendulare %>%
+alliumcanadense3<-alliumcanadense %>%
   select(Taxon,Collector,Latitude,Longitude) %>%
   filter(Taxon == target3)
 
@@ -50,7 +50,7 @@ alliumlavendulare3<-alliumlavendulare %>%
 target4<-c("Allium lavendulare var. hyacinthoides")
 
 #filtered allium lavendulare hyacinthoides csv file
-alliumlavendulare4<-alliumlavendulare %>%
+alliumcanadense4<-alliumcanadense %>%
   select(Taxon,Collector,Latitude,Longitude) %>%
   filter(Taxon == target4)
 
@@ -58,7 +58,7 @@ alliumlavendulare4<-alliumlavendulare %>%
 target5<-c("Allium lavendulare var. lavendulare")
 
 #filtered allium lavendulare lavendulare csv file
-alliumlavendulare5<-alliumlavendulare %>%
+alliumcanadense5<-alliumcanadense %>%
   select(Taxon,Collector,Latitude,Longitude) %>%
   filter(Taxon == target5)
 
@@ -66,22 +66,22 @@ alliumlavendulare5<-alliumlavendulare %>%
 target6<-c("Allium lavendulare var. mobilense")
 
 #filtered allium lavendulare mobilense csv file
-alliumlavendulare6<-alliumlavendulare %>%
+alliumcanadense6<-alliumcanadense %>%
   select(Taxon,Collector,Latitude,Longitude) %>%
   filter(Taxon == target6)
 
 ##using file made from herbarium websites
 #importing species csv files into R
-alliumlavendulare0<-read.csv("allium_onlinedataset.csv")
+alliumcanadense0<-read.csv("allium_onlinedataset.csv")
 
-#remove missing data in alliumlavendulare
-alliumlavendulare0 <- na.omit(alliumlavendulare0)
+#remove missing data in alliumcanadense
+alliumcanadense0 <- na.omit(alliumcanadense0)
 
 #assign scientific name to an object
 target7<-c("ecristatum")
 
 #filtered allium lavendulare ecristatum csv file
-alliumlavendulare7<-alliumlavendulare0 %>%
+alliumcanadense7<-alliumcanadense0 %>%
   select(Subspecies,Collector,Latitude,Longitude) %>%
   filter(Subspecies == target7)
 
@@ -89,7 +89,7 @@ alliumlavendulare7<-alliumlavendulare0 %>%
 target8<-c("fraseri")
 
 #filtered allium lavendulare fraseri csv file
-alliumlavendulare8<-alliumlavendulare0 %>%
+alliumcanadense8<-alliumcanadense0 %>%
   select(Subspecies,Collector,Latitude,Longitude) %>%
   filter(Subspecies == target8)
 
@@ -97,7 +97,7 @@ alliumlavendulare8<-alliumlavendulare0 %>%
 target9<-c("mobilense")
 
 #filtered allium lavendulare mobilense csv file
-alliumlavendulare9<-alliumlavendulare0 %>%
+alliumcanadense9<-alliumcanadense0 %>%
   select(Subspecies,Collector,Latitude,Longitude) %>%
   filter(Subspecies == target9)
 
@@ -105,27 +105,27 @@ alliumlavendulare9<-alliumlavendulare0 %>%
 target10<-c("hyacinthoides")
 
 #filtered allium lavendulare hyacinthoides csv file
-alliumlavendulare10<-alliumlavendulare0 %>%
+alliumcanadense10<-alliumcanadense0 %>%
   select(Subspecies,Collector,Latitude,Longitude) %>%
   filter(Subspecies == target10)
 
 ##merging occurrence data
 #merging occurrence data for a variety into one R object
-ecristatum<- merge(alliumlavendulare2,alliumlavendulare7, by="Collector",all=TRUE)
-fraseri<- merge(alliumlavendulare3,alliumlavendulare8, by="Collector",all=TRUE)
-hyacinthoides <- merge(alliumlavendulare4,alliumlavendulare10, by="Collector",all=TRUE)
-mobilense <- merge(alliumlavendulare6,alliumlavendulare9, by="Collector",all=TRUE)
+ecristatum<- merge(alliumcanadense2,alliumcanadense7, by="Collector",all=TRUE)
+fraseri<- merge(alliumcanadense3,alliumcanadense8, by="Collector",all=TRUE)
+hyacinthoides <- merge(alliumcanadense4,alliumcanadense10, by="Collector",all=TRUE)
+mobilense <- merge(alliumcanadense6,alliumcanadense9, by="Collector",all=TRUE)
 
 #merging occurrence data for parentals(mobilense,fraseri) into one R object
 parentals<- merge(mobilense, fraseri, by="Collector", all=TRUE)
 
 #merging occurrence data for hybrids(hyacinthoides,ecristatum,lavendulare) into one R object
 hybrid<- merge(hyacinthoides, ecristatum, by="Collector", all=TRUE)
-hybrids<- merge(hybrid, alliumlavendulare5, by="Collector", all=TRUE)
+hybrids<- merge(hybrid, alliumcanadense5, by="Collector", all=TRUE)
  
 ##prepare varieties,parentals,and hybrids for modeling
-lavendulare <- alliumlavendulare1[,c(3,2)]
-lavendulare <- alliumlavendulare5[,c(3,2)]
+lavendulare <- alliumcanadense1[,c(3,2)]
+lavendulare <- alliumcanadense5[,c(3,2)]
 ecristatum<- ecristatum[,c(3,2)]
 fraseri<- fraseri[,c(3,2)]
 hyacinthoides<- hyacinthoides[,c(3,2)]
