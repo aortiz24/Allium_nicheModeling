@@ -23,49 +23,49 @@ alliumcanadense<-read.csv("alliumdataset_map_data.csv")
 alliumcanadense <- na.omit(alliumcanadense)
 
 #assign scientific name to an object
-target1<-c("Allium lavendulare var. lavendulare")
+target1<-c("Allium canadense var. lavendulare")
 
-#filtered allium lavendulare lavendulare csv file
+#filtered allium canadense lavendulare csv file
 alliumcanadense1<-alliumcanadense %>%
   select(Taxon,Collector,Latitude,Longitude) %>%
   filter(Taxon == target1)
 
 #assign scientific name to an object
-target2<-c("Allium lavendulare var. ecristatum")
+target2<-c("Allium canadense var. ecristatum")
 
-#filtered allium lavendulare ecristatum csv file
+#filtered allium canadense ecristatum csv file
 alliumcanadense2<-alliumcanadense %>%
   select(Taxon,Collector,Latitude,Longitude) %>%
   filter(Taxon == target2)
 
 #assign scientific name to an object
-target3<-c("Allium lavendulare var. Fraseri")
+target3<-c("Allium canadense var. Fraseri")
 
-#filtered allium lavendulare Fraseri csv file
+#filtered allium canadense Fraseri csv file
 alliumcanadense3<-alliumcanadense %>%
   select(Taxon,Collector,Latitude,Longitude) %>%
   filter(Taxon == target3)
 
 #assign scientific name to an object
-target4<-c("Allium lavendulare var. hyacinthoides")
+target4<-c("Allium canadense var. hyacinthoides")
 
-#filtered allium lavendulare hyacinthoides csv file
+#filtered allium canadense hyacinthoides csv file
 alliumcanadense4<-alliumcanadense %>%
   select(Taxon,Collector,Latitude,Longitude) %>%
   filter(Taxon == target4)
 
 #assign scientific name to an object
-target5<-c("Allium lavendulare var. lavendulare")
+target5<-c("Allium canadense var. lavendulare")
 
-#filtered allium lavendulare lavendulare csv file
+#filtered allium canadense lavendulare csv file
 alliumcanadense5<-alliumcanadense %>%
   select(Taxon,Collector,Latitude,Longitude) %>%
   filter(Taxon == target5)
 
 #assign scientific name to an object
-target6<-c("Allium lavendulare var. mobilense")
+target6<-c("Allium canadense var. mobilense")
 
-#filtered allium lavendulare mobilense csv file
+#filtered allium canadense mobilense csv file
 alliumcanadense6<-alliumcanadense %>%
   select(Taxon,Collector,Latitude,Longitude) %>%
   filter(Taxon == target6)
@@ -80,7 +80,7 @@ alliumcanadense0 <- na.omit(alliumcanadense0)
 #assign scientific name to an object
 target7<-c("ecristatum")
 
-#filtered allium lavendulare ecristatum csv file
+#filtered allium canadense ecristatum csv file
 alliumcanadense7<-alliumcanadense0 %>%
   select(Subspecies,Collector,Latitude,Longitude) %>%
   filter(Subspecies == target7)
@@ -88,7 +88,7 @@ alliumcanadense7<-alliumcanadense0 %>%
 #assign scientific name to an object
 target8<-c("fraseri")
 
-#filtered allium lavendulare fraseri csv file
+#filtered allium canadense fraseri csv file
 alliumcanadense8<-alliumcanadense0 %>%
   select(Subspecies,Collector,Latitude,Longitude) %>%
   filter(Subspecies == target8)
@@ -96,7 +96,7 @@ alliumcanadense8<-alliumcanadense0 %>%
 #assign scientific name to an object
 target9<-c("mobilense")
 
-#filtered allium lavendulare mobilense csv file
+#filtered allium canadense mobilense csv file
 alliumcanadense9<-alliumcanadense0 %>%
   select(Subspecies,Collector,Latitude,Longitude) %>%
   filter(Subspecies == target9)
@@ -104,7 +104,7 @@ alliumcanadense9<-alliumcanadense0 %>%
 #assign scientific name to an object
 target10<-c("hyacinthoides")
 
-#filtered allium lavendulare hyacinthoides csv file
+#filtered allium canadense hyacinthoides csv file
 alliumcanadense10<-alliumcanadense0 %>%
   select(Subspecies,Collector,Latitude,Longitude) %>%
   filter(Subspecies == target10)
@@ -124,7 +124,7 @@ hybrid<- merge(hyacinthoides, ecristatum, by="Collector", all=TRUE)
 hybrids<- merge(hybrid, alliumcanadense5, by="Collector", all=TRUE)
  
 ##prepare varieties,parentals,and hybrids for modeling
-lavendulare <- alliumcanadense1[,c(3,2)]
+canadense <- alliumcanadense1[,c(3,2)]
 lavendulare <- alliumcanadense5[,c(3,2)]
 ecristatum<- ecristatum[,c(3,2)]
 fraseri<- fraseri[,c(3,2)]
@@ -169,7 +169,7 @@ plot(predictors1)
 
 ### basic bioclim modeling with Bioclim layers for varieties, parentals, and hybrids
 # extract layer data for each point
-canPts <- extract(predictors, lavendulare)
+canPts <- extract(predictors, canadense)
 # create bioclim model
 canBC <- bioclim(canPts)
 # predict bioclim model
@@ -241,14 +241,14 @@ hybBCpredict <- predict(predictors, hybBC)
 plot(hybBCpredict)
 
 ## Default maxent modeling
-# run maxent for lavendulare (default parameters for dismo)
-maxCan <- maxent(predictors, lavendulare)
+# run maxent for canadense (default parameters for dismo)
+maxCan <- maxent(predictors, canadense)
 maxCan # views results in browser window
 response(maxCan) # show response curves for each layer
 rCan <- predict(maxCan, predictors) # create model
 plot(rCan) # plot predictive model
-points(lavendulare) # add points to predictive model
-writeRaster(rCan, "models/lavendulare.grd")
+points(canadense) # add points to predictive model
+writeRaster(rCan, "models/canadense.grd")
 
 # run maxent for lavendulare (default parameters for dismo)
 maxLav <- maxent(predictors, lavendulare)
@@ -314,32 +314,32 @@ points(hybrids)
 writeRaster(rHyb, "models/hybrids.grd")
 
 ## Advanced modeling
-# develop testing and training sets for lavendulare
-fold <- kfold(lavendulare, k=5) #split occurence points into 5 sets
-canTest <- lavendulare[fold == 1, ] #take 20% (1/5) for testing
-canTrain <- lavendulare[fold != 1, ] #leave 40% for training
-# fit training model for lavendulare
+# develop testing and training sets for canadense
+fold <- kfold(canadense, k=5) #split occurence points into 5 sets
+canTest <- canadense[fold == 1, ] #take 20% (1/5) for testing
+canTrain <- canadense[fold != 1, ] #leave 40% for training
+# fit training model for canadense
 maxCanTrain <- maxent(predictors, canTrain) #fit maxent model
 maxCanTrain #view results in html
 rCanTrain <- predict(maxCanTrain, predictors) #predict full model
 plot(rCanTrain) #visualize full model
-points(lavendulare) #add points to plot
-# testing model for lavendulare
+points(canadense) #add points to plot
+# testing model for canadense
 # extract background points
 bg <- randomPoints(predictors, 1000)
-# cross-validate model for lavendulare
+# cross-validate model for canadense
 maxCanTest <- evaluate(maxCanTrain, p=canTest, a=bg, x=predictors)
 maxCanTest #print results
 threshold(maxCanTest) #identify threshold for presence or absence
 plot(maxCanTest, 'ROC') #plot AUC
 # alternative methods for testing models (should give same answers)
-# Alternative 1: another way to test model for lavendulare
+# Alternative 1: another way to test model for canadense
 pvtest <- data.frame(extract(predictors, canTest))
 avtest <- data.frame(extract(predictors, bg))
 # cross-validate model
 maxCanTest2 <- evaluate(maxCanTrain, p=pvtest, a=avtest)
 maxCanTest2
-# Alternative 2: predict to testing points for lavendulare
+# Alternative 2: predict to testing points for canadense
 testp <- predict(maxCanTrain, pvtest)
 testa <- predict(maxCanTrain, avtest)
 maxCanTest3 <- evaluate(p=testp, a=testa)
@@ -347,7 +347,7 @@ maxCanTest3
 # maxent with jackknife, random seed, and response curves, followed by cross-validation
 maxCanAdv <- maxent(
   x=predictors,
-  p=lavendulare,
+  p=canadense,
   removeDuplicates=TRUE,
   nbg=10000,
   args=c(
@@ -652,7 +652,7 @@ maxHybAdv #view output as html
 
 ### basic bioclim modeling with PRISM 1930 layers for varieties, parentals, and hybrids
 # extract layer data for each point
-canPts0 <- extract(predictors0, lavendulare)
+canPts0 <- extract(predictors0, canadense)
 # create bioclim model
 canBC0 <- bioclim(canPts0)
 # predict bioclim model
@@ -661,7 +661,7 @@ canBCpredict0 <- predict(predictors0, canBC0)
 plot(canBCpredict0)
 
 # extract layer data for each point
-lavPts0 <- extract(predictors0, lavendulare)
+lavPts0 <- extract(predictors0, canadense)
 # create bioclim model
 lavBC0 <- bioclim(lavPts0)
 # predict bioclim model
@@ -724,14 +724,14 @@ hybBCpredict0 <- predict(predictors0, hybBC0)
 plot(hybBCpredict0)
 
 ## Default maxent modeling
-# run maxent for lavendulare (default parameters for dismo)
-maxCan0 <- maxent(predictors0, lavendulare)
+# run maxent for canadense (default parameters for dismo)
+maxCan0 <- maxent(predictors0, canadense)
 maxCan0 # views results in browser window
 response(maxCan0) # show response curves for each layer
 rCan0 <- predict(maxCan0, predictors0) # create model
 plot(rCan0) # plot predictive model
-points(lavendulare) # add points to predictive model
-writeRaster(rCan0, "models/lavendulare1930.grd")
+points(canadense) # add points to predictive model
+writeRaster(rCan0, "models/canadense1930.grd")
 
 # run maxent for lavendulare (default parameters for dismo)
 maxLav0 <- maxent(predictors0, lavendulare)
@@ -797,40 +797,40 @@ points(hybrids)
 writeRaster(rHyb0, "models/hybrids1930.grd")
 
 ## Advanced modeling
-# develop testing and training sets for lavendulare
-fold <- kfold(lavendulare, k=5) #split occurence points into 5 sets
-lavTest0 <- lavendulare[fold == 1, ] #take 20% (1/5) for testing
-lavTrain0 <- lavendulare[fold != 1, ] #leave 40% for training
-# fit training model for lavendulare
-maxlavTrain0 <- maxent(predictors0, lavTrain0) #fit maxent model
-maxlavTrain0 #view results in html
-rlavTrain0 <- predict(maxCan0Train, predictors0) #predict full model
-plot(rlavTrain0) #visualize full model
-points(lavendulare) #add points to plot
-# testing model for lavendulare
+# develop testing and training sets for canadense
+fold <- kfold(canadense, k=5) #split occurence points into 5 sets
+canTest0 <- canadense[fold == 1, ] #take 20% (1/5) for testing
+canTrain0 <- canadense[fold != 1, ] #leave 40% for training
+# fit training model for canadense
+maxCanTrain0 <- maxent(predictors0, canTrain0) #fit maxent model
+maxCanTrain0 #view results in html
+rCanTrain0 <- predict(maxCan0Train, predictors0) #predict full model
+plot(rCanTrain0) #visualize full model
+points(canadense) #add points to plot
+# testing model for canadense
 # extract background points
 bg0 <- randomPoints(predictors0, 1000)
-# cross-validate model for lavendulare
-maxlavTest0 <- evaluate(maxlavTrain0, p=lavTest0, a=bg, x=predictors0)
-maxlavTest0 #print results
-threshold(maxlavTest0) #identify threshold for presence or absence
+# cross-validate model for canadense
+maxCanTest0 <- evaluate(maxlavTrain0, p=lavTest0, a=bg, x=predictors0)
+maxCanTest0 #print results
+threshold(maxCanTest0) #identify threshold for presence or absence
 plot(maxlavTest0, 'ROC') #plot AUC
 # alternative methods for testing models (should give same answers)
-# Alternative 1: another way to test model for lavendulare
+# Alternative 1: another way to test model for canadense
 pvtest0 <- data.frame(extract(predictors0, lavTest0))
 avtest0 <- data.frame(extract(predictors0, bg0))
 # cross-validate model
-maxLavTest20 <- evaluate(maxCanTrain, p=pvtest0, a=avtest0)
-maxLavTest20
-# Alternative 2: predict to testing points for lavendulare
-testp0 <- predict(maxlavTrain0, pvtest0)
-testa0 <- predict(maxlavTrain0, avtest0)
-maxLavTest30 <- evaluate(p=testp0, a=testa0)
-maxLavTest30
+maxCanTest20 <- evaluate(maxCanTrain, p=pvtest0, a=avtest0)
+maxCanTest20
+# Alternative 2: predict to testing points for canadense
+testp0 <- predict(maxCanTrain0, pvtest0)
+testa0 <- predict(maxCanTrain0, avtest0)
+maxCanTest30 <- evaluate(p=testp0, a=testa0)
+maxCanTest30
 # maxent with jackknife, random seed, and response curves, followed by cross-validation
 maxCanAdv0 <- maxent(
   x=predictors0,
-  p=lavendulare,
+  p=canadense,
   removeDuplicates=TRUE,
   nbg=10000,
   args=c(
