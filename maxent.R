@@ -811,7 +811,7 @@ points(canadense) #add points to plot
 # extract background points
 bg0 <- randomPoints(predictors0, 1000)
 # cross-validate model for canadense
-maxCanTest0 <- evaluate(maxlavTrain0, p=lavTest0, a=bg, x=predictors0)
+maxCanTest0 <- evaluate(maxlavTrain0, p=lavTest0, a=bg0, x=predictors0)
 maxCanTest0 #print results
 threshold(maxCanTest0) #identify threshold for presence or absence
 plot(maxlavTest0, 'ROC') #plot AUC
@@ -859,7 +859,7 @@ points(lavendulare) #add points to plot
 # extract background points
 bg0 <- randomPoints(predictors0, 1000)
 # cross-validate model for lavendulare
-maxLavTest0 <- evaluate(maxLavTrain0, p=lavTest0, a=bg, x=predictors0)
+maxLavTest0 <- evaluate(maxLavTrain0, p=lavTest0, a=bg0, x=predictors0)
 maxLavTest0 #print results
 threshold(maxLavTest0) #identify threshold for presence or absence
 plot(maxLavTest0, 'ROC') #plot AUC
@@ -907,7 +907,7 @@ points(ecristatum) #add points to plot
 # extract background points
 bg0 <- randomPoints(predictors0, 1000)
 # cross-validate model for ecristatum
-maxEcrTest0 <- evaluate(maxEcrTrain0, p=ecrTest0, a=bg, x=predictors0)
+maxEcrTest0 <- evaluate(maxEcrTrain0, p=ecrTest0, a=bg0, x=predictors0)
 maxEcrTest0 #print results
 threshold(maxEcrTest0) #identify threshold for presence or absence
 plot(maxEcrTest0, 'ROC') #plot AUC
@@ -955,7 +955,7 @@ points(fraseri) #add points to plot
 # extract background points
 bg0 <- randomPoints(predictors0, 1000)
 # cross-validate model for fraseri
-maxFraTest0 <- evaluate(maxFraTrain0, p=fraTest0, a=bg, x=predictors0)
+maxFraTest0 <- evaluate(maxFraTrain0, p=fraTest0, a=bg0, x=predictors0)
 maxFraTest0 #print results
 threshold(maxFraTest0) #identify threshold for presence or absence
 plot(maxFraTest0, 'ROC') #plot AUC
@@ -1003,7 +1003,7 @@ points(hyacinthoides) #add points to plot
 # extract background points
 bg0 <- randomPoints(predictors0, 1000)
 # cross-validate model for hyacinthoides
-maxHyaTest0 <- evaluate(maxHyaTrain0, p=hyaTest0, a=bg, x=predictors0)
+maxHyaTest0 <- evaluate(maxHyaTrain0, p=hyaTest0, a=bg0, x=predictors0)
 maxHyaTest0 #print results
 threshold(maxHyaTest0) #identify threshold for presence or absence
 plot(maxHyaTest0, 'ROC') #plot AUC
@@ -1051,7 +1051,7 @@ points(parentals) #add points to plot
 # extract background points
 bg0 <- randomPoints(predictors0, 1000)
 # cross-validate model for parentals
-maxParTest0 <- evaluate(maxParTrain0, p=parTest0, a=bg, x=predictors0)
+maxParTest0 <- evaluate(maxParTrain0, p=parTest0, a=bg0, x=predictors0)
 maxParTest0 #print results
 threshold(maxParTest0) #identify threshold for presence or absence
 plot(maxParTest0, 'ROC') #plot AUC
@@ -1099,7 +1099,7 @@ points(hybrids) #add points to plot
 # extract background points
 bg0 <- randomPoints(predictors0, 1000)
 # cross-validate model for hybrids
-maxHybTest0 <- evaluate(maxHybTrain0, p=hybTest0, a=bg, x=predictors0)
+maxHybTest0 <- evaluate(maxHybTrain0, p=hybTest0, a=bg0, x=predictors0)
 maxHybTest0 #print results
 threshold(maxHybTest0) #identify threshold for presence or absence
 plot(maxHybTest0, 'ROC') #plot AUC
@@ -1132,3 +1132,486 @@ maxHybAdv0 <- maxent(
   )
 )
 maxHybAdv0 #view output as html
+
+### basic bioclim modeling with PRISM 2014 layers for varieties, parentals, and hybrids
+# extract layer data for each point
+canPts1 <- extract(predictors1, canadense)
+# create bioclim model
+canBC1 <- bioclim(canPts1)
+# predict bioclim model
+canBCpredict1 <- predict(predictors1, canBC1)
+# plot bioclim model
+plot(canBCpredict1)
+
+# extract layer data for each point
+lavPts1 <- extract(predictors1, canadense)
+# create bioclim model
+lavBC1 <- bioclim(lavPts1)
+# predict bioclim model
+lavBCpredict1 <- predict(predictors1, lavBC1)
+# plot bioclim model
+plot(lavBCpredict1)
+
+# extract layer data for each point
+ecrPts1 <- extract(predictors1, ecristatum)
+# create bioclim model
+ecrBC1 <- bioclim(ecrPts1)
+# predict bioclim model
+ecrBCpredict1 <- predict(predictors1, ecrBC1)
+# plot bioclim model
+plot(ecrBCpredict1)
+
+# extract layer data for each point
+fraPts1 <- extract(predictors1, fraseri)
+# create bioclim model
+fraBC1 <- bioclim(fraPts1)
+# predict bioclim model
+fraBCpredict1 <- predict(predictors1, fraBC1)
+# plot bioclim model
+plot(fraBCpredict1)
+
+# extract layer data for each point
+hyaPts1 <- extract(predictors1, hyacinthoides)
+# create bioclim model
+hyaBC1 <- bioclim(hyaPts1)
+# predict bioclim model
+hyaBCpredict1 <- predict(predictors1, hyaBC1)
+# plot bioclim model
+plot(hyaBCpredict1)
+
+# extract layer data for each point
+mobPts1 <- extract(predictors1, mobilense)
+# create bioclim model
+mobBC1 <- bioclim(mobPts1)
+# predict bioclim model
+mobBCpredict1 <- predict(predictors1, mobBC1)
+# plot bioclim model
+plot(mobBCpredict1)
+
+# extract layer data for each point
+parPts1 <- extract(predictors1, parentals)
+# create bioclim model
+parBC1 <- bioclim(parPts1)
+# predict bioclim model
+parBCpredict1 <- predict(predictors1, parBC1)
+# plot bioclim model
+plot(parBCpredict1)
+
+# extract layer data for each point
+hybPts1 <- extract(predictors1, hybrids)
+# create bioclim model
+hybBC1 <- bioclim(hybPts1)
+# predict bioclim model
+hybBCpredict1 <- predict(predictors1, hybBC1)
+# plot bioclim model
+plot(hybBCpredict1)
+
+## Default maxent modeling
+# run maxent for canadense (default parameters for dismo)
+maxCan1 <- maxent(predictors1, canadense)
+maxCan1 # views results in browser window
+response(maxCan1) # show response curves for each layer
+rCan1 <- predict(maxCan1, predictors1) # create model
+plot(rCan1) # plot predictive model
+points(canadense) # add points to predictive model
+writeRaster(rCan1, "models/canadense2014.grd")
+
+# run maxent for lavendulare (default parameters for dismo)
+maxLav1 <- maxent(predictors1, lavendulare)
+maxLav1 # views results in browser window
+response(maxLav1) # show response curves for each layer
+rLav1 <- predict(maxLav1, predictors1) # create model
+plot(rLav1) # plot predictive model
+points(lavendulare) # add points to predictive model
+writeRaster(rLav1, "models/lavendulare2014.grd")
+
+# run maxent for ecristatum (default parameters for dismo)
+maxEcr1 <- maxent(predictors1, ecristatum) 
+maxEcr1 # views results in browser window
+response(maxEcr1) 
+rEcr1 <- predict(maxEcr1, predictors1) 
+plot(rEcr1)
+points(ecristatum)
+writeRaster(rEcr1, "models/ecristatum2014.grd")
+
+# run maxent for fraseri (default parameters for dismo)
+maxFra1 <- maxent(predictors1, fraseri)
+maxFra1 # views results in browser window
+response(maxFra1) # show response curves for each layer
+rFra1 <- predict(maxFra1, predictors1) # create model
+plot(rFra1) # plot predictive model
+points(fraseri) # add points to predictive model
+writeRaster(rFra1, "models/fraseri2014.grd")
+
+# run maxent for hyacinthoides (default parameters for dismo)
+maxHya1 <- maxent(predictors1, hyacinthoides) 
+maxHya1 
+response(maxHya1) 
+rHya1 <- predict(maxHya1, predictors1) 
+plot(rHya1)
+points(hyacinthoides)
+writeRaster(rHya1, "models/hyacinthoides2014.grd")
+
+# run maxent for mobilense (default parameters for dismo)
+maxMob1 <- maxent(predictors1, mobilense)
+maxMob1 # views results in browser window
+response(maxMob1) # show response curves for each layer
+rMob1 <- predict(maxMob1, predictors1) # create model
+plot(rMob1) # plot predictive model
+points(mobilense) # add points to predictive model
+writeRaster(rMob1, "models/mobilense2014.grd")
+
+# run maxent for parentals (default parameters for dismo)
+maxPar1 <- maxent(predictors1, parentals)
+maxPar1 # views results in browser window
+response(maxPar1) # show response curves for each layer
+rPar1 <- predict(maxPar1, predictors1) # create model
+plot(rPar1) # plot predictive model
+points(parentals) # add points to predictive model
+writeRaster(rPar1, "models/parentals2014.grd")
+
+# run maxent for hybrids (default parameters for dismo)
+maxHyb1 <- maxent(predictors1, hybrids) 
+maxHyb1 
+response(maxHyb1) 
+rHyb1 <- predict(maxHyb1, predictors1) 
+plot(rHyb1)
+points(hybrids)
+writeRaster(rHyb1, "models/hybrids2014.grd")
+
+## Advanced modeling
+# develop testing and training sets for canadense
+fold <- kfold(canadense, k=5) #split occurence points into 5 sets
+canTest1 <- canadense[fold == 1, ] #take 20% (1/5) for testing
+canTrain1 <- canadense[fold != 1, ] #leave 40% for training
+# fit training model for canadense
+maxCanTrain1 <- maxent(predictors1, canTrain1) #fit maxent model
+maxCanTrain1 #view results in html
+rCanTrain1 <- predict(maxCan1Train, predictors1) #predict full model
+plot(rCanTrain1) #visualize full model
+points(canadense) #add points to plot
+# testing model for canadense
+# extract background points
+bg1 <- randomPoints(predictors1, 1000)
+# cross-validate model for canadense
+maxCanTest1 <- evaluate(maxlavTrain1, p=lavTest1, a=bg1, x=predictors1)
+maxCanTest1 #print results
+threshold(maxCanTest1) #identify threshold for presence or absence
+plot(maxlavTest1, 'ROC') #plot AUC
+# alternative methods for testing models (should give same answers)
+# Alternative 1: another way to test model for canadense
+pvtest1 <- data.frame(extract(predictors1, lavTest1))
+avtest1 <- data.frame(extract(predictors1, bg1))
+# cross-validate model
+maxCanTest21 <- evaluate(maxCanTrain, p=pvtest1, a=avtest1)
+maxCanTest21
+# Alternative 2: predict to testing points for canadense
+testp1 <- predict(maxCanTrain1, pvtest1)
+testa1 <- predict(maxCanTrain1, avtest1)
+maxCanTest31 <- evaluate(p=testp1, a=testa1)
+maxCanTest31
+# maxent with jackknife, random seed, and response curves, followed by cross-validation
+maxCanAdv1 <- maxent(
+  x=predictors1,
+  p=canadense,
+  removeDuplicates=TRUE,
+  nbg=10000,
+  args=c(
+    'randomseed=true', #default=false
+    'threads=2', #default=1
+    'responsecurves=true', #default=false
+    'jackknife=true', #default=false
+    'replicates=10', #default=1
+    'replicatetype=crossvalidate',
+    'maximumiterations=1000' #default=500
+  )
+)
+maxCanAdv1 #view output as html
+
+# develop testing and training sets for lavendulare
+fold <- kfold(lavendulare, k=5) #split occurence points into 5 sets
+lavTest1 <- lavendulare[fold == 1, ] #take 20% (1/5) for testing
+lavTrain1 <- lavendulare[fold != 1, ] #leave 40% for training
+# fit training model for lavendulare
+maxLavTrain1 <- maxent(predictors1, lavTrain1) #fit maxent model
+maxLavTrain1 #view results in html
+rLavTrain1 <- predict(maxLavTrain1, predictors1) #predict full model
+plot(rLavTrain1) #visualize full model
+points(lavendulare) #add points to plot
+# testing model for lavendulare
+# extract background points
+bg1 <- randomPoints(predictors1, 1000)
+# cross-validate model for lavendulare
+maxLavTest1 <- evaluate(maxLavTrain1, p=lavTest1, a=bg1, x=predictors1)
+maxLavTest1 #print results
+threshold(maxLavTest1) #identify threshold for presence or absence
+plot(maxLavTest1, 'ROC') #plot AUC
+# alternative methods for testing models (should give same answers)
+# Alternative 1: another way to test model for lavendulare
+pvtest1 <- data.frame(extract(predictors1, lavTest1))
+avtest1 <- data.frame(extract(predictors1, bg1))
+# cross-validate model
+maxLavTest21 <- evaluate(maxLavTrain1, p=pvtest1, a=avtest1)
+maxLavTest21
+# Alternative 2: predict to testing points for lavendulare
+testp1 <- predict(maxLavTrain1, pvtest1)
+testa1 <- predict(maxLavTrain1, avtest1)
+maxLavTest31 <- evaluate(p=testp1, a=testa1)
+maxLavTest31
+# maxent with jackknife, random seed, and response curves, followed by cross-validation
+maxLavAdv1 <- maxent(
+  x=predictors1,
+  p=lavendulare,
+  removeDuplicates=TRUE,
+  nbg=10000,
+  args=c(
+    'randomseed=true', #default=false
+    'threads=2', #default=1
+    'responsecurves=true', #default=false
+    'jackknife=true', #default=false
+    'replicates=10', #default=1
+    'replicatetype=crossvalidate',
+    'maximumiterations=1000' #default=500
+  )
+)
+maxLavAdv1 #view output as html
+
+# develop testing and training sets for ecristatum
+fold <- kfold(ecristatum, k=5) #split occurence points into 5 sets
+ecrTest1 <- ecristatum[fold == 1, ] #take 20% (1/5) for testing
+ecrTrain1 <- ecristatum[fold != 1, ] #leave 40% for training
+# fit training model for ecristatum
+maxEcrTrain1 <- maxent(predictors1, ecrTrain1) #fit maxent model
+maxEcrTrain1 #view results in html
+rEcrTrain1 <- predict(maxEcrTrain1, predictors1) #predict full model
+plot(rEcrTrain1) #visualize full model
+points(ecristatum) #add points to plot
+# testing model for ecristatum
+# extract background points
+bg1 <- randomPoints(predictors1, 1000)
+# cross-validate model for ecristatum
+maxEcrTest1 <- evaluate(maxEcrTrain1, p=ecrTest1, a=bg1, x=predictors1)
+maxEcrTest1 #print results
+threshold(maxEcrTest1) #identify threshold for presence or absence
+plot(maxEcrTest1, 'ROC') #plot AUC
+# alternative methods for testing models (should give same answers)
+# Alternative 1: another way to test model for ecristatum
+pvtest1 <- data.frame(extract(predictors1, ecrTest1))
+avtest1 <- data.frame(extract(predictors1, bg1))
+# cross-validate model
+maxEcrTest21 <- evaluate(maxEcrTrain1, p=pvtest1, a=avtest1)
+maxEcrTest21
+# Alternative 2: predict to testing points for ecristatum
+testp1 <- predict(maxEcrTrain1, pvtest1)
+testa1 <- predict(maxEcrTrain1, avtest1)
+maxEcrTest31 <- evaluate(p=testp1, a=testa1)
+maxEcrTest31
+# maxent with jackknife, random seed, and response curves, followed by cross-validation
+maxEcrAdv1 <- maxent(
+  x=predictors1,
+  p=ecristatum,
+  removeDuplicates=TRUE,
+  nbg=10000,
+  args=c(
+    'randomseed=true', #default=false
+    'threads=2', #default=1
+    'responsecurves=true', #default=false
+    'jackknife=true', #default=false
+    'replicates=10', #default=1
+    'replicatetype=crossvalidate',
+    'maximumiterations=1000' #default=500
+  )
+)
+maxEcrAdv1 #view output as html
+
+# develop testing and training sets for fraseri
+fold <- kfold(fraseri, k=5) #split occurence points into 5 sets
+fraTest1 <- fraseri[fold == 1, ] #take 20% (1/5) for testing
+fraTrain1 <- fraseri[fold != 1, ] #leave 40% for training
+# fit training model for fraseri
+maxFraTrain1 <- maxent(predictors1, fraTrain1) #fit maxent model
+maxFraTrain1 #view results in html
+rFraTrain1 <- predict(maxFraTrain1, predictors1) #predict full model
+plot(rFraTrain1) #visualize full model
+points(fraseri) #add points to plot
+# testing model for fraseri
+# extract background points
+bg1 <- randomPoints(predictors1, 1000)
+# cross-validate model for fraseri
+maxFraTest1 <- evaluate(maxFraTrain1, p=fraTest1, a=bg1, x=predictors1)
+maxFraTest1 #print results
+threshold(maxFraTest1) #identify threshold for presence or absence
+plot(maxFraTest1, 'ROC') #plot AUC
+# alternative methods for testing models (should give same answers)
+# Alternative 1: another way to test model for fraseri
+pvtest1 <- data.frame(extract(predictors1, fraTest1))
+avtest1 <- data.frame(extract(predictors1, bg1))
+# cross-validate model
+maxFraTest21 <- evaluate(maxFraTrain1, p=pvtest1, a=avtest1)
+maxFraTest21
+# Alternative 2: predict to testing points for fraseri
+testp1 <- predict(maxFraTrain1, pvtest1)
+testa1 <- predict(maxFraTrain1, avtest1)
+maxFraTest31 <- evaluate(p=testp1, a=testa1)
+maxFraTest31
+# maxent with jackknife, random seed, and response curves, followed by cross-validation
+maxFraAdv1 <- maxent(
+  x=predictors1,
+  p=fraseri,
+  removeDuplicates=TRUE,
+  nbg=10000,
+  args=c(
+    'randomseed=true', #default=false
+    'threads=2', #default=1
+    'responsecurves=true', #default=false
+    'jackknife=true', #default=false
+    'replicates=10', #default=1
+    'replicatetype=crossvalidate',
+    'maximumiterations=1000' #default=500
+  )
+)
+maxFraAdv1 #view output as html
+
+# develop testing and training sets for hyacinthoides
+fold <- kfold(hyacinthoides, k=5) #split occurence points into 5 sets
+hyaTest1 <- hyacinthoides[fold == 1, ] #take 20% (1/5) for testing
+hyaTrain1 <- hyacinthoides[fold != 1, ] #leave 40% for training
+# fit training model for hyacinthoides
+maxHyaTrain1 <- maxent(predictors1, hyaTrain1) #fit maxent model
+maxHyaTrain1 #view results in html
+rHyaTrain1 <- predict(maxHyaTrain1, predictors1) #predict full model
+plot(rHyaTrain1) #visualize full model
+points(hyacinthoides) #add points to plot
+# testing model for hyacinthoides
+# extract background points
+bg1 <- randomPoints(predictors1, 1000)
+# cross-validate model for hyacinthoides
+maxHyaTest1 <- evaluate(maxHyaTrain1, p=hyaTest1, a=bg1, x=predictors1)
+maxHyaTest1 #print results
+threshold(maxHyaTest1) #identify threshold for presence or absence
+plot(maxHyaTest1, 'ROC') #plot AUC
+# alternative methods for testing models (should give same answers)
+# Alternative 1: another way to test model for hyacinthoides
+pvtest1 <- data.frame(extract(predictors1, hyaTest1))
+avtest1 <- data.frame(extract(predictors1, bg1))
+# cross-validate model
+maxHyaTest21 <- evaluate(maxHyaTrain1, p=pvtest1, a=avtest1)
+maxHyaTest21
+# Alternative 2: predict to testing points for hyacinthoides
+testp1 <- predict(maxHyaTrain1, pvtest1)
+testa1 <- predict(maxHyaTrain1, avtest1)
+maxHyaTest31 <- evaluate(p=testp1, a=testa1)
+maxHyaTest31
+# maxent with jackknife, random seed, and response curves, followed by cross-validation
+maxHyaAdv1 <- maxent(
+  x=predictors1,
+  p=hyacinthoides,
+  removeDuplicates=TRUE,
+  nbg=10000,
+  args=c(
+    'randomseed=true', #default=false
+    'threads=2', #default=1
+    'responsecurves=true', #default=false
+    'jackknife=true', #default=false
+    'replicates=10', #default=1
+    'replicatetype=crossvalidate',
+    'maximumiterations=1000' #default=500
+  )
+)
+maxHyaAdv1 #view output as html
+
+# develop testing and training sets for parentals
+fold <- kfold(parentals, k=5) #split occurence points into 5 sets
+parTest1 <- parentals[fold == 1, ] #take 20% (1/5) for testing
+parTrain1 <- parentals[fold != 1, ] #leave 40% for training
+# fit training model for parentals
+maxParTrain1 <- maxent(predictors1, parTrain1) #fit maxent model
+maxParTrain1 #view results in html
+rParTrain1 <- predict(maxParTrain1, predictors1) #predict full model
+plot(rParTrain1) #visualize full model
+points(parentals) #add points to plot
+# testing model for parentals
+# extract background points
+bg1 <- randomPoints(predictors1, 1000)
+# cross-validate model for parentals
+maxParTest1 <- evaluate(maxParTrain1, p=parTest1, a=bg1, x=predictors1)
+maxParTest1 #print results
+threshold(maxParTest1) #identify threshold for presence or absence
+plot(maxParTest1, 'ROC') #plot AUC
+# alternative methods for testing models (should give same answers)
+# Alternative 1: another way to test model for parentals
+pvtest1 <- data.frame(extract(predictors1, parTest1))
+avtest1 <- data.frame(extract(predictors1, bg1))
+# cross-validate model
+maxParTest21 <- evaluate(maxParTrain1, p=pvtest1, a=avtest1)
+maxParTest21
+# Alternative 2: predict to testing points for parentals
+testp1 <- predict(maxParTrain1, pvtest1)
+testa1 <- predict(maxParTrain1, avtest1)
+maxParTest31 <- evaluate(p=testp1, a=testa1)
+maxParTest31
+# maxent with jackknife, random seed, and response curves, followed by cross-validation
+maxParAdv1 <- maxent(
+  x=predictors1,
+  p=parentals,
+  removeDuplicates=TRUE,
+  nbg=10000,
+  args=c(
+    'randomseed=true', #default=false
+    'threads=2', #default=1
+    'responsecurves=true', #default=false
+    'jackknife=true', #default=false
+    'replicates=10', #default=1
+    'replicatetype=crossvalidate',
+    'maximumiterations=1000' #default=500
+  )
+)
+maxParAdv1 #view output as html
+
+# develop testing and training sets for hybrids
+fold <- kfold(hybrids, k=5) #split occurence points into 5 sets
+hybTest1 <- hybrids[fold == 1, ] #take 20% (1/5) for testing
+hybTrain1 <- hybrids[fold != 1, ] #leave 40% for training
+# fit training model for hybrids
+maxHybTrain1 <- maxent(predictors1, hybTrain1) #fit maxent model
+maxHybTrain1 #view results in html
+rHybTrain1 <- predict(maxHybTrain1, predictors1) #predict full model
+plot(rHybTrain1) #visualize full model
+points(hybrids) #add points to plot
+# testing model for hybrids
+# extract background points
+bg1 <- randomPoints(predictors1, 1000)
+# cross-validate model for hybrids
+maxHybTest1 <- evaluate(maxHybTrain1, p=hybTest1, a=bg1, x=predictors1)
+maxHybTest1 #print results
+threshold(maxHybTest1) #identify threshold for presence or absence
+plot(maxHybTest1, 'ROC') #plot AUC
+# alternative methods for testing models (should give same answers)
+# Alternative 1: another way to test model for hybrids
+pvtest1 <- data.frame(extract(predictors1, hybTest1))
+avtest1 <- data.frame(extract(predictors1, bg1))
+# cross-validate model
+maxHybTest21 <- evaluate(maxHybTrain1, p=pvtest1, a=avtest1)
+maxHybTest21
+# Alternative 2: predict to testing points for hybrids
+testp1 <- predict(maxHybTrain1, pvtest1)
+testa1 <- predict(maxHybTrain1, avtest1)
+maxHybTest31 <- evaluate(p=testp1, a=testa1)
+maxHybTest31
+# maxent with jackknife, random seed, and response curves, followed by cross-validation
+maxHybAdv1 <- maxent(
+  x=predictors1,
+  p=hybrids,
+  removeDuplicates=TRUE,
+  nbg=10000,
+  args=c(
+    'randomseed=true', #default=false
+    'threads=2', #default=1
+    'responsecurves=true', #default=false
+    'jackknife=true', #default=false
+    'replicates=10', #default=1
+    'replicatetype=crossvalidate',
+    'maximumiterations=1000' #default=500
+  )
+)
+maxHybAdv1 #view output as html
