@@ -892,3 +892,243 @@ maxLavAdv0 <- maxent(
   )
 )
 maxLavAdv0 #view output as html
+
+# develop testing and training sets for ecristatum
+fold <- kfold(ecristatum, k=5) #split occurence points into 5 sets
+ecrTest0 <- ecristatum[fold == 1, ] #take 20% (1/5) for testing
+ecrTrain0 <- ecristatum[fold != 1, ] #leave 40% for training
+# fit training model for ecristatum
+maxEcrTrain0 <- maxent(predictors0, ecrTrain0) #fit maxent model
+maxEcrTrain0 #view results in html
+rEcrTrain0 <- predict(maxEcrTrain0, predictors0) #predict full model
+plot(rEcrTrain0) #visualize full model
+points(ecristatum) #add points to plot
+# testing model for ecristatum
+# extract background points
+bg0 <- randomPoints(predictors0, 1000)
+# cross-validate model for ecristatum
+maxEcrTest0 <- evaluate(maxEcrTrain0, p=ecrTest0, a=bg, x=predictors0)
+maxEcrTest0 #print results
+threshold(maxEcrTest0) #identify threshold for presence or absence
+plot(maxEcrTest0, 'ROC') #plot AUC
+# alternative methods for testing models (should give same answers)
+# Alternative 1: another way to test model for ecristatum
+pvtest0 <- data.frame(extract(predictors0, ecrTest0))
+avtest0 <- data.frame(extract(predictors0, bg0))
+# cross-validate model
+maxEcrTest20 <- evaluate(maxEcrTrain0, p=pvtest0, a=avtest0)
+maxEcrTest20
+# Alternative 2: predict to testing points for ecristatum
+testp0 <- predict(maxEcrTrain0, pvtest0)
+testa0 <- predict(maxEcrTrain0, avtest0)
+maxEcrTest30 <- evaluate(p=testp0, a=testa0)
+maxEcrTest30
+# maxent with jackknife, random seed, and response curves, followed by cross-validation
+maxEcrAdv0 <- maxent(
+  x=predictors0,
+  p=ecristatum,
+  removeDuplicates=TRUE,
+  nbg=10000,
+  args=c(
+    'randomseed=true', #default=false
+    'threads=2', #default=1
+    'responsecurves=true', #default=false
+    'jackknife=true', #default=false
+    'replicates=10', #default=1
+    'replicatetype=crossvalidate',
+    'maximumiterations=1000' #default=500
+  )
+)
+maxEcrAdv0 #view output as html
+
+# develop testing and training sets for fraseri
+fold <- kfold(fraseri, k=5) #split occurence points into 5 sets
+fraTest0 <- fraseri[fold == 1, ] #take 20% (1/5) for testing
+fraTrain0 <- fraseri[fold != 1, ] #leave 40% for training
+# fit training model for fraseri
+maxFraTrain0 <- maxent(predictors0, fraTrain0) #fit maxent model
+maxFraTrain0 #view results in html
+rFraTrain0 <- predict(maxFraTrain0, predictors0) #predict full model
+plot(rFraTrain0) #visualize full model
+points(fraseri) #add points to plot
+# testing model for fraseri
+# extract background points
+bg0 <- randomPoints(predictors0, 1000)
+# cross-validate model for fraseri
+maxFraTest0 <- evaluate(maxFraTrain0, p=fraTest0, a=bg, x=predictors0)
+maxFraTest0 #print results
+threshold(maxFraTest0) #identify threshold for presence or absence
+plot(maxFraTest0, 'ROC') #plot AUC
+# alternative methods for testing models (should give same answers)
+# Alternative 1: another way to test model for fraseri
+pvtest0 <- data.frame(extract(predictors0, fraTest0))
+avtest0 <- data.frame(extract(predictors0, bg0))
+# cross-validate model
+maxFraTest20 <- evaluate(maxFraTrain0, p=pvtest0, a=avtest0)
+maxFraTest20
+# Alternative 2: predict to testing points for fraseri
+testp0 <- predict(maxFraTrain0, pvtest0)
+testa0 <- predict(maxFraTrain0, avtest0)
+maxFraTest30 <- evaluate(p=testp0, a=testa0)
+maxFraTest30
+# maxent with jackknife, random seed, and response curves, followed by cross-validation
+maxFraAdv0 <- maxent(
+  x=predictors0,
+  p=fraseri,
+  removeDuplicates=TRUE,
+  nbg=10000,
+  args=c(
+    'randomseed=true', #default=false
+    'threads=2', #default=1
+    'responsecurves=true', #default=false
+    'jackknife=true', #default=false
+    'replicates=10', #default=1
+    'replicatetype=crossvalidate',
+    'maximumiterations=1000' #default=500
+  )
+)
+maxFraAdv0 #view output as html
+
+# develop testing and training sets for hyacinthoides
+fold <- kfold(hyacinthoides, k=5) #split occurence points into 5 sets
+hyaTest0 <- hyacinthoides[fold == 1, ] #take 20% (1/5) for testing
+hyaTrain0 <- hyacinthoides[fold != 1, ] #leave 40% for training
+# fit training model for hyacinthoides
+maxHyaTrain0 <- maxent(predictors0, hyaTrain0) #fit maxent model
+maxHyaTrain0 #view results in html
+rHyaTrain0 <- predict(maxHyaTrain0, predictors0) #predict full model
+plot(rHyaTrain0) #visualize full model
+points(hyacinthoides) #add points to plot
+# testing model for hyacinthoides
+# extract background points
+bg0 <- randomPoints(predictors0, 1000)
+# cross-validate model for hyacinthoides
+maxHyaTest0 <- evaluate(maxHyaTrain0, p=hyaTest0, a=bg, x=predictors0)
+maxHyaTest0 #print results
+threshold(maxHyaTest0) #identify threshold for presence or absence
+plot(maxHyaTest0, 'ROC') #plot AUC
+# alternative methods for testing models (should give same answers)
+# Alternative 1: another way to test model for hyacinthoides
+pvtest0 <- data.frame(extract(predictors0, hyaTest0))
+avtest0 <- data.frame(extract(predictors0, bg0))
+# cross-validate model
+maxHyaTest20 <- evaluate(maxHyaTrain0, p=pvtest0, a=avtest0)
+maxHyaTest20
+# Alternative 2: predict to testing points for hyacinthoides
+testp0 <- predict(maxHyaTrain0, pvtest0)
+testa0 <- predict(maxHyaTrain0, avtest0)
+maxHyaTest30 <- evaluate(p=testp0, a=testa0)
+maxHyaTest30
+# maxent with jackknife, random seed, and response curves, followed by cross-validation
+maxHyaAdv0 <- maxent(
+  x=predictors0,
+  p=hyacinthoides,
+  removeDuplicates=TRUE,
+  nbg=10000,
+  args=c(
+    'randomseed=true', #default=false
+    'threads=2', #default=1
+    'responsecurves=true', #default=false
+    'jackknife=true', #default=false
+    'replicates=10', #default=1
+    'replicatetype=crossvalidate',
+    'maximumiterations=1000' #default=500
+  )
+)
+maxHyaAdv0 #view output as html
+
+# develop testing and training sets for parentals
+fold <- kfold(parentals, k=5) #split occurence points into 5 sets
+parTest0 <- parentals[fold == 1, ] #take 20% (1/5) for testing
+parTrain0 <- parentals[fold != 1, ] #leave 40% for training
+# fit training model for parentals
+maxParTrain0 <- maxent(predictors0, parTrain0) #fit maxent model
+maxParTrain0 #view results in html
+rParTrain0 <- predict(maxParTrain0, predictors0) #predict full model
+plot(rParTrain0) #visualize full model
+points(parentals) #add points to plot
+# testing model for parentals
+# extract background points
+bg0 <- randomPoints(predictors0, 1000)
+# cross-validate model for parentals
+maxParTest0 <- evaluate(maxParTrain0, p=parTest0, a=bg, x=predictors0)
+maxParTest0 #print results
+threshold(maxParTest0) #identify threshold for presence or absence
+plot(maxParTest0, 'ROC') #plot AUC
+# alternative methods for testing models (should give same answers)
+# Alternative 1: another way to test model for parentals
+pvtest0 <- data.frame(extract(predictors0, parTest0))
+avtest0 <- data.frame(extract(predictors0, bg0))
+# cross-validate model
+maxParTest20 <- evaluate(maxParTrain0, p=pvtest0, a=avtest0)
+maxParTest20
+# Alternative 2: predict to testing points for parentals
+testp0 <- predict(maxParTrain0, pvtest0)
+testa0 <- predict(maxParTrain0, avtest0)
+maxParTest30 <- evaluate(p=testp0, a=testa0)
+maxParTest30
+# maxent with jackknife, random seed, and response curves, followed by cross-validation
+maxParAdv0 <- maxent(
+  x=predictors0,
+  p=parentals,
+  removeDuplicates=TRUE,
+  nbg=10000,
+  args=c(
+    'randomseed=true', #default=false
+    'threads=2', #default=1
+    'responsecurves=true', #default=false
+    'jackknife=true', #default=false
+    'replicates=10', #default=1
+    'replicatetype=crossvalidate',
+    'maximumiterations=1000' #default=500
+  )
+)
+maxParAdv0 #view output as html
+
+# develop testing and training sets for hybrids
+fold <- kfold(hybrids, k=5) #split occurence points into 5 sets
+hybTest0 <- hybrids[fold == 1, ] #take 20% (1/5) for testing
+hybTrain0 <- hybrids[fold != 1, ] #leave 40% for training
+# fit training model for hybrids
+maxHybTrain0 <- maxent(predictors0, hybTrain0) #fit maxent model
+maxHybTrain0 #view results in html
+rHybTrain0 <- predict(maxHybTrain0, predictors0) #predict full model
+plot(rHybTrain0) #visualize full model
+points(hybrids) #add points to plot
+# testing model for hybrids
+# extract background points
+bg0 <- randomPoints(predictors0, 1000)
+# cross-validate model for hybrids
+maxHybTest0 <- evaluate(maxHybTrain0, p=hybTest0, a=bg, x=predictors0)
+maxHybTest0 #print results
+threshold(maxHybTest0) #identify threshold for presence or absence
+plot(maxHybTest0, 'ROC') #plot AUC
+# alternative methods for testing models (should give same answers)
+# Alternative 1: another way to test model for hybrids
+pvtest0 <- data.frame(extract(predictors0, hybTest0))
+avtest0 <- data.frame(extract(predictors0, bg0))
+# cross-validate model
+maxHybTest20 <- evaluate(maxHybTrain0, p=pvtest0, a=avtest0)
+maxHybTest20
+# Alternative 2: predict to testing points for hybrids
+testp0 <- predict(maxHybTrain0, pvtest0)
+testa0 <- predict(maxHybTrain0, avtest0)
+maxHybTest30 <- evaluate(p=testp0, a=testa0)
+maxHybTest30
+# maxent with jackknife, random seed, and response curves, followed by cross-validation
+maxHybAdv0 <- maxent(
+  x=predictors0,
+  p=hybrids,
+  removeDuplicates=TRUE,
+  nbg=10000,
+  args=c(
+    'randomseed=true', #default=false
+    'threads=2', #default=1
+    'responsecurves=true', #default=false
+    'jackknife=true', #default=false
+    'replicates=10', #default=1
+    'replicatetype=crossvalidate',
+    'maximumiterations=1000' #default=500
+  )
+)
+maxHybAdv0 #view output as html
