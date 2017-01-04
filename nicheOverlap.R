@@ -154,3 +154,165 @@ tmin1 <- raster("layers/avg_2014_tmin0.asc", crs=CRS)
 predictors <- stack(alt, bio2, bio3, bio5, bio6, bio8, bio9, bio12, bio13, bio14, bio19) 
 predictors0<- stack(ppt0)
 predictors1<- stack(ppt1,tmax1)
+
+# extract layer data for each point and add label
+canPts <- raster::extract(predictors, canadense)
+canPts <- cbind.data.frame(species="canadense", canPts) #add column for canadense
+canPts0 <- raster::extract(predictors0, canadense)
+canPts0 <- cbind.data.frame(species="canadense", canPts0) #add column for canadense
+canPts1 <- raster::extract(predictors1, canadense)
+canPts1 <- cbind.data.frame(species="canadense", canPts1) #add column for canadense
+lavPts <- raster::extract(predictors, lavendulare)
+lavPts <- cbind.data.frame(species="lavendulare", lavPts)
+lavPts<-na.omit(lavPts)#removing NA values
+lavPts0 <- raster::extract(predictors0, lavendulare)
+lavPts0 <- cbind.data.frame(species="lavendulare", lavPts0)
+lavPts0<-na.omit(lavPts0)#removing NA values
+lavPts1 <- raster::extract(predictors1, lavendulare)
+lavPts1 <- cbind.data.frame(species="lavendulare", lavPts1)
+lavPts1<-na.omit(lavPts1)#removing NA values
+ecrPts <- raster::extract(predictors, ecristatum)
+ecrPts <- cbind.data.frame(species="ecristatum", ecrPts) #add column for ecristatum
+ecrPts0 <- raster::extract(predictors0, ecristatum)
+ecrPts0 <- cbind.data.frame(species="ecristatum", ecrPts0) #add column for ecristatum
+ecrPts1 <- raster::extract(predictors1, ecristatum)
+ecrPts1 <- cbind.data.frame(species="ecristatum", ecrPts1) #add column for ecristatum
+fraPts <- raster::extract(predictors, fraseri)
+fraPts <- cbind.data.frame(species="fraseri", fraPts)
+fraPts<-na.omit(fraPts)#removing NA values
+fraPts0 <- raster::extract(predictors0, fraseri)
+fraPts0 <- cbind.data.frame(species="fraseri", fraPts0)
+fraPts0<-na.omit(fraPts0)#removing NA values
+fraPts1 <- raster::extract(predictors1, fraseri)
+fraPts1 <- cbind.data.frame(species="fraseri", fraPts1)
+fraPts1<-na.omit(fraPts1)#removing NA values
+hyaPts <- raster::extract(predictors, hyacinthoides)
+hyaPts <- cbind.data.frame(species="hyacinthoides", hyaPts) #add column for hyacinthoides
+hyaPts0 <- raster::extract(predictors0, hyacinthoides)
+hyaPts0 <- cbind.data.frame(species="hyacinthoides", hyaPts0) #add column for hyacinthoides
+hyaPts1 <- raster::extract(predictors1, hyacinthoides)
+hyaPts1 <- cbind.data.frame(species="hyacinthoides", hyaPts1) #add column for hyacinthoides
+parPts <- raster::extract(predictors, parentals)
+parPts <- cbind.data.frame(species="parentals", parPts)
+parPts<-na.omit(parPts)#removing NA values
+parPts0 <- raster::extract(predictors0, parentals)
+parPts0 <- cbind.data.frame(species="parentals", parPts0)
+parPts0<-na.omit(parPts0)#removing NA values
+parPts1 <- raster::extract(predictors1, parentals)
+parPts1 <- cbind.data.frame(species="parentals", parPts1)
+parPts1<-na.omit(parPts1)#removing NA values
+hybPts <- raster::extract(predictors, hybrids)
+hybPts <- cbind.data.frame(species="hybrids", hybPts) #add column for hybrids
+hybPts0 <- raster::extract(predictors0, hybrids)
+hybPts0 <- cbind.data.frame(species="hybrids", hybPts0) #add column for hybrids
+hybPts1 <- raster::extract(predictors1, hybrids)
+hybPts1 <- cbind.data.frame(species="hybrids", hybPts1) #add column for hybrids
+
+# combine parentals and hybrids
+bothPts <- as.data.frame(rbind(parPts, hybPts))
+bothPts0 <- as.data.frame(rbind(parPts0, hybPts0))
+bothPts1 <- as.data.frame(rbind(parPts1, hybPts1))
+
+# one-way ANOVA with Tukey's post-hoc (example from altitude)
+aov.alt <- aov(alt ~ species, data=bothPts)
+summary(aov.alt)
+TukeyHSD(aov.alt)
+
+###Using Bioclim weather data
+##for loop of one-way ANOVA with Tukey's post-hoc(for all 11 uncorrelated weather variables)
+bothPts <- as.data.frame(rbind(parPts, hybPts))#save dataset(made previously in script)as object for ANOVA analysis
+bothPts #view dataset layout
+1:ncol(bothPts) #displays how many columns are in dataset
+AVz<- rep(NA,ncol(bothPts)) #creates a table called AVz with the same number of columns as the dataset. When it is created each cell will have an NA, then we will add data from the for loop in this table.
+sink("anova_results/ANOVA-Tukey.txt")#creates a text file called ANOVA-Tukey.txt in your anova_results directory
+for (i in 2:ncol(bothPts)) {
+  column <-names(bothPts[i])
+  AVz<-summary(aov(bothPts[,i]~species, data=bothPts))
+  tk<-TukeyHSD((aov(bothPts[,i]~species, data=bothPts)))
+  print(column)
+  print(AVz)
+  print(tk)
+}
+sink()
+
+# principle component analysis(PCA)
+bothNum <- bothPts[ ,-1] #remove species names
+pca_both <- prcomp(bothNum, center = TRUE, scale. = TRUE) #PCA
+print(pca_both) #print deviations and rotations
+summary(pca_both) #print importance of components
+plot(pca_both, type="l") #plot variances
+ncomp <- 8 #specify number of components to load (representing 99% of variation)
+
+## model-based approaches
+# read in default maxent models
+rPar <- raster("models/parentals.grd")
+rHyb <- raster("models/hybrids.grd")
+# assessing niche overlap by comparing parentals and hybrids using BioClim layers
+nicheOverlap(rPar, rHyb, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rPar, rHyb, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+###Using PRISM 1930 weather data
+##for loop of one-way ANOVA with Tukey's post-hoc(for all uncorrelated weather variables)
+bothPts0 <- as.data.frame(rbind(parPts0, hybPts0))#save dataset(made previously in script)as object for ANOVA analysis
+bothPts0 #view dataset layout
+1:ncol(bothPts0) #displays how many columns are in dataset
+AVz0<- rep(NA,ncol(bothPts0)) #creates a table called AVz with the same number of columns as the dataset. When it is created each cell will have an NA, then we will add data from the for loop in this table.
+sink("anova_results/ANOVA-Tukey0.txt")#creates a text file called ANOVA-Tukey.txt in your anova_results directory
+for (i in 2:ncol(bothPts0)) {
+  column0 <-names(bothPts0[i])
+  AVz0<-summary(aov(bothPts0[,i]~species, data=bothPts0))
+  tk0<-TukeyHSD((aov(bothPts0[,i]~species, data=bothPts0)))
+  print(column0)
+  print(AVz0)
+  print(tk0)
+}
+sink()
+
+# principle component analysis(PCA)
+bothNum0 <- bothPts0[ ,-1] #remove species names
+pca_both0 <- prcomp(bothNum0, center = TRUE, scale. = TRUE) #PCA=Error because only has one weather variable
+print(pca_both0) #print deviations and rotations=Error because only has one weather variable
+summary(pca_both0) #print importance of components=Error because only has one weather variable
+plot(pca_both0, type="l") #plot variances=Error because only has one weather variable
+ncomp <- 1#specify number of components to load (representing 99% of variation)=Error because only has one weather variable
+
+## model-based approaches
+# read in default maxent models
+rPar0 <- raster("models/parentals1930.grd")
+rHyb0 <- raster("models/hybrids1930.grd")
+# assessing niche overlap by comparing diploids and tetraploids in 1930
+nicheOverlap(rPar0, rHyb0, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rPar0, rHyb0, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+###Using PRISM 2014 weather data
+##for loop of one-way ANOVA with Tukey's post-hoc(for all uncorrelated weather variables)
+bothPts1 <- as.data.frame(rbind(parPts1, hybPts1))#save dataset(made previously in script)as object for ANOVA analysis
+bothPts1 #view dataset layout
+1:ncol(bothPts1) #displays how many columns are in dataset
+AVz1<- rep(NA,ncol(bothPts1)) #creates a table called AVz with the same number of columns as the dataset. When it is created each cell will have an NA, then we will add data from the for loop in this table.
+sink("anova_results/ANOVA-Tukey1.txt")#creates a text file called ANOVA-Tukey.txt in your anova_results directory
+for (i in 2:ncol(bothPts1)) {
+  column1 <-names(bothPts1[i])
+  AVz1<-summary(aov(bothPts1[,i]~species, data=bothPts1))
+  tk1<-TukeyHSD((aov(bothPts1[,i]~species, data=bothPts1)))
+  print(column1)
+  print(AVz1)
+  print(tk1)
+}
+sink()
+
+# principle component analysis(PCA)
+bothNum1 <- bothPts1[ ,-1] #remove species names
+pca_both1 <- prcomp(bothNum1, center = TRUE, scale. = TRUE) #PCA
+print(pca_both1) #print deviations and rotations
+summary(pca_both1) #print importance of components
+plot(pca_both1, type="l") #plot variances
+ncomp <- 2 #specify number of components to load (representing 99% of variation)
+
+## model-based approaches
+# read in default maxent models
+rPar1 <- raster("models/parentals2014.grd")
+rHyb1 <- raster("models/hybrids2014.grd")
+# assessing niche overlap by comparing diploids and tetraploids in 2014
+nicheOverlap(rPar1, rHyb1, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rPar1, rHyb1, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
