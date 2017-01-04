@@ -280,3 +280,35 @@ rHyb1 <- raster("models/hybrids2014.grd")
 # assessing niche overlap by comparing parentals and hybrids in 2014
 nicheOverlap(rPar1, rHyb1, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
 nicheOverlap(rPar1, rHyb1, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+#assessing changes in canadense niche from 1930 to 2014
+nicheOverlap(rCan0, rCan1, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rCan0, rCan1, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+#assessing changes in lavendulare niche from 1930 to 2014
+nicheOverlap(rLav0, rLav1, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rLav0, rLav1, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+#assessing changes in ecristatum niche from 1930 to 2014
+nicheOverlap(rEcr0, rEcr1, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rEcr0, rEcr1, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+#assessing changes in fraseri niche from 1930 to 2014
+nicheOverlap(rFra0, rFra1, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rFra0, rFra1, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+#assessing changes in hyacinthoides niche from 1930 to 2014
+nicheOverlap(rHya0, rHya1, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rHya0, rHya1, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+#assessing changes in mobilense niche from 1930 to 2014
+nicheOverlap(rMob0, rMob1, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rMob0, rMob1, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+#assessing changes in parentals niche from 1930 to 2014
+nicheOverlap(rPar0, rPar1, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rPar0, rPar1, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+#assessing changes in hybrids niche from 1930 to 2014
+nicheOverlap(rHyb0, rHyb1, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rHyb0, rHyb1, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
