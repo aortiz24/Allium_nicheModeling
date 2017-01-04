@@ -312,3 +312,38 @@ nicheOverlap(rPar0, rPar1, stat='I', mask=TRUE, checkNegatives=TRUE) # I statist
 #assessing changes in hybrids niche from 1930 to 2014
 nicheOverlap(rHyb0, rHyb1, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
 nicheOverlap(rHyb0, rHyb1, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+#assessing changes in canadense niche from BioClim to 2014
+nicheOverlap(rCan, rCan1, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rCan, rCan1, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+#assessing changes in lavendulare niche from BioClim to 2014
+nicheOverlap(rLav, rLav1, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rLav, rLav1, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+#assessing changes in ecristatum niche from BioClim to 2014
+nicheOverlap(rEcr, rEcr1, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rEcr, rEcr1, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+#assessing changes in fraseri niche from BioClim to 2014
+nicheOverlap(rFra, rFra1, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rFra, rFra1, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+#assessing changes in hyacinthoides niche from BioClim to 2014
+nicheOverlap(rHya, rHya1, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rHya, rHya1, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+#assessing changes in mobilense niche from BioClim to 2014
+nicheOverlap(rMob, rMob1, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rMob, rMob1, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+#assessing changes in parentals niche from BioClim to 2014
+nicheOverlap(rPar, rPar1, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rPar, rPar1, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+#assessing changes in hybrids niche from BioClim to 2014
+nicheOverlap(rHyb, rHyb1, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rHyb, rHyb1, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+# assessing niche equivalency
+#nicheEquivalency()
