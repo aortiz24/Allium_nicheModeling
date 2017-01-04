@@ -244,7 +244,7 @@ ncomp <- 1#specify number of components to load (representing 99% of variation)=
 # read in default maxent models
 rPar0 <- raster("models/parentals1930.grd")
 rHyb0 <- raster("models/hybrids1930.grd")
-# assessing niche overlap by comparing diploids and tetraploids in 1930
+# assessing niche overlap by comparing parentals and hybrids in 1930
 nicheOverlap(rPar0, rHyb0, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
 nicheOverlap(rPar0, rHyb0, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
 
@@ -277,6 +277,6 @@ ncomp <- 2 #specify number of components to load (representing 99% of variation)
 # read in default maxent models
 rPar1 <- raster("models/parentals2014.grd")
 rHyb1 <- raster("models/hybrids2014.grd")
-# assessing niche overlap by comparing diploids and tetraploids in 2014
+# assessing niche overlap by comparing parentals and hybrids in 2014
 nicheOverlap(rPar1, rHyb1, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
 nicheOverlap(rPar1, rHyb1, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
