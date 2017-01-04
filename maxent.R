@@ -554,6 +554,54 @@ maxHyaAdv <- maxent(
 )
 maxHyaAdv #view output as html
 
+# develop testing and training sets for mobilense
+fold <- kfold(mobilense, k=5) #split occurence points into 5 sets
+mobTest <- mobilense[fold == 1, ] #take 20% (1/5) for testing
+mobTrain <- mobilense[fold != 1, ] #leave 40% for training
+# fit training model for mobilense
+maxMobTrain <- maxent(predictors, mobTrain) #fit maxent model
+maxMobTrain #view results in html
+rMobTrain <- predict(maxMobTrain, predictors) #predict full model
+plot(rMobTrain) #visualize full model
+points(mobilense) #add points to plot
+# testing model for mobilense
+# extract background points
+bg <- randomPoints(predictors, 1000)
+# cross-validate model for mobilense
+maxMobTest <- evaluate(maxMobTrain, p=mobTest, a=bg, x=predictors)
+maxMobTest #print results
+threshold(maxMobTest) #identify threshold for presence or absence
+plot(maxMobTest, 'ROC') #plot AUC
+# alternative methods for testing models (should give same answers)
+# Alternative 1: another way to test model for mobilense
+pvtest <- data.frame(extract(predictors, mobTest))
+avtest <- data.frame(extract(predictors, bg))
+# cross-validate model
+maxMobTest2 <- evaluate(maxMobTrain, p=pvtest, a=avtest)
+maxMobTest2
+# Alternative 2: predict to testing points for mobilense
+testp <- predict(maxMobTrain, pvtest)
+testa <- predict(maxMobTrain, avtest)
+maxMobTest3 <- evaluate(p=testp, a=testa)
+maxMobTest3
+# maxent with jackknife, random seed, and response curves, followed by cross-validation
+maxMobAdv <- maxent(
+  x=predictors,
+  p=mobilense,
+  removeDuplicates=TRUE,
+  nbg=10000,
+  args=c(
+    'randomseed=true', #default=false
+    'threads=2', #default=1
+    'responsecurves=true', #default=false
+    'jackknife=true', #default=false
+    'replicates=10', #default=1
+    'replicatetype=crossvalidate',
+    'maximumiterations=1000' #default=500
+  )
+)
+maxMobAdv #view output as html
+
 # develop testing and training sets for parentals
 fold <- kfold(parentals, k=5) #split occurence points into 5 sets
 parTest <- parentals[fold == 1, ] #take 20% (1/5) for testing
@@ -1037,6 +1085,54 @@ maxHyaAdv0 <- maxent(
 )
 maxHyaAdv0 #view output as html
 
+# develop testing and training sets for mobilense
+fold <- kfold(mobilense, k=5) #split occurence points into 5 sets
+mobTest0 <- mobilense[fold == 1, ] #take 20% (1/5) for testing
+mobTrain0 <- mobilense[fold != 1, ] #leave 40% for training
+# fit training model for mobilense
+maxMobTrain0 <- maxent(predictors0, mobTrain0) #fit maxent model
+maxMobTrain0 #view results in html
+rMobTrain0 <- predict(maxMobTrain0, predictors0) #predict full model
+plot(rMobTrain0) #visualize full model
+points(mobilense) #add points to plot
+# testing model for mobilense
+# extract background points
+bg0 <- randomPoints(predictors0, 1000)
+# cross-validate model for mobilense
+maxMobTest0 <- evaluate(maxMobTrain0, p=mobTest0, a=bg0, x=predictors0)
+maxMobTest0 #print results
+threshold(maxMobTest0) #identify threshold for presence or absence
+plot(maxMobTest0, 'ROC') #plot AUC
+# alternative methods for testing models (should give same answers)
+# Alternative 1: another way to test model for mobilense
+pvtest0 <- data.frame(extract(predictors0, mobTest0))
+avtest0 <- data.frame(extract(predictors0, bg0))
+# cross-validate model
+maxMobTest20 <- evaluate(maxMobTrain0, p=pvtest0, a=avtest0)
+maxMobTest20
+# Alternative 2: predict to testing points for mobilense
+testp0 <- predict(maxMobTrain0, pvtest0)
+testa0 <- predict(maxMobTrain0, avtest0)
+maxMobTest30 <- evaluate(p=testp0, a=testa0)
+maxMobTest30
+# maxent with jackknife, random seed, and response curves, followed by cross-validation
+maxMobAdv0 <- maxent(
+  x=predictors0,
+  p=mobilense,
+  removeDuplicates=TRUE,
+  nbg=10000,
+  args=c(
+    'randomseed=true', #default=false
+    'threads=2', #default=1
+    'responsecurves=true', #default=false
+    'jackknife=true', #default=false
+    'replicates=10', #default=1
+    'replicatetype=crossvalidate',
+    'maximumiterations=1000' #default=500
+  )
+)
+maxMobAdv0 #view output as html
+
 # develop testing and training sets for parentals
 fold <- kfold(parentals, k=5) #split occurence points into 5 sets
 parTest0 <- parentals[fold == 1, ] #take 20% (1/5) for testing
@@ -1519,6 +1615,54 @@ maxHyaAdv1 <- maxent(
   )
 )
 maxHyaAdv1 #view output as html
+
+# develop testing and training sets for mobilense
+fold <- kfold(mobilense, k=5) #split occurence points into 5 sets
+mobTest1 <- mobilense[fold == 1, ] #take 20% (1/5) for testing
+mobTrain1 <- mobilense[fold != 1, ] #leave 40% for training
+# fit training model for mobilense
+maxMobTrain1 <- maxent(predictors1, mobTrain1) #fit maxent model
+maxMobTrain1 #view results in html
+rMobTrain1 <- predict(maxMobTrain1, predictors1) #predict full model
+plot(rMobTrain1) #visualize full model
+points(mobilense) #add points to plot
+# testing model for mobilense
+# extract background points
+bg1 <- randomPoints(predictors1, 1000)
+# cross-validate model for mobilense
+maxMobTest1 <- evaluate(maxMobTrain1, p=mobTest1, a=bg1, x=predictors1)
+maxMobTest1 #print results
+threshold(maxMobTest1) #identify threshold for presence or absence
+plot(maxMobTest1, 'ROC') #plot AUC
+# alternative methods for testing models (should give same answers)
+# Alternative 1: another way to test model for mobilense
+pvtest1 <- data.frame(extract(predictors1, mobTest1))
+avtest1 <- data.frame(extract(predictors1, bg1))
+# cross-validate model
+maxMobTest21 <- evaluate(maxMobTrain1, p=pvtest1, a=avtest1)
+maxMobTest21
+# Alternative 2: predict to testing points for mobilense
+testp1 <- predict(maxMobTrain1, pvtest1)
+testa1 <- predict(maxMobTrain1, avtest1)
+maxMobTest31 <- evaluate(p=testp1, a=testa1)
+maxMobTest31
+# maxent with jackknife, random seed, and response curves, followed by cross-validation
+maxMobAdv1 <- maxent(
+  x=predictors1,
+  p=mobilense,
+  removeDuplicates=TRUE,
+  nbg=10000,
+  args=c(
+    'randomseed=true', #default=false
+    'threads=2', #default=1
+    'responsecurves=true', #default=false
+    'jackknife=true', #default=false
+    'replicates=10', #default=1
+    'replicatetype=crossvalidate',
+    'maximumiterations=1000' #default=500
+  )
+)
+maxMobAdv1 #view output as html
 
 # develop testing and training sets for parentals
 fold <- kfold(parentals, k=5) #split occurence points into 5 sets
