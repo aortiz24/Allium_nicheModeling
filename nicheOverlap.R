@@ -156,42 +156,6 @@ predictors0<- stack(ppt0)
 predictors1<- stack(ppt1,tmax1)
 
 # extract layer data for each point and add label
-canPts <- raster::extract(predictors, canadense)
-canPts <- cbind.data.frame(species="canadense", canPts) #add column for canadense
-canPts0 <- raster::extract(predictors0, canadense)
-canPts0 <- cbind.data.frame(species="canadense", canPts0) #add column for canadense
-canPts1 <- raster::extract(predictors1, canadense)
-canPts1 <- cbind.data.frame(species="canadense", canPts1) #add column for canadense
-lavPts <- raster::extract(predictors, lavendulare)
-lavPts <- cbind.data.frame(species="lavendulare", lavPts)
-lavPts<-na.omit(lavPts)#removing NA values
-lavPts0 <- raster::extract(predictors0, lavendulare)
-lavPts0 <- cbind.data.frame(species="lavendulare", lavPts0)
-lavPts0<-na.omit(lavPts0)#removing NA values
-lavPts1 <- raster::extract(predictors1, lavendulare)
-lavPts1 <- cbind.data.frame(species="lavendulare", lavPts1)
-lavPts1<-na.omit(lavPts1)#removing NA values
-ecrPts <- raster::extract(predictors, ecristatum)
-ecrPts <- cbind.data.frame(species="ecristatum", ecrPts) #add column for ecristatum
-ecrPts0 <- raster::extract(predictors0, ecristatum)
-ecrPts0 <- cbind.data.frame(species="ecristatum", ecrPts0) #add column for ecristatum
-ecrPts1 <- raster::extract(predictors1, ecristatum)
-ecrPts1 <- cbind.data.frame(species="ecristatum", ecrPts1) #add column for ecristatum
-fraPts <- raster::extract(predictors, fraseri)
-fraPts <- cbind.data.frame(species="fraseri", fraPts)
-fraPts<-na.omit(fraPts)#removing NA values
-fraPts0 <- raster::extract(predictors0, fraseri)
-fraPts0 <- cbind.data.frame(species="fraseri", fraPts0)
-fraPts0<-na.omit(fraPts0)#removing NA values
-fraPts1 <- raster::extract(predictors1, fraseri)
-fraPts1 <- cbind.data.frame(species="fraseri", fraPts1)
-fraPts1<-na.omit(fraPts1)#removing NA values
-hyaPts <- raster::extract(predictors, hyacinthoides)
-hyaPts <- cbind.data.frame(species="hyacinthoides", hyaPts) #add column for hyacinthoides
-hyaPts0 <- raster::extract(predictors0, hyacinthoides)
-hyaPts0 <- cbind.data.frame(species="hyacinthoides", hyaPts0) #add column for hyacinthoides
-hyaPts1 <- raster::extract(predictors1, hyacinthoides)
-hyaPts1 <- cbind.data.frame(species="hyacinthoides", hyaPts1) #add column for hyacinthoides
 parPts <- raster::extract(predictors, parentals)
 parPts <- cbind.data.frame(species="parentals", parPts)
 parPts<-na.omit(parPts)#removing NA values
