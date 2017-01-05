@@ -182,6 +182,16 @@ aov.alt <- aov(alt ~ species, data=bothPts)
 summary(aov.alt)
 TukeyHSD(aov.alt)
 
+# one-way ANOVA with Tukey's post-hoc (example from altitude) for 1930
+aov.alt0 <- aov(alt ~ species, data=bothPts0)
+summary(aov.alt0)
+TukeyHSD(aov.alt0)
+
+# one-way ANOVA with Tukey's post-hoc (example from altitude) for 2014
+aov.alt1 <- aov(alt ~ species, data=bothPts1)
+summary(aov.alt1)
+TukeyHSD(aov.alt1)
+
 ###Using Bioclim weather data
 ##for loop of one-way ANOVA with Tukey's post-hoc(for all 11 uncorrelated weather variables)
 bothPts <- as.data.frame(rbind(parPts, hybPts))#save dataset(made previously in script)as object for ANOVA analysis
