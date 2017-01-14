@@ -141,6 +141,7 @@ hyacinthoides<- hyacinthoides[,c(3,2)]
 mobilense<- mobilense[,c(3,2)]
 parentals<- parentals[,c(3,2)]
 hybrids<- hybrids[,c(3,2)]
+combined<- combined[,c(3,2)]
 
 #layers ending in 0 are for PRISM1930
 #layers ending in 1 are for PRISM2014
@@ -249,6 +250,15 @@ hybBCpredict <- predict(predictors, hybBC)
 # plot bioclim model
 plot(hybBCpredict)
 
+# extract layer data for each point
+comPts <- extract(predictors, combined)
+# create bioclim model
+comBC <- bioclim(comPts)
+# predict bioclim model
+comBCpredict <- predict(predictors, comBC)
+# plot bioclim model
+plot(comBCpredict)
+
 ## Default maxent modeling
 # run maxent for canadense (default parameters for dismo)
 maxCan <- maxent(predictors, canadense)
@@ -321,6 +331,15 @@ rHyb <- predict(maxHyb, predictors)
 plot(rHyb)
 points(hybrids)
 writeRaster(rHyb, "models/hybrids.grd")
+
+# run maxent for combined (default parameters for dismo)
+maxCom <- maxent(predictors, combined)
+maxCom # views results in browser window
+response(maxCom) # show response curves for each layer
+rCom <- predict(maxCom, predictors) # create model
+plot(rCom) # plot predictive model
+points(combined) # add points to predictive model
+writeRaster(rCom, "models/combined.grd")
 
 ## Advanced modeling
 # develop testing and training sets for canadense
@@ -707,6 +726,54 @@ maxHybAdv <- maxent(
 )
 maxHybAdv #view output as html
 
+# develop testing and training sets for combined
+fold <- kfold(combined, k=5) #split occurence points into 5 sets
+comTest <- combined[fold == 1, ] #take 20% (1/5) for testing
+comTrain <- combined[fold != 1, ] #leave 40% for training
+# fit training model for combined
+maxComTrain <- maxent(predictors, comTrain) #fit maxent model
+maxComTrain #view results in html
+rComTrain <- predict(maxComTrain, predictors) #predict full model
+plot(rComTrain) #visualize full model
+points(combined) #add points to plot
+# testing model for combined
+# extract background points
+bg <- randomPoints(predictors, 1000)
+# cross-validate model for combined
+maxComTest <- evaluate(maxComTrain, p=comTest, a=bg, x=predictors)
+maxComTest #print results
+threshold(maxComTest) #identify threshold for presence or absence
+plot(maxComTest, 'ROC') #plot AUC
+# alternative methods for testing models (should give same answers)
+# Alternative 1: another way to test model for combined
+pvtest <- data.frame(extract(predictors, comTest))
+avtest <- data.frame(extract(predictors, bg))
+# cross-validate model
+maxComTest2 <- evaluate(maxComTrain, p=pvtest, a=avtest)
+maxComTest2
+# Alternative 2: predict to testing points for combined
+testp <- predict(maxComTrain, pvtest)
+testa <- predict(maxComTrain, avtest)
+maxComTest3 <- evaluate(p=testp, a=testa)
+maxComTest3
+# maxent with jackknife, random seed, and response curves, followed by cross-validation
+maxComAdv <- maxent(
+  x=predictors,
+  p=combined,
+  removeDuplicates=TRUE,
+  nbg=10000,
+  args=c(
+    'randomseed=true', #default=false
+    'threads=2', #default=1
+    'responsecurves=true', #default=false
+    'jackknife=true', #default=false
+    'replicates=10', #default=1
+    'replicatetype=crossvalidate',
+    'maximumiterations=1000' #default=500
+  )
+)
+maxComAdv #view output as html
+
 ### basic bioclim modeling with PRISM 1930 layers for varieties, parentals, and hybrids
 # extract layer data for each point
 canPts0 <- extract(predictors0, canadense)
@@ -779,6 +846,15 @@ hybBC0 <- bioclim(hybPts0)
 hybBCpredict0 <- predict(predictors0, hybBC0)
 # plot bioclim model
 plot(hybBCpredict0)
+
+# extract layer data for each point
+comPts0 <- extract(predictors0, combined)
+# create bioclim model
+comBC0 <- bioclim(comPts0)
+# predict bioclim model
+comBCpredict0 <- predict(predictors0, comBC0)
+# plot bioclim model
+plot(comBCpredict0)
 
 ## Default maxent modeling
 # run maxent for canadense (default parameters for dismo)
@@ -853,6 +929,15 @@ plot(rHyb0)
 points(hybrids)
 writeRaster(rHyb0, "models/hybrids1930.grd")
 
+# run maxent for combined (default parameters for dismo)
+maxCom0 <- maxent(predictors0, combined)
+maxCom0 # views results in browser window
+response(maxCom0) # show response curves for each layer
+rCom0 <- predict(maxCom0, predictors0) # create model
+plot(rCom0) # plot predictive model
+points(combined) # add points to predictive model
+writeRaster(rCom0, "models/combined1930.grd")
+
 ## Advanced modeling
 # develop testing and training sets for canadense
 fold <- kfold(canadense, k=5) #split occurence points into 5 sets
@@ -861,7 +946,7 @@ canTrain0 <- canadense[fold != 1, ] #leave 40% for training
 # fit training model for canadense
 maxCanTrain0 <- maxent(predictors0, canTrain0) #fit maxent model
 maxCanTrain0 #view results in html
-rCanTrain0 <- predict(maxCan0Train, predictors0) #predict full model
+rCanTrain0 <- predict(maxCanTrain0, predictors0) #predict full model
 plot(rCanTrain0) #visualize full model
 points(canadense) #add points to plot
 # testing model for canadense
@@ -1238,6 +1323,54 @@ maxHybAdv0 <- maxent(
 )
 maxHybAdv0 #view output as html
 
+# develop testing and training sets for combined
+fold <- kfold(combined, k=5) #split occurence points into 5 sets
+comTest0 <- combined[fold == 1, ] #take 20% (1/5) for testing
+comTrain0 <- combined[fold != 1, ] #leave 40% for training
+# fit training model for combined
+maxComTrain0 <- maxent(predictors0, comTrain0) #fit maxent model
+maxComTrain0 #view results in html
+rComTrain0 <- predict(maxComTrain0, predictors0) #predict full model
+plot(rComTrain0) #visualize full model
+points(combined) #add points to plot
+# testing model for combined
+# extract background points
+bg0 <- randomPoints(predictors0, 1000)
+# cross-validate model for combined
+maxComTest0 <- evaluate(maxComTrain0, p=comTest0, a=bg0, x=predictors0)
+maxComTest0 #print results
+threshold(maxComTest0) #identify threshold for presence or absence
+plot(maxComTest0, 'ROC') #plot AUC
+# alternative methods for testing models (should give same answers)
+# Alternative 1: another way to test model for combined
+pvtest0 <- data.frame(extract(predictors0, comTest0))
+avtest0 <- data.frame(extract(predictors0, bg0))
+# cross-validate model
+maxComTest20 <- evaluate(maxComTrain0, p=pvtest0, a=avtest0)
+maxComTest20
+# Alternative 2: predict to testing points for combined
+testp0 <- predict(maxComTrain0, pvtest0)
+testa0 <- predict(maxComTrain0, avtest0)
+maxComTest30 <- evaluate(p=testp0, a=testa0)
+maxComTest30
+# maxent with jackknife, random seed, and response curves, followed by cross-validation
+maxComAdv0 <- maxent(
+  x=predictors0,
+  p=combined,
+  removeDuplicates=TRUE,
+  nbg=10000,
+  args=c(
+    'randomseed=true', #default=false
+    'threads=2', #default=1
+    'responsecurves=true', #default=false
+    'jackknife=true', #default=false
+    'replicates=10', #default=1
+    'replicatetype=crossvalidate',
+    'maximumiterations=1000' #default=500
+  )
+)
+maxComAdv0 #view output as html
+
 ### basic bioclim modeling with PRISM 2014 layers for varieties, parentals, and hybrids
 # extract layer data for each point
 canPts1 <- extract(predictors1, canadense)
@@ -1311,6 +1444,15 @@ hybBCpredict1 <- predict(predictors1, hybBC1)
 # plot bioclim model
 plot(hybBCpredict1)
 
+# extract layer data for each point
+comPts1 <- extract(predictors1, combined)
+# create bioclim model
+comBC1 <- bioclim(comPts1)
+# predict bioclim model
+comBCpredict1 <- predict(predictors1, comBC1)
+# plot bioclim model
+plot(comBCpredict1)
+
 ## Default maxent modeling
 # run maxent for canadense (default parameters for dismo)
 maxCan1 <- maxent(predictors1, canadense)
@@ -1383,6 +1525,15 @@ rHyb1 <- predict(maxHyb1, predictors1)
 plot(rHyb1)
 points(hybrids)
 writeRaster(rHyb1, "models/hybrids2014.grd")
+
+# run maxent for combined (default parameters for dismo)
+maxCom1 <- maxent(predictors1, combined)
+maxCom1 # views results in browser window
+response(maxCom1) # show response curves for each layer
+rCom1 <- predict(maxCom1, predictors1) # create model
+plot(rCom1) # plot predictive model
+points(combined) # add points to predictive model
+writeRaster(rCom1, "models/combined2014.grd")
 
 ## Advanced modeling
 # develop testing and training sets for canadense
@@ -1768,3 +1919,51 @@ maxHybAdv1 <- maxent(
   )
 )
 maxHybAdv1 #view output as html
+
+# develop testing and training sets for combined
+fold <- kfold(combined, k=5) #split occurence points into 5 sets
+comTest1 <- combined[fold == 1, ] #take 20% (1/5) for testing
+comTrain1 <- combined[fold != 1, ] #leave 40% for training
+# fit training model for combined
+maxComTrain1 <- maxent(predictors1, comTrain1) #fit maxent model
+maxComTrain1 #view results in html
+rComTrain1 <- predict(maxComTrain1, predictors1) #predict full model
+plot(rComTrain1) #visualize full model
+points(combined) #add points to plot
+# testing model for combined
+# extract background points
+bg1 <- randomPoints(predictors1, 1000)
+# cross-validate model for combined
+maxComTest1 <- evaluate(maxComTrain1, p=comTest1, a=bg1, x=predictors1)
+maxComTest1 #print results
+threshold(maxComTest1) #identify threshold for presence or absence
+plot(maxComTest1, 'ROC') #plot AUC
+# alternative methods for testing models (should give same answers)
+# Alternative 1: another way to test model for combined
+pvtest1 <- data.frame(extract(predictors1, comTest1))
+avtest1 <- data.frame(extract(predictors1, bg1))
+# cross-validate model
+maxComTest21 <- evaluate(maxComTrain1, p=pvtest1, a=avtest1)
+maxComTest21
+# Alternative 2: predict to testing points for combined
+testp1 <- predict(maxComTrain1, pvtest1)
+testa1 <- predict(maxComTrain1, avtest1)
+maxComTest31 <- evaluate(p=testp1, a=testa1)
+maxComTest31
+# maxent with jackknife, random seed, and response curves, followed by cross-validation
+maxComAdv1 <- maxent(
+  x=predictors1,
+  p=combined,
+  removeDuplicates=TRUE,
+  nbg=10000,
+  args=c(
+    'randomseed=true', #default=false
+    'threads=2', #default=1
+    'responsecurves=true', #default=false
+    'jackknife=true', #default=false
+    'replicates=10', #default=1
+    'replicatetype=crossvalidate',
+    'maximumiterations=1000' #default=500
+  )
+)
+maxComAdv1 #view output as html
