@@ -23,6 +23,16 @@ alliumcanadense<-read.csv("alliumdataset_map_data.csv")
 alliumcanadense <- na.omit(alliumcanadense)
 
 #assign scientific name to an object
+target0<-c("Allium canadense var. canadense")
+
+#filtered allium canadense canadense csv file
+alliumcanadense00<-alliumcanadense %>%
+  select(Taxon,Collector,Latitude,Longitude) %>%
+  filter(Taxon == target0)
+
+canadense<- alliumcanadense00
+
+#assign scientific name to an object
 target1<-c("Allium canadense var. lavendulare")
 
 #filtered allium canadense lavendulare csv file
@@ -123,6 +133,9 @@ parentals<- merge(mobilense, fraseri, by="Collector", all=TRUE)
 #merging occurrence data for hybrids(hyacinthoides,ecristatum,lavendulare) into one R object
 hybrid<- merge(hyacinthoides, ecristatum, by="Collector", all=TRUE)
 hybrids<- merge(hybrid, alliumcanadense5, by="Collector", all=TRUE)
+
+#merging occurrence data for all 6 varieties
+combined0<- 
  
 ##prepare varieties,parentals,and hybrids for modeling
 canadense <- alliumcanadense1[,c(3,2)]
