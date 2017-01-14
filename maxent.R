@@ -115,6 +115,7 @@ ecristatum<- merge(alliumcanadense2,alliumcanadense7, by="Collector",all=TRUE)
 fraseri<- merge(alliumcanadense3,alliumcanadense8, by="Collector",all=TRUE)
 hyacinthoides <- merge(alliumcanadense4,alliumcanadense10, by="Collector",all=TRUE)
 mobilense <- merge(alliumcanadense6,alliumcanadense9, by="Collector",all=TRUE)
+lavendulare <- merge(alliumcanadense1,alliumcanadense5, by="Collector",all=TRUE)
 
 #merging occurrence data for parentals(mobilense,fraseri) into one R object
 parentals<- merge(mobilense, fraseri, by="Collector", all=TRUE)
