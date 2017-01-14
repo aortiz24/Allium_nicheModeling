@@ -23,19 +23,9 @@ alliumcanadense<-read.csv("alliumdataset_map_data.csv")
 alliumcanadense <- na.omit(alliumcanadense)
 
 #assign scientific name to an object
-target0<-c("Allium canadense var. canadense")
+target1<-c("Allium canadense var. canadense")
 
 #filtered allium canadense canadense csv file
-alliumcanadense00<-alliumcanadense %>%
-  select(Taxon,Collector,Latitude,Longitude) %>%
-  filter(Taxon == target0)
-
-canadense<- alliumcanadense00
-
-#assign scientific name to an object
-target1<-c("Allium canadense var. lavendulare")
-
-#filtered allium canadense lavendulare csv file
 alliumcanadense1<-alliumcanadense %>%
   select(Taxon,Collector,Latitude,Longitude) %>%
   filter(Taxon == target1)
@@ -71,6 +61,8 @@ target5<-c("Allium canadense var. lavendulare")
 alliumcanadense5<-alliumcanadense %>%
   select(Taxon,Collector,Latitude,Longitude) %>%
   filter(Taxon == target5)
+
+lavendulare <- (alliumcanadense5)
 
 #assign scientific name to an object
 target6<-c("Allium canadense var. mobilense")
@@ -125,7 +117,6 @@ ecristatum<- merge(alliumcanadense2,alliumcanadense7, by="Collector",all=TRUE)
 fraseri<- merge(alliumcanadense3,alliumcanadense8, by="Collector",all=TRUE)
 hyacinthoides <- merge(alliumcanadense4,alliumcanadense10, by="Collector",all=TRUE)
 mobilense <- merge(alliumcanadense6,alliumcanadense9, by="Collector",all=TRUE)
-lavendulare <- merge(alliumcanadense1,alliumcanadense5, by="Collector",all=TRUE)
 
 #merging occurrence data for parentals(mobilense,fraseri) into one R object
 parentals<- merge(mobilense, fraseri, by="Collector", all=TRUE)
@@ -135,8 +126,12 @@ hybrid<- merge(hyacinthoides, ecristatum, by="Collector", all=TRUE)
 hybrids<- merge(hybrid, alliumcanadense5, by="Collector", all=TRUE)
 
 #merging occurrence data for all 6 varieties
-combined0<- 
- 
+combined1<- merge(lavendulare, ecristatum, by="Collector", all=TRUE)
+combined2<- merge(combined1, fraseri, by="Collector", all=TRUE)
+combined3<- merge(combined2, hyacinthoides, by="Collector", all=TRUE)
+combined4<- merge(combined3, mobilense, by="Collector", all=TRUE)
+combined<- merge(combined4, canadense, by="Collector", all=TRUE)
+
 ##prepare varieties,parentals,and hybrids for modeling
 canadense <- alliumcanadense1[,c(3,2)]
 lavendulare <- alliumcanadense5[,c(3,2)]
