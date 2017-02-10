@@ -200,10 +200,6 @@ ncomp <- 2 #specify number of components to load (representing 99% of variation)
 rPar1 <- raster("models/parentals2014.grd")
 rHyb1 <- raster("models/hybrids2014.grd")
 
-# assessing niche overlap by comparing parentals and hybrids in 2014
-nicheOverlap(rPar1, rHyb1, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
-nicheOverlap(rPar1, rHyb1, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
-
 #assessing changes in canadense niche from 1930 to 2014
 nicheOverlap(rCan0, rCan1, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
 nicheOverlap(rCan0, rCan1, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
@@ -235,6 +231,10 @@ nicheOverlap(rPar0, rPar1, stat='I', mask=TRUE, checkNegatives=TRUE) # I statist
 #assessing changes in hybrids niche from 1930 to 2014
 nicheOverlap(rHyb0, rHyb1, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
 nicheOverlap(rHyb0, rHyb1, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+# assessing niche overlap by comparing parentals and hybrids in 2014
+nicheOverlap(rPar1, rHyb1, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rPar1, rHyb1, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
 
 # assessing niche equivalency
 #nicheEquivalency()
