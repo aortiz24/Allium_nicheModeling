@@ -159,8 +159,8 @@ ppt_4kmM2_9 <- raster("~data/dataLayers/PRISM1929/PRISM_ppt_stable_4kmM2_1929_al
 projection(ppt_4kmM2_9) <- CRS("+proj=longlat +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +no_defs") #project
 
 ## clip data layers
-ppt_9 <- mask(ppt_4kmM2_9, SEstates)
-ppt.9 <- crop(ppt_9, extent(SEstates))
+ppt_9 <- mask(ppt_4kmM2_9, middleUS)
+ppt.9 <- crop(ppt_9, extent(middleUS))
 writeRaster(ppt.9, "~data/PastLayers/1929/ppt9.asc", format="ascii", overwrite=TRUE)
 
 ## load PRISM1929 tmax layers
@@ -170,8 +170,8 @@ tmax_4kmM2_9 <- raster("~data/dataLayers/PRISM1929/PRISM_tmax_stable_4kmM2_1929_
 projection(tmax_4kmM2_9) <- CRS("+proj=longlat +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +no_defs") #project
 
 ## clip data layers
-tmax_9 <- mask(tmax_4kmM2_9, SEstates)
-tmax.9 <- crop(tmax_9, extent(SEstates))
+tmax_9 <- mask(tmax_4kmM2_9, middleUS)
+tmax.9 <- crop(tmax_9, extent(middleUS))
 writeRaster(tmax.9, "/Users/hertwecklab/Documents/Thesis/data/PastLayers/1929/tmax9.asc", format="ascii", overwrite=TRUE)
 
 ## load PRISM1929 tmean layers
@@ -181,8 +181,8 @@ tmean_4kmM2_9 <- raster("/Users/hertwecklab/Documents/Thesis/data/dataLayers/PRI
 projection(tmean_4kmM2_9) <- CRS("+proj=longlat +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +no_defs") #project
 
 ## clip data layers
-tmean_9 <- mask(tmean_4kmM2_9, SEstates)
-tmean.9 <- crop(tmean_9, extent(SEstates))
+tmean_9 <- mask(tmean_4kmM2_9, middleUS)
+tmean.9 <- crop(tmean_9, extent(middleUS))
 writeRaster(tmean.9, "/Users/hertwecklab/Documents/Thesis/data/PastLayers/1929/tmean9.asc", format="ascii", overwrite=TRUE)
 
 ## load PRISM1929 tmin layers
@@ -192,8 +192,8 @@ tmin_4kmM2_9 <- raster("~data/dataLayers/PRISM1929/PRISM_tmin_stable_4kmM2_1929_
 projection(tmin_4kmM2_9) <- CRS("+proj=longlat +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +no_defs") #project
 
 ## clip data layers
-tmin_9 <- mask(tmin_4kmM2_9, SEstates)
-tmin.9 <- crop(tmin_9, extent(SEstates))
+tmin_9 <- mask(tmin_4kmM2_9, middleUS)
+tmin.9 <- crop(tmin_9, extent(middleUS))
 writeRaster(tmin.9, "~data/PastLayers/1929/tmin9.asc", format="ascii", overwrite=TRUE)
 
 ## if layers have already been clipped, masked and saved and you need to reload them:
@@ -219,8 +219,8 @@ ppt_4kmM3_11 <- raster("~data/dataLayers/PRISM2011/PRISM_ppt_stable_4kmM3_2011_a
 projection(ppt_4kmM3_11) <- CRS("+proj=longlat +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +no_defs") #project
 
 ## clip data layers
-ppt_11 <- mask(ppt_4kmM3_11, SEstates)
-ppt.11 <- crop(ppt_11, extent(SEstates))
+ppt_11 <- mask(ppt_4kmM3_11, middleUS)
+ppt.11 <- crop(ppt_11, extent(middleUS))
 writeRaster(ppt.11, "~data/PastLayers/2011/ppt11.asc", format="ascii", overwrite=TRUE)
 
 ## load PRISM2011 tmax layers
@@ -230,8 +230,8 @@ tmax_4kmM2_11 <- raster("~data/dataLayers/PRISM2011/PRISM_tmax_stable_4kmM2_2011
 projection(tmax_4kmM2_11) <- CRS("+proj=longlat +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +no_defs") #project
 
 ## clip data layers
-tmax_11 <- mask(tmax_4kmM2_11, SEstates)
-tmax.11 <- crop(tmax_11, extent(SEstates))
+tmax_11 <- mask(tmax_4kmM2_11, middleUS)
+tmax.11 <- crop(tmax_11, extent(middleUS))
 writeRaster(tmax.11, "~data/PastLayers/2011/tmax11.asc", format="ascii", overwrite=TRUE)
 
 ## load PRISM2011 tmean layers
@@ -241,8 +241,8 @@ tmean_4kmM2_11 <- raster("~data/dataLayers/PRISM2011/PRISM_tmean_stable_4kmM2_20
 projection(tmean_4kmM2_11) <- CRS("+proj=longlat +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +no_defs") #project
 
 ## clip data layers
-tmean_11 <- mask(tmean_4kmM2_11, SEstates)
-tmean.11 <- crop(tmean_11, extent(SEstates))
+tmean_11 <- mask(tmean_4kmM2_11, middleUS)
+tmean.11 <- crop(tmean_11, extent(middleUS))
 writeRaster(tmean.11, "~data/PastLayers/2011/tmean11.asc", format="ascii", overwrite=TRUE)
 
 ## load PRISM2011 tmin layers
@@ -252,8 +252,8 @@ tmin_4kmM2_11 <- raster("~data/dataLayers/PRISM2011/PRISM_tmin_stable_4kmM2_2011
 projection(tmin_4kmM2_11) <- CRS("+proj=longlat +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +no_defs") #project
 
 ## clip data layers
-tmin_11 <- mask(tmin_4kmM2_11, SEstates)
-tmin.11 <- crop(tmin_11, extent(SEstates))
+tmin_11 <- mask(tmin_4kmM2_11, middleUS)
+tmin.11 <- crop(tmin_11, extent(middleUS))
 writeRaster(tmin.11, "~data/PastLayers/2011/tmin11.asc", format="ascii", overwrite=TRUE)
 
 ## if layers have already been clipped, masked and saved and you need to reload them:
