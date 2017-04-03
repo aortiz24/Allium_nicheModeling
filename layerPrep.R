@@ -150,3 +150,4 @@ write.csv(c1, "correlation2014.csv")
 # inspect output for correlations between layers
 #   0.7 and above (or -0.7 and below) are correlated
 #   for this analysis, retain tmax1, ppt1
+
