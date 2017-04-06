@@ -341,4 +341,4 @@ c11 <- corr11$`pearson correlation coefficient`
 write.csv(c11, "correlation2011.csv")
 # inspect output for correlations between layers
 #   0.7 and above (or -0.7 and below) are correlated
-#   for this analysis, retain
+#   for this analysis, retain ppt11, tdmean11
