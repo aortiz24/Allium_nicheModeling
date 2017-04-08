@@ -83,12 +83,9 @@ parentals<- merge(mobilense, fraseri, by="Collector", all=TRUE)
 #merging occurrence data for hybrids(hyacinthoides,ecristatum,lavendulare) into one R object
 hybrids<- merge(hyacinthoides, ecristatum, by="Collector", all=TRUE)
 
-#merging occurrence data for all 6 varieties
-combined1<- merge(lavendulare, ecristatum, by="Collector", all=TRUE)
-combined2<- merge(combined1, fraseri, by="Collector", all=TRUE)
-combined3<- merge(combined2, hyacinthoides, by="Collector", all=TRUE)
-combined4<- merge(combined3, mobilense, by="Collector", all=TRUE)
-combined<- merge(combined4, canadense, by="Collector", all=TRUE)
+#assign scientific name to an object containing occurrence for all 6 varieties
+combined<-alliumcanadense %>%
+  select(Taxon,Latitude,Longitude) %>%
 
 ##prepare varieties,parentals,and hybrids for modeling
 canadense <- canadense[,c(3,2)]
