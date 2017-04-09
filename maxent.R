@@ -112,20 +112,20 @@ ppt1 <- raster("layers/avg_2014_ppt0.asc", crs=CRS)
 tmax1 <- raster("layers/avg_2014_tmax0.asc", crs=CRS)
 tmean1 <- raster("layers/avg_2014_tmean0.asc", crs=CRS)
 tmin1 <- raster("layers/avg_2014_tmin0.asc", crs=CRS)
-ppt9 <- raster("layers/ppt9.asc")
-tmax9 <- raster("layers/tmax9.asc")
-tmean9 <- raster("layers/tmean9.asc")
-tmin9 <- raster("layers/tmin9.asc")
-vpdmax9 <- raster("layers/vpdmax9.asc")
-vpdmin9 <- raster("layers/vpdmin9.asc")
-tdmean9 <- raster("layers/tdmean9.asc")
-ppt11 <- raster("layers/ppt11.asc")
-tmax11 <- raster("layers/tmax11.asc")
-tmean11 <- raster("layers/tmean11.asc")
-tmin11 <- raster("layers/tmin11.asc")
-vpdmax11 <- raster("layers/vpdmax11.asc")
-vpdmin11 <- raster("layers/vpdmin11.asc")
-tdmean11 <- raster("layers/tdmean11.asc")
+ppt9 <- raster("layers/ppt9.asc", crs=CRS)
+tmax9 <- raster("layers/tmax9.asc", crs=CRS)
+tmean9 <- raster("layers/tmean9.asc", crs=CRS)
+tmin9 <- raster("layers/tmin9.asc", crs=CRS)
+vpdmax9 <- raster("layers/vpdmax9.asc", crs=CRS)
+vpdmin9 <- raster("layers/vpdmin9.asc", crs=CRS)
+tdmean9 <- raster("layers/tdmean9.asc", crs=CRS)
+ppt11 <- raster("layers/ppt11.asc", crs=CRS)
+tmax11 <- raster("layers/tmax11.asc", crs=CRS)
+tmean11 <- raster("layers/tmean11.asc", crs=CRS)
+tmin11 <- raster("layers/tmin11.asc", crs=CRS)
+vpdmax11 <- raster("layers/vpdmax11.asc", crs=CRS)
+vpdmin11 <- raster("layers/vpdmin11.asc", crs=CRS)
+tdmean11 <- raster("layers/tdmean11.asc", crs=CRS)
 
 ## create stack of non-correlated layers (as determined by layerPrep.R)
 predictors0<- stack(ppt0)
@@ -1598,6 +1598,11 @@ maxLavAdv9 <- maxent(
   )
 )
 maxLavAdv9 #view output as html
+response(maxLavAdv9) # show response curves for each layer
+rLavAdv9 <- predict(maxLavAdv9, predictors9) # create model
+plot(rLavAdv9) # plot predictive model
+points(lavendulare) # add points to predictive model
+writeRaster(rLavAdv9, "models/lavendulareAdv1929.grd")
 
 # develop testing and training sets for ecristatum
 fold <- kfold(ecristatum, k=5) #split occurence points into 5 sets
@@ -1646,6 +1651,11 @@ maxEcrAdv9 <- maxent(
   )
 )
 maxEcrAdv9 #view output as html
+response(maxEcrAdv9) # show response curves for each layer
+rEcrAdv9 <- predict(maxEcrAdv9, predictors9) # create model
+plot(rEcrAdv9) # plot predictive model
+points(ecristatum) # add points to predictive model
+writeRaster(rEcrAdv9, "models/ecristatumAdv1929.grd")
 
 # develop testing and training sets for fraseri
 fold <- kfold(fraseri, k=5) #split occurence points into 5 sets
@@ -1694,6 +1704,11 @@ maxFraAdv9 <- maxent(
   )
 )
 maxFraAdv9 #view output as html
+response(maxFraAdv9) # show response curves for each layer
+rFraAdv9 <- predict(maxFraAdv9, predictors9) # create model
+plot(rFraAdv9) # plot predictive model
+points(fraseri) # add points to predictive model
+writeRaster(rFraAdv9, "models/fraseriAdv1929.grd")
 
 # develop testing and training sets for hyacinthoides
 fold <- kfold(hyacinthoides, k=5) #split occurence points into 5 sets
@@ -1742,6 +1757,11 @@ maxHyaAdv9 <- maxent(
   )
 )
 maxHyaAdv9 #view output as html
+response(maxHyaAdv9) # show response curves for each layer
+rHyaAdv9 <- predict(maxHyaAdv9, predictors9) # create model
+plot(rHyaAdv9) # plot predictive model
+points(hyacinthoides) # add points to predictive model
+writeRaster(rHyaAdv9, "models/hyacinthoidesAdv1929.grd")
 
 # develop testing and training sets for mobilense
 fold <- kfold(mobilense, k=5) #split occurence points into 5 sets
@@ -1790,6 +1810,11 @@ maxMobAdv9 <- maxent(
   )
 )
 maxMobAdv9 #view output as html
+response(maxMobAdv9) # show response curves for each layer
+rMobAdv9 <- predict(maxMobAdv9, predictors9) # create model
+plot(rMobAdv9) # plot predictive model
+points(mobilense) # add points to predictive model
+writeRaster(rMobAdv9, "models/mobilenseAdv1929.grd")
 
 # develop testing and training sets for parentals
 fold <- kfold(parentals, k=5) #split occurence points into 5 sets
@@ -1838,6 +1863,11 @@ maxParAdv9 <- maxent(
   )
 )
 maxParAdv9 #view output as html
+response(maxParAdv9) # show response curves for each layer
+rParAdv9 <- predict(maxParAdv9, predictors9) # create model
+plot(rParAdv9) # plot predictive model
+points(parentals) # add points to predictive model
+writeRaster(rParAdv9, "models/parentalsAdv1929.grd")
 
 # develop testing and training sets for hybrids
 fold <- kfold(hybrids, k=5) #split occurence points into 5 sets
@@ -1886,6 +1916,11 @@ maxHybAdv9 <- maxent(
   )
 )
 maxHybAdv9 #view output as html
+response(maxHybAdv9) # show response curves for each layer
+rHybAdv9 <- predict(maxHybAdv9, predictors9) # create model
+plot(rHybAdv9) # plot predictive model
+points(hybrids) # add points to predictive model
+writeRaster(rHybAdv9, "models/hybridsAdv1929.grd")
 
 # develop testing and training sets for combined
 fold <- kfold(combined, k=5) #split occurence points into 5 sets
@@ -1934,6 +1969,11 @@ maxComAdv9 <- maxent(
   )
 )
 maxComAdv9 #view output as html
+response(maxComAdv9) # show response curves for each layer
+rComAdv9 <- predict(maxComAdv9, predictors9) # create model
+plot(rComAdv9) # plot predictive model
+points(combined) # add points to predictive model
+writeRaster(rComAdv9, "models/combinedAdv1929.grd")
 
 ### basic bioclim modeling with PRISM 2011 layers for varieties, parentals, and hybrids
 # extract layer data for each point
@@ -2147,6 +2187,11 @@ maxCanAdv11 <- maxent(
   )
 )
 maxCanAdv11 #view output as html
+response(maxCanAdv11) # show response curves for each layer
+rCanAdv11 <- predict(maxCanAdv11, predictors11) # create model
+plot(rCanAdv11) # plot predictive model
+points(canadense) # add points to predictive model
+writeRaster(rCanAdv11, "models/canadenseAdv2011.grd")
 
 # develop testing and training sets for lavendulare
 fold <- kfold(lavendulare, k=5) #split occurence points into 5 sets
@@ -2195,6 +2240,11 @@ maxLavAdv11 <- maxent(
   )
 )
 maxLavAdv11 #view output as html
+response(maxLavAdv11) # show response curves for each layer
+rLavAdv11 <- predict(maxLavAdv11, predictors11) # create model
+plot(rLavAdv11) # plot predictive model
+points(lavendulare) # add points to predictive model
+writeRaster(rLavAdv11, "models/lavendulareAdv2011.grd")
 
 # develop testing and training sets for ecristatum
 fold <- kfold(ecristatum, k=5) #split occurence points into 5 sets
@@ -2243,6 +2293,11 @@ maxEcrAdv11 <- maxent(
   )
 )
 maxEcrAdv11 #view output as html
+response(maxEcrAdv11) # show response curves for each layer
+rEcrAdv11 <- predict(maxEcrAdv11, predictors11) # create model
+plot(rEcrAdv11) # plot predictive model
+points(ecristatum) # add points to predictive model
+writeRaster(rEcrAdv11, "models/ecristatumAdv2011.grd")
 
 # develop testing and training sets for fraseri
 fold <- kfold(fraseri, k=5) #split occurence points into 5 sets
@@ -2291,6 +2346,11 @@ maxFraAdv11 <- maxent(
   )
 )
 maxFraAdv11 #view output as html
+response(maxFraAdv11) # show response curves for each layer
+rFraAdv11 <- predict(maxFraAdv11, predictors11) # create model
+plot(rFraAdv11) # plot predictive model
+points(fraseri) # add points to predictive model
+writeRaster(rFraAdv11, "models/fraseriAdv2011.grd")
 
 # develop testing and training sets for hyacinthoides
 fold <- kfold(hyacinthoides, k=5) #split occurence points into 5 sets
@@ -2339,6 +2399,11 @@ maxHyaAdv11 <- maxent(
   )
 )
 maxHyaAdv11 #view output as html
+response(maxHyaAdv11) # show response curves for each layer
+rHyaAdv11 <- predict(maxHyaAdv11, predictors11) # create model
+plot(rHyaAdv11) # plot predictive model
+points(hyacinthoides) # add points to predictive model
+writeRaster(rHyaAdv11, "models/hyacinthoidesAdv2011.grd")
 
 # develop testing and training sets for mobilense
 fold <- kfold(mobilense, k=5) #split occurence points into 5 sets
@@ -2387,6 +2452,11 @@ maxMobAdv11 <- maxent(
   )
 )
 maxMobAdv11 #view output as html
+response(maxMobAdv11) # show response curves for each layer
+rMobAdv11 <- predict(maxMobAdv11, predictors11) # create model
+plot(rMobAdv11) # plot predictive model
+points(mobilense) # add points to predictive model
+writeRaster(rMobAdv11, "models/mobilenseAdv2011.grd")
 
 # develop testing and training sets for parentals
 fold <- kfold(parentals, k=5) #split occurence points into 5 sets
@@ -2435,6 +2505,11 @@ maxParAdv11 <- maxent(
   )
 )
 maxParAdv11 #view output as html
+response(maxParAdv11) # show response curves for each layer
+rParAdv11 <- predict(maxParAdv11, predictors11) # create model
+plot(rParAdv11) # plot predictive model
+points(parentals) # add points to predictive model
+writeRaster(rParAdv11, "models/parentalsAdv2011.grd")
 
 # develop testing and training sets for hybrids
 fold <- kfold(hybrids, k=5) #split occurence points into 5 sets
@@ -2483,6 +2558,11 @@ maxHybAdv11 <- maxent(
   )
 )
 maxHybAdv11 #view output as html
+response(maxHybAdv11) # show response curves for each layer
+rHybAdv11 <- predict(maxHybAdv11, predictors11) # create model
+plot(rHybAdv11) # plot predictive model
+points(hybrids) # add points to predictive model
+writeRaster(rHybAdv11, "models/hybridsAdv2011.grd")
 
 # develop testing and training sets for combined
 fold <- kfold(combined, k=5) #split occurence points into 5 sets
@@ -2531,3 +2611,8 @@ maxComAdv11 <- maxent(
   )
 )
 maxComAdv11 #view output as html
+response(maxComAdv11) # show response curves for each layer
+rComAdv11 <- predict(maxComAdv11, predictors11) # create model
+plot(rComAdv11) # plot predictive model
+points(combined) # add points to predictive model
+writeRaster(rComAdv11, "models/combinedAdv2011.grd")
