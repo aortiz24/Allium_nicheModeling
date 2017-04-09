@@ -1512,16 +1512,16 @@ points(canadense) #add points to plot
 # extract background points
 bg9 <- randomPoints(predictors9, 1000)
 # cross-validate model for canadense
-maxCanTest9 <- evaluate(maxlavTrain9, p=lavTest9, a=bg9, x=predictors9)
+maxCanTest9 <- evaluate(maxCanTrain9, p=canTest9, a=bg9, x=predictors9)
 maxCanTest9 #print results
 threshold(maxCanTest9) #identify threshold for presence or absence
 plot(maxlavTest9, 'ROC') #plot AUC
 # alternative methods for testing models (should give same answers)
 # Alternative 1: another way to test model for canadense
-pvtest9 <- data.frame(extract(predictors9, lavTest9))
+pvtest9 <- data.frame(extract(predictors9, canTest9))
 avtest9 <- data.frame(extract(predictors9, bg9))
 # cross-validate model
-maxCanTest29 <- evaluate(maxCanTrain, p=pvtest9, a=avtest9)
+maxCanTest29 <- evaluate(maxCanTrain9, p=pvtest9, a=avtest9)
 maxCanTest29
 # Alternative 2: predict to testing points for canadense
 testp9 <- predict(maxCanTrain9, pvtest9)
@@ -1545,6 +1545,11 @@ maxCanAdv9 <- maxent(
   )
 )
 maxCanAdv9 #view output as html
+response(maxCanAdv9) # show response curves for each layer
+rCanAdv9 <- predict(maxCanAdv9, predictors9) # create model
+plot(rCanAdv9) # plot predictive model
+points(canadense) # add points to predictive model
+writeRaster(rCanAdv9, "models/canadenseAdv1929.grd")
 
 # develop testing and training sets for lavendulare
 fold <- kfold(lavendulare, k=5) #split occurence points into 5 sets
