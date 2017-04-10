@@ -15,7 +15,6 @@ alliumcanadense <- na.omit(alliumcanadense)
 
 #assign scientific name to an object
 target1<-c("Allium canadense var. canadense")
-
 #filtered allium canadense canadense csv file
 alliumcanadense1<-alliumcanadense %>%
   select(Taxon,Latitude,Longitude) %>%
@@ -23,7 +22,6 @@ alliumcanadense1<-alliumcanadense %>%
 
 #assign scientific name to an object
 target2<-c("Allium canadense var. ecristatum")
-
 #filtered allium canadense ecristatum csv file
 alliumcanadense2<-alliumcanadense %>%
   select(Taxon,Latitude,Longitude) %>%
@@ -31,7 +29,6 @@ alliumcanadense2<-alliumcanadense %>%
 
 #assign scientific name to an object
 target3<-c("Allium canadense var. Fraseri")
-
 #filtered allium canadense Fraseri csv file
 alliumcanadense3<-alliumcanadense %>%
   select(Taxon,Latitude,Longitude) %>%
@@ -39,7 +36,6 @@ alliumcanadense3<-alliumcanadense %>%
 
 #assign scientific name to an object
 target4<-c("Allium canadense var. hyacinthoides")
-
 #filtered allium canadense hyacinthoides csv file
 alliumcanadense4<-alliumcanadense %>%
   select(Taxon,Latitude,Longitude) %>%
@@ -47,7 +43,6 @@ alliumcanadense4<-alliumcanadense %>%
 
 #assign scientific name to an object
 target5<-c("Allium canadense var. lavendulare")
-
 #filtered allium canadense lavendulare csv file
 alliumcanadense5<-alliumcanadense %>%
   select(Taxon,Latitude,Longitude) %>%
@@ -55,7 +50,6 @@ alliumcanadense5<-alliumcanadense %>%
 
 #assign scientific name to an object
 target6<-c("Allium canadense var. mobilense")
-
 #filtered allium canadense mobilense csv file
 alliumcanadense6<-alliumcanadense %>%
   select(Taxon,Latitude,Longitude) %>%
