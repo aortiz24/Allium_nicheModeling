@@ -85,7 +85,7 @@ parentals<-parentals1[c(23:31,41:51),]
 #assign hybrids(hyacinthoides,ecristatum,lavendulare) to a R object
 hybrids1<- alliumcanadense %>%
   select(Taxon,Latitude,Longitude)
-hybrids<-hybrids1[c(22,32:40),]
+hybrids<-hybrids1[c(22,32,33,35:39),]
 
 #assign scientific name to an object containing occurrence for all 6 varieties
 combined<-alliumcanadense %>%
