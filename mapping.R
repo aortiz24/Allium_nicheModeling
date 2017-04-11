@@ -19,6 +19,8 @@ target1<-c("Allium canadense var. canadense")
 alliumcanadense1<-alliumcanadense %>%
   select(Taxon,Latitude,Longitude) %>%
   filter(Taxon == target1)
+#remove point outside of climate layer extent
+alliumcanadense1<-alliumcanadense1[c(2:5,8,10:21),]
 
 #assign scientific name to an object
 target2<-c("Allium canadense var. ecristatum")
