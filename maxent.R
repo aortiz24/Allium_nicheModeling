@@ -102,8 +102,8 @@ parentals<- parentals[,c(3,2)]
 hybrids<- hybrids[,c(3,2)]
 combined<- combined[,c(3,2)]
 
-#layers ending in 0 are for PRISM1930
-#layers ending in 1 are for PRISM2014
+#layers ending in 9 are for PRISM1929
+#layers ending in 11 are for PRISM2011
 # import layers with CRS specified
 CRS <- "+proj=longlat +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +no_defs"
 ppt9 <- raster("layers/ppt9.asc", crs=CRS)
