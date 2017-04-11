@@ -132,8 +132,8 @@ tdmean11 <- raster("layers/tdmean11.asc", crs=CRS)
 ## create stack of non-correlated layers (as determined by layerPrep.R)
 predictors0<- stack(ppt0)
 predictors1<- stack(ppt1,tmax1)
-predictors9<- stack(tmin9, ppt9, vpdmin9)
-predictors11<- stack(ppt11, tdmean11)
+predictors9<- stack(tmean9, ppt9, vpdmax9)
+predictors11<- stack(tmean11, ppt11, vpdmin11, tdmean11)
 
 # plot each layer individually
 plot(predictors0)
