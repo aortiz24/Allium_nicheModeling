@@ -124,7 +124,7 @@ corr9 <- layerStats(stack9, 'pearson', na.rm=TRUE)
 c9 <- corr9$`pearson correlation coefficient`
 write.csv(c9, "correlation1929.csv")
 # inspect output for correlations between layers
-#   0.7 and above (or -0.7 and below) are correlated
+# absolute value of 0.7 or greater are correlated
 #   for this analysis, retain tmean9, ppt9, vpdmax9
 
 ###Past 2011
