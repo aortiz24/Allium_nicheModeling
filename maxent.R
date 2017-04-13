@@ -388,8 +388,6 @@ maxLavAdv9 <- maxent(
     'threads=2', #default=1
     'responsecurves=true', #default=false
     'jackknife=true', #default=false
-    'replicates=10', #default=1
-    'replicatetype=crossvalidate',
     'maximumiterations=1000' #default=500
   )
 )
@@ -441,8 +439,6 @@ maxEcrAdv9 <- maxent(
     'threads=2', #default=1
     'responsecurves=true', #default=false
     'jackknife=true', #default=false
-    'replicates=10', #default=1
-    'replicatetype=crossvalidate',
     'maximumiterations=1000' #default=500
   )
 )
@@ -494,8 +490,6 @@ maxFraAdv9 <- maxent(
     'threads=2', #default=1
     'responsecurves=true', #default=false
     'jackknife=true', #default=false
-    'replicates=10', #default=1
-    'replicatetype=crossvalidate',
     'maximumiterations=1000' #default=500
   )
 )
@@ -547,8 +541,6 @@ maxHyaAdv9 <- maxent(
     'threads=2', #default=1
     'responsecurves=true', #default=false
     'jackknife=true', #default=false
-    'replicates=10', #default=1
-    'replicatetype=crossvalidate',
     'maximumiterations=1000' #default=500
   )
 )
@@ -706,8 +698,6 @@ maxHybAdv9 <- maxent(
     'threads=2', #default=1
     'responsecurves=true', #default=false
     'jackknife=true', #default=false
-    'replicates=10', #default=1
-    'replicatetype=crossvalidate',
     'maximumiterations=1000' #default=500
   )
 )
@@ -1030,8 +1020,6 @@ maxLavAdv11 <- maxent(
     'threads=2', #default=1
     'responsecurves=true', #default=false
     'jackknife=true', #default=false
-    'replicates=10', #default=1
-    'replicatetype=crossvalidate',
     'maximumiterations=1000' #default=500
   )
 )
@@ -1083,8 +1071,6 @@ maxEcrAdv11 <- maxent(
     'threads=2', #default=1
     'responsecurves=true', #default=false
     'jackknife=true', #default=false
-    'replicates=10', #default=1
-    'replicatetype=crossvalidate',
     'maximumiterations=1000' #default=500
   )
 )
@@ -1136,8 +1122,6 @@ maxFraAdv11 <- maxent(
     'threads=2', #default=1
     'responsecurves=true', #default=false
     'jackknife=true', #default=false
-    'replicates=10', #default=1
-    'replicatetype=crossvalidate',
     'maximumiterations=1000' #default=500
   )
 )
@@ -1189,8 +1173,6 @@ maxHyaAdv11 <- maxent(
     'threads=2', #default=1
     'responsecurves=true', #default=false
     'jackknife=true', #default=false
-    'replicates=10', #default=1
-    'replicatetype=crossvalidate',
     'maximumiterations=1000' #default=500
   )
 )
@@ -1348,8 +1330,6 @@ maxHybAdv11 <- maxent(
     'threads=2', #default=1
     'responsecurves=true', #default=false
     'jackknife=true', #default=false
-    'replicates=10', #default=1
-    'replicatetype=crossvalidate',
     'maximumiterations=1000' #default=500
   )
 )
