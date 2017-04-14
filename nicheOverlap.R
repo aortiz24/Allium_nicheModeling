@@ -119,6 +119,30 @@ predictors9<- stack(tmean9, ppt9, vpdmax9)
 predictors11<- stack(tmean11, ppt11, vpdmin11, tdmean11)
 
 # extract layer data for each point and add label
+canPts9 <- raster::extract(predictors9, canadense)
+canPts9 <- cbind.data.frame(species="canadense", canPts9) #add column for canadense
+canPts11 <- raster::extract(predictors11, canadense)
+canPts11 <- cbind.data.frame(species="canadense", canPts11) #add column for canadense
+lavPts9 <- raster::extract(predictors9, lavendulare)
+lavPts9 <- cbind.data.frame(species="lavendulare", lavPts9) #add column for lavendulare
+lavPts11 <- raster::extract(predictors11, lavendulare)
+lavPts11 <- cbind.data.frame(species="lavendulare", lavPts11) #add column for lavendulare
+ecrPts9 <- raster::extract(predictors9, ecristatum)
+ecrPts9 <- cbind.data.frame(species="ecristatum", ecrPts9) #add column for ecristatum
+ecrPts11 <- raster::extract(predictors11, ecristatum)
+ecrPts11 <- cbind.data.frame(species="ecristatum", ecrPts11) #add column for ecristatum
+fraPts9 <- raster::extract(predictors9, fraseri)
+fraPts9 <- cbind.data.frame(species="fraseri", fraPts9) #add column for fraseri
+fraPts11 <- raster::extract(predictors11, fraseri)
+fraPts11 <- cbind.data.frame(species="fraseri", fraPts11) #add column for fraseri
+hyaPts9 <- raster::extract(predictors9, hyacinthoides)
+hyaPts9 <- cbind.data.hyame(species="hyacinthoides", hyaPts9) #add column for hyacinthoides
+hyaPts11 <- raster::extract(predictors11, hyacinthoides)
+hyaPts11 <- cbind.data.hyame(species="hyacinthoides", hyaPts11) #add column for hyacinthoides
+mobPts9 <- raster::extract(predictors9, mobilense)
+mobPts9 <- cbind.data.mobme(species="mobilense", mobPts9) #add column for mobilense
+mobPts11 <- raster::extract(predictors11, mobilense)
+mobPts11 <- cbind.data.mobme(species="mobilense", mobPts11) #add column for mobilense
 parPts9 <- raster::extract(predictors9, parentals)
 parPts9 <- cbind.data.frame(species="parentals", parPts9)
 parPts9<-na.omit(parPts9)#removing NA values
@@ -129,6 +153,10 @@ hybPts9 <- raster::extract(predictors9, hybrids)
 hybPts9 <- cbind.data.frame(species="hybrids", hybPts9) #add column for hybrids
 hybPts11 <- raster::extract(predictors11, hybrids)
 hybPts11 <- cbind.data.frame(species="hybrids", hybPts11) #add column for hybrids
+comPts9 <- raster::extract(predictors9, combined)
+comPts9 <- cbind.data.comme(species="combined", comPts9) #add column for combined
+comPts11 <- raster::extract(predictors11, combined)
+comPts11 <- cbind.data.comme(species="combined", comPts11) #add column for combined
 
 # combine parentals and hybrids
 bothPts9 <- as.data.frame(rbind(parPts9, hybPts9))
