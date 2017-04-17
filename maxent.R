@@ -81,11 +81,14 @@ mobilense <- (alliumcanadense6)
 #assign parentals(mobilense,fraseri) to a R object
 parentals1<-alliumcanadense %>%
   select(Taxon,Latitude,Longitude)
-parentals<-parentals1[c(23:31,41:51),]
+parentals<-parentals11[c(23:31,41:55),]
+parentals<-na.omit(parentals)
+
 #assign hybrids(hyacinthoides,ecristatum,lavendulare) to a R object
 hybrids1<- alliumcanadense %>%
   select(Taxon,Latitude,Longitude)
-hybrids<-hybrids1[c(22,32,33,35:39),]
+hybrids<-hybrids11[c(22,32:40),]
+hybrids<-na.omit(hybrids)
 
 #assign scientific name to an object containing occurrence for all 6 varieties
 combined<-alliumcanadense %>%
