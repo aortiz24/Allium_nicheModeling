@@ -74,12 +74,14 @@ mobilense <- (alliumcanadense6)
 #assign parentals(mobilense,fraseri) to a R object
 parentals11<-alliumcanadense %>%
   select(Taxon,Latitude,Longitude)
-parentals<-parentals11[c(23:311,411:511),]
+parentals<-parentals11[c(23:31,41:55),]
+parentals<-na.omit(parentals)
+
 #assign hybrids(hyacinthoides,ecristatum,lavendulare) to a R object
 hybrids11<- alliumcanadense %>%
   select(Taxon,Latitude,Longitude)
-hybrids<-hybrids11[c(22,32,33,35:39),]
-
+hybrids<-hybrids11[c(22,32:40),]
+hybrids<-na.omit(hybrids)
 #assign scientific name to an object containing occurrence for all 6 varieties
 combined<-alliumcanadense %>%
   select(Taxon,Latitude,Longitude)
@@ -121,28 +123,40 @@ predictors11<- stack(tmean11, ppt11, vpdmin11, tdmean11)
 # extract layer data for each point and add label
 canPts9 <- raster::extract(predictors9, canadense)
 canPts9 <- cbind.data.frame(species="canadense", canPts9) #add column for canadense
+canPts9<-na.omit(canPts9)#removing NA values
 canPts11 <- raster::extract(predictors11, canadense)
 canPts11 <- cbind.data.frame(species="canadense", canPts11) #add column for canadense
+canPts11<-na.omit(canPts11)#removing NA values
 lavPts9 <- raster::extract(predictors9, lavendulare)
 lavPts9 <- cbind.data.frame(species="lavendulare", lavPts9) #add column for lavendulare
+lavPts9<-na.omit(lavPts9)#removing NA values
 lavPts11 <- raster::extract(predictors11, lavendulare)
 lavPts11 <- cbind.data.frame(species="lavendulare", lavPts11) #add column for lavendulare
+lavPts11<-na.omit(lavPts11)#removing NA values
 ecrPts9 <- raster::extract(predictors9, ecristatum)
 ecrPts9 <- cbind.data.frame(species="ecristatum", ecrPts9) #add column for ecristatum
+ecrPts9<-na.omit(ecrPts9)#removing NA values
 ecrPts11 <- raster::extract(predictors11, ecristatum)
 ecrPts11 <- cbind.data.frame(species="ecristatum", ecrPts11) #add column for ecristatum
+ecrPts11<-na.omit(ecrPts11)#removing NA values
 fraPts9 <- raster::extract(predictors9, fraseri)
 fraPts9 <- cbind.data.frame(species="fraseri", fraPts9) #add column for fraseri
+fraPts9<-na.omit(fraPts9)#removing NA values
 fraPts11 <- raster::extract(predictors11, fraseri)
 fraPts11 <- cbind.data.frame(species="fraseri", fraPts11) #add column for fraseri
+fraPts11<-na.omit(fraPts11)#removing NA values
 hyaPts9 <- raster::extract(predictors9, hyacinthoides)
-hyaPts9 <- cbind.data.hyame(species="hyacinthoides", hyaPts9) #add column for hyacinthoides
+hyaPts9 <- cbind.data.frame(species="hyacinthoides", hyaPts9) #add column for hyacinthoides
+hyaPts9<-na.omit(hyaPts9)#removing NA values
 hyaPts11 <- raster::extract(predictors11, hyacinthoides)
-hyaPts11 <- cbind.data.hyame(species="hyacinthoides", hyaPts11) #add column for hyacinthoides
+hyaPts11 <- cbind.data.frame(species="hyacinthoides", hyaPts11) #add column for hyacinthoides
+hyaPts11<-na.omit(hyaPts11)#removing NA values
 mobPts9 <- raster::extract(predictors9, mobilense)
-mobPts9 <- cbind.data.mobme(species="mobilense", mobPts9) #add column for mobilense
+mobPts9 <- cbind.data.frame(species="mobilense", mobPts9) #add column for mobilense
+mobPts9<-na.omit(mobPts9)#removing NA values
 mobPts11 <- raster::extract(predictors11, mobilense)
-mobPts11 <- cbind.data.mobme(species="mobilense", mobPts11) #add column for mobilense
+mobPts11 <- cbind.data.frame(species="mobilense", mobPts11) #add column for mobilense
+mobPts11<-na.omit(mobPts11)#removing NA values
 parPts9 <- raster::extract(predictors9, parentals)
 parPts9 <- cbind.data.frame(species="parentals", parPts9)
 parPts9<-na.omit(parPts9)#removing NA values
@@ -151,30 +165,34 @@ parPts11 <- cbind.data.frame(species="parentals", parPts11)
 parPts11<-na.omit(parPts11)#removing NA values
 hybPts9 <- raster::extract(predictors9, hybrids)
 hybPts9 <- cbind.data.frame(species="hybrids", hybPts9) #add column for hybrids
+hybPts9<-na.omit(hybPts9)#removing NA values
 hybPts11 <- raster::extract(predictors11, hybrids)
 hybPts11 <- cbind.data.frame(species="hybrids", hybPts11) #add column for hybrids
+hybPts11<-na.omit(hybPts11)#removing NA values
 comPts9 <- raster::extract(predictors9, combined)
-comPts9 <- cbind.data.comme(species="combined", comPts9) #add column for combined
+comPts9 <- cbind.data.frame(species="combined", comPts9) #add column for combined
+comPts9<-na.omit(comPts9)#removing NA values
 comPts11 <- raster::extract(predictors11, combined)
-comPts11 <- cbind.data.comme(species="combined", comPts11) #add column for combined
+comPts11 <- cbind.data.frame(species="combined", comPts11) #add column for combined
+comPts11<-na.omit(comPts11)#removing NA values
 
-# combine parentals and hybrids
-bothPts9 <- as.data.frame(rbind(parPts9, hybPts9))
-bothPts11 <- as.data.frame(rbind(parPts11, hybPts11))
+# assigned combined varieties data to a different R object
+bothPts9 <- (comPts9)
+bothPts11 <- (comPts11)
 
 # one-way ANOVA with Tukey's post-hoc (example from altitude) for 1929
-aov.alt9 <- aov(alt ~ species, data=bothPts9)
+aov.alt9 <- aov(species ~ tmean9 + ppt9 + vpdmax9, data=bothPts9)
 summary(aov.alt9)
 TukeyHSD(aov.alt9)
 
 # one-way ANOVA with Tukey's post-hoc (example from altitude) for 2011
-aov.alt11 <- aov(alt ~ species, data=bothPts11)
+aov.alt11 <- aov(species ~ tmean11 + ppt11 + vpdmin11 + tdmean11, data=bothPts11)
 summary(aov.alt11)
 TukeyHSD(aov.alt11)
 
 ###Using PRISM 1929 weather data
 ##for loop of one-way ANOVA with Tukey's post-hoc(for all uncorrelated weather variables)
-bothPts9 <- as.data.frame(rbind(parPts9, hybPts9))#save dataset(made previously in script)as object for ANOVA analysis
+bothPts9 <- (comPts9)#save dataset(made previously in script)as object for ANOVA analysis
 bothPts9 #view dataset layout
 11:ncol(bothPts9) #displays how many columns are in dataset
 AVz9<- rep(NA,ncol(bothPts9)) #creates a table called AVz with the same number of columns as the dataset. When it is created each cell will have an NA, then we will add data from the for loop in this table.
@@ -207,7 +225,7 @@ nicheOverlap(rPar9, rHyb9, stat='I', mask=TRUE, checkNegatives=TRUE) # I statist
 
 ###Using PRISM 2011 weather data
 ##for loop of one-way ANOVA with Tukey's post-hoc(for all uncorrelated weather variables)
-bothPts11 <- as.data.frame(rbind(parPts11, hybPts11))#save dataset(made previously in script)as object for ANOVA analysis
+bothPts11 <- (comPts11)#save dataset(made previously in script)as object for ANOVA analysis
 bothPts11 #view dataset layout
 11:ncol(bothPts11) #displays how many columns are in dataset
 AVz11<- rep(NA,ncol(bothPts11)) #creates a table called AVz with the same number of columns as the dataset. When it is created each cell will have an NA, then we will add data from the for loop in this table.
