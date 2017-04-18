@@ -176,25 +176,25 @@ comPts11 <- raster::extract(predictors11, combined)
 comPts11 <- cbind.data.frame(species="combined", comPts11) #add column for combined
 comPts11<-na.omit(comPts11)#removing NA values
 
-# assigned combined varieties data to a different R object
-bothPts9 <- (comPts9)
-bothPts11 <- (comPts11)
+# assigned call varieties data to a different R object
+bothPts9 <- as.data.frame(rbind(canPts9, lavPts9, ecrPts9, fraPts9, hyaPts9, mobPts9))
+bothPts11 <- as.data.frame(rbind(canPts11, lavPts11, ecrPts11, fraPts11, hyaPts11, mobPts11))
 
-# one-way ANOVA with Tukey's post-hoc (example from altitude) for 1929
-aov.alt9 <- aov(species ~ tmean9 + ppt9 + vpdmax9, data=bothPts9)
+# one-way ANOVA with Tukey's post-hoc (example from mean temperature) for 1929
+aov.alt9 <- aov(species ~ tmean9, data=bothPts9)
 summary(aov.alt9)
 TukeyHSD(aov.alt9)
 
-# one-way ANOVA with Tukey's post-hoc (example from altitude) for 2011
-aov.alt11 <- aov(species ~ tmean11 + ppt11 + vpdmin11 + tdmean11, data=bothPts11)
+# one-way ANOVA with Tukey's post-hoc (example from mean temperature) for 2011
+aov.alt11 <- aov(species ~ tmean11, data=bothPts11)
 summary(aov.alt11)
 TukeyHSD(aov.alt11)
 
 ###Using PRISM 1929 weather data
 ##for loop of one-way ANOVA with Tukey's post-hoc(for all uncorrelated weather variables)
-bothPts9 <- (comPts9)#save dataset(made previously in script)as object for ANOVA analysis
+bothPts9 <- as.data.frame(rbind(canPts9, lavPts9, ecrPts9, fraPts9, hyaPts9, mobPts9))#save dataset(made previously in script)as object for ANOVA analysis
 bothPts9 #view dataset layout
-11:ncol(bothPts9) #displays how many columns are in dataset
+ncol(bothPts9) #displays how many columns are in dataset
 AVz9<- rep(NA,ncol(bothPts9)) #creates a table called AVz with the same number of columns as the dataset. When it is created each cell will have an NA, then we will add data from the for loop in this table.
 sink("anova_results/ANOVA-Tukey9.txt")#creates a text file called ANOVA-Tukey.txt in your anova_results directory
 for (i in 2:ncol(bothPts9)) {
@@ -231,9 +231,9 @@ nicheOverlap(rPar9, rHyb9, stat='I', mask=TRUE, checkNegatives=TRUE) # I statist
 
 ###Using PRISM 2011 weather data
 ##for loop of one-way ANOVA with Tukey's post-hoc(for all uncorrelated weather variables)
-bothPts11 <- (comPts11)#save dataset(made previously in script)as object for ANOVA analysis
+bothPts11 <- as.data.frame(rbind(canPts11, lavPts11, ecrPts11, fraPts11, hyaPts11, mobPts11))#save dataset(made previously in script)as object for ANOVA analysis
 bothPts11 #view dataset layout
-11:ncol(bothPts11) #displays how many columns are in dataset
+ncol(bothPts11) #displays how many columns are in dataset
 AVz11<- rep(NA,ncol(bothPts11)) #creates a table called AVz with the same number of columns as the dataset. When it is created each cell will have an NA, then we will add data from the for loop in this table.
 sink("anova_results/ANOVA-Tukey11.txt")#creates a text file called ANOVA-Tukey.txt in your anova_results directory
 for (i in 2:ncol(bothPts11)) {
