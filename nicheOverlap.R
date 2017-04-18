@@ -217,6 +217,12 @@ ncomp <- 1#specify number of components to load (representing 99% of variation)=
 
 ## model-based approaches
 # read in default maxent models
+rCan9 <- raster("models/canadense1929.grd")
+rLav9 <- raster("models/lavendulare1929.grd")
+rEcr9 <- raster("models/ecristatum1929.grd")
+rFra9 <- raster("models/fraseri1929.grd")
+rHya9 <- raster("models/hyacinthoides1929.grd")
+rMob9 <- raster("models/mobilense1929.grd")
 rPar9 <- raster("models/parentals1929.grd")
 rHyb9 <- raster("models/hybrids1929.grd")
 # assessing niche overlap by comparing parentals and hybrids in 1929
@@ -250,6 +256,12 @@ ncomp <- 2 #specify number of components to load (representing 99% of variation)
 
 ## model-based approaches
 # read in default maxent models
+rCan11 <- raster("models/canadense2011.grd")
+rLav11 <- raster("models/lavendulare2011.grd")
+rEcr11 <- raster("models/ecristatum2011.grd")
+rFra11 <- raster("models/fraseri2011.grd")
+rHya11 <- raster("models/hyacinthoides2011.grd")
+rMob11 <- raster("models/mobilense2011.grd")
 rPar11 <- raster("models/parentals2011.grd")
 rHyb11 <- raster("models/hybrids2011.grd")
 
