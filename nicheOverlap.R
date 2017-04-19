@@ -82,9 +82,6 @@ hybrids11<- alliumcanadense %>%
   select(Taxon,Latitude,Longitude)
 hybrids<-hybrids11[c(22,32:40),]
 hybrids<-na.omit(hybrids)
-#assign scientific name to an object containing occurrence for all 6 varieties
-combined<-alliumcanadense %>%
-  select(Taxon,Latitude,Longitude)
 
 ##prepare varieties,parentals,and hybrids for modeling
 canadense <- canadense[,c(3,2)]
@@ -169,12 +166,6 @@ hybPts9<-na.omit(hybPts9)#removing NA values
 hybPts11 <- raster::extract(predictors11, hybrids)
 hybPts11 <- cbind.data.frame(species="hybrids", hybPts11) #add column for hybrids
 hybPts11<-na.omit(hybPts11)#removing NA values
-comPts9 <- raster::extract(predictors9, combined)
-comPts9 <- cbind.data.frame(species="combined", comPts9) #add column for combined
-comPts9<-na.omit(comPts9)#removing NA values
-comPts11 <- raster::extract(predictors11, combined)
-comPts11 <- cbind.data.frame(species="combined", comPts11) #add column for combined
-comPts11<-na.omit(comPts11)#removing NA values
 
 # assigned call varieties data to a different R object
 bothPts9 <- as.data.frame(rbind(canPts9, lavPts9, ecrPts9, fraPts9, hyaPts9, mobPts9))
@@ -225,9 +216,6 @@ rHya9 <- raster("models/hyacinthoides1929.grd")
 rMob9 <- raster("models/mobilense1929.grd")
 rPar9 <- raster("models/parentals1929.grd")
 rHyb9 <- raster("models/hybrids1929.grd")
-# assessing niche overlap by comparing parentals and hybrids in 1929
-nicheOverlap(rPar9, rHyb9, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
-nicheOverlap(rPar9, rHyb9, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
 
 ###Using PRISM 2011 weather data
 ##for loop of one-way ANOVA with Tukey's post-hoc(for all uncorrelated weather variables)
@@ -265,6 +253,14 @@ rMob11 <- raster("models/mobilense2011.grd")
 rPar11 <- raster("models/parentals2011.grd")
 rHyb11 <- raster("models/hybrids2011.grd")
 
+# assessing niche overlap by comparing parentals and hybrids in 1929
+nicheOverlap(rPar9, rHyb9, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rPar9, rHyb9, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+# assessing niche overlap by comparing parentals and hybrids in 2011
+nicheOverlap(rPar11, rHyb11, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rPar11, rHyb11, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
 #assessing changes in canadense niche from 1929 to 2011
 nicheOverlap(rCan9, rCan11, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
 nicheOverlap(rCan9, rCan11, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
@@ -296,10 +292,6 @@ nicheOverlap(rPar9, rPar11, stat='I', mask=TRUE, checkNegatives=TRUE) # I statis
 #assessing changes in hybrids niche from 1929 to 2011
 nicheOverlap(rHyb9, rHyb11, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
 nicheOverlap(rHyb9, rHyb11, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
-
-# assessing niche overlap by comparing parentals and hybrids in 2011
-nicheOverlap(rPar11, rHyb11, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
-nicheOverlap(rPar11, rHyb11, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
 
 # assessing niche equivalency
 #nicheEquivalency()
