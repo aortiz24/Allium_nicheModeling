@@ -295,7 +295,7 @@ nicheOverlap(rPar11, rHyb11, stat='I', mask=TRUE, checkNegatives=TRUE) # I stati
 
 ## model-based approaches
 # read in advanced maxent models
-rCanAdv9 <- raster("models/canadenseAdvAdv1929.grd")
+rCanAdv9 <- raster("models/canadenseAdv1929.grd")
 rLavAdv9 <- raster("models/lavendulareAdv1929.grd")
 rEcrAdv9 <- raster("models/ecristatumAdv1929.grd")
 rFraAdv9 <- raster("models/fraseriAdv1929.grd")
