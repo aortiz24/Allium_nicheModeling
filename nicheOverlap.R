@@ -253,14 +253,6 @@ rMob11 <- raster("models/mobilense2011.grd")
 rPar11 <- raster("models/parentals2011.grd")
 rHyb11 <- raster("models/hybrids2011.grd")
 
-# assessing niche overlap by comparing parentals and hybrids in 1929
-nicheOverlap(rPar9, rHyb9, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
-nicheOverlap(rPar9, rHyb9, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
-
-# assessing niche overlap by comparing parentals and hybrids in 2011
-nicheOverlap(rPar11, rHyb11, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
-nicheOverlap(rPar11, rHyb11, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
-
 #assessing changes in canadense niche from 1929 to 2011
 nicheOverlap(rCan9, rCan11, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
 nicheOverlap(rCan9, rCan11, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
@@ -293,5 +285,69 @@ nicheOverlap(rPar9, rPar11, stat='I', mask=TRUE, checkNegatives=TRUE) # I statis
 nicheOverlap(rHyb9, rHyb11, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
 nicheOverlap(rHyb9, rHyb11, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
 
-# assessing niche equivalency
-#nicheEquivalency()
+# assessing niche overlap by comparing parentals and hybrids in 1929
+nicheOverlap(rPar9, rHyb9, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rPar9, rHyb9, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+# assessing niche overlap by comparing parentals and hybrids in 2011
+nicheOverlap(rPar11, rHyb11, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rPar11, rHyb11, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+## model-based approaches
+# read in advanced maxent models
+rCanAdv9 <- raster("models/canadenseAdvAdv1929.grd")
+rLavAdv9 <- raster("models/lavendulareAdv1929.grd")
+rEcrAdv9 <- raster("models/ecristatumAdv1929.grd")
+rFraAdv9 <- raster("models/fraseriAdv1929.grd")
+rHyaAdv9 <- raster("models/hyacinthoidesAdv1929.grd")
+rMobAdv9 <- raster("models/mobilenseAdv1929.grd")
+rParAdv9 <- raster("models/parentalsAdv1929.grd")
+rHybAdv9 <- raster("models/hybridsAdv1929.grd")
+rCanAdv11 <- raster("models/canadenseAdv2011.grd")
+rLavAdv11 <- raster("models/lavendulareAdv2011.grd")
+rEcrAdv11 <- raster("models/ecristatumAdv2011.grd")
+rFraAdv11 <- raster("models/fraseriAdv2011.grd")
+rHyaAdv11 <- raster("models/hyacinthoidesAdv2011.grd")
+rMobAdv11 <- raster("models/mobilenseAdv2011.grd")
+rParAdv11 <- raster("models/parentalsAdv2011.grd")
+rHybAdv11 <- raster("models/hybridsAdv2011.grd")
+
+#assessing changes in canadense niche from 1929 to 2011
+nicheOverlap(rCanAdv9, rCanAdv11, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rCanAdv9, rCanAdv11, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+#assessing changes in lavendulare niche from 1929 to 2011
+nicheOverlap(rLavAdv9, rLavAdv11, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rLavAdv9, rLavAdv11, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+#assessing changes in ecristatum niche from 1929 to 2011
+nicheOverlap(rEcrAdv9, rEcrAdv11, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rEcrAdv9, rEcrAdv11, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+#assessing changes in fraseri niche from 1929 to 2011
+nicheOverlap(rFraAdv9, rFraAdv11, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rFraAdv9, rFraAdv11, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+#assessing changes in hyacinthoides niche from 1929 to 2011
+nicheOverlap(rHyaAdv9, rHyaAdv11, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rHyaAdv9, rHyaAdv11, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+#assessing changes in mobilense niche from 1929 to 2011
+nicheOverlap(rMobAdv9, rMobAdv11, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rMobAdv9, rMobAdv11, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+# assessing niche overlap by comparing parentals and hybrids in 1929
+nicheOverlap(rParAdv9, rHybAdv9, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rParAdv9, rHybAdv9, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+# assessing niche overlap by comparing parentals and hybrids in 2011
+nicheOverlap(rParAdv11, rHybAdv11, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rParAdv11, rHybAdv11, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+#assessing changes in parentals niche from 1929 to 2011
+nicheOverlap(rParAdv9, rParAdv11, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rParAdv9, rParAdv11, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
+
+#assessing changes in hybrids niche from 1929 to 2011
+nicheOverlap(rHybAdv9, rHybAdv11, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
+nicheOverlap(rHybAdv9, rHybAdv11, stat='I', mask=TRUE, checkNegatives=TRUE) # I statistic
