@@ -60,7 +60,7 @@ alliumcanadense5<-alliumcanadense %>%
 #assign variety name to object
 lavendulare <- (alliumcanadense5)
 #remove point that was outside of climate layer extent
-lavendulare<-lavendulare[c(11:6),]
+lavendulare<-lavendulare[c(1:6),]
 
 #assign scientific name to an object
 target6<-c("Allium canadense var. mobilense")
