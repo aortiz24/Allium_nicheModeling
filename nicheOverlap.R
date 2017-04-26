@@ -92,7 +92,6 @@ hyacinthoides<- hyacinthoides[,c(3,2)]
 mobilense<- mobilense[,c(3,2)]
 parentals<- parentals[,c(3,2)]
 hybrids<- hybrids[,c(3,2)]
-combined<- combined[,c(3,2)]
 
 #layers ending in 9 are for PRISM11929
 #layers ending in 11 are for PRISM2011
