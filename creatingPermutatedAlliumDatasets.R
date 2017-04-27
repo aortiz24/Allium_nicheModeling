@@ -3,6 +3,7 @@
 library(dplyr)
 library(raster)
 library(dismo)
+library(ENMeval)
 
 ##using file made from textbook source
 #importing species csv file into R
@@ -112,13 +113,6 @@ tdmean11 <- raster("layers/tdmean11.asc", crs=CRS)
 predictors9<- stack(tmean9, ppt9, vpdmax9)
 predictors11<- stack(tmean11, ppt11, vpdmin11, tdmean11)
 
-##For loop 
-#one dataset will run 100 times with 1929 layers in maxent, and an I statistic will be calculated for each run
-#the other dataset will run 100 times with 2011 layers in maxent, and an I statistic will be calculated for each run
-#The critical value (the fifth lowest I statistic out of 100) will be used to conclude whether the niches are significantly different for 1929 and 2011
-sink("permutation_results/canadense_permut_vals.csv")#creates a text file called ANOVA-Tukey.txt in your anova_results directory
-for (i in 1:100){
-
 #making two objects for canadense that are permuted datasets: 
 #x.permuted.object contains half of the canadense occurrence points and will be run in maxent with 1929 layers in for loop
 #x.permuted.object2 contains half of the canadense occurrence points and will be run in maxent with 2011 layers in for loop
@@ -141,6 +135,13 @@ x.permuted2
 x.permuted.canadense1 <- canadense[x.permuted,]
 x.permuted.canadense2 <- canadense[x.permuted2,]
 
+##For loop 
+#one dataset will run 100 times with 1929 layers in maxent, and an I statistic will be calculated for each run
+#the other dataset will run 100 times with 2011 layers in maxent, and an I statistic will be calculated for each run
+#The critical value (the fifth lowest I statistic out of 100) will be used to conclude whether the niches are significantly different for 1929 and 2011
+sink("permutation_results/canadense_permut_vals.csv")#creates a text file called canadense_permut_vals.csv in your permutation_results directory
+for (i in 1:100){
+
   #1929-runing maxent with jackknife, random seed, and response curves, followed by cross-validation
   permutedMaxCanAdv9 <- maxent(
     x=predictors9,
@@ -152,11 +153,13 @@ x.permuted.canadense2 <- canadense[x.permuted2,]
       'threads=2', #default=1
       'responsecurves=true', #default=false
       'jackknife=true', #default=false
-      'replicates=i', #default=1
+      'replicates=100', #default=1
       'replicatetype=crossvalidate',
       'maximumiterations=1000' #default=500
     )
   )
+  #1929-creating model
+  rPermutedMaxCanAdv9 <- predict(permutedMaxCanAdv9, predictors9)
   
   #2011-maxent with jackknife, random seed, and response curves, followed by cross-validation
   permutedMaxCanAdv11 <- maxent(
@@ -169,14 +172,16 @@ x.permuted.canadense2 <- canadense[x.permuted2,]
       'threads=2', #default=1
       'responsecurves=true', #default=false
       'jackknife=true', #default=false
-      'replicates=i', #default=1
+      'replicates=100', #default=1
       'replicatetype=crossvalidate',
       'maximumiterations=1000' #default=500
     )
   )
+  #2011-creating model
+  rPermutedMaxCanAdv11 <- predict(permutedMaxCanAdv11, predictors11)
   
   #calculate nicheOverlap I statistic
-  CanAdvIstat<-nicheOverlap(permutedMaxCanAdv9, permutedMaxCanAdv11, stat='I', mask=TRUE, checkNegatives=TRUE)
+  CanAdvIstat<-nicheOverlap(rPermutedMaxCanAdv9$layer.i, rPermutedMaxCanAdv11$layer.i, stat='I', mask=TRUE, checkNegatives=TRUE)
   
   print(CanAdvIstat)
   }
