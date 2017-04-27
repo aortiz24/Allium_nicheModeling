@@ -91,6 +91,29 @@ mobilense<- mobilense[,c(3,2)]
 parentals<- parentals[,c(3,2)]
 hybrids<- hybrids[,c(3,2)]
 
+#layers ending in 9 are for PRISM1929
+#layers ending in 11 are for PRISM2011
+# import layers with CRS specified
+CRS <- "+proj=longlat +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +no_defs"
+ppt9 <- raster("layers/ppt9.asc", crs=CRS)
+tmax9 <- raster("layers/tmax9.asc", crs=CRS)
+tmean9 <- raster("layers/tmean9.asc", crs=CRS)
+tmin9 <- raster("layers/tmin9.asc", crs=CRS)
+vpdmax9 <- raster("layers/vpdmax9.asc", crs=CRS)
+vpdmin9 <- raster("layers/vpdmin9.asc", crs=CRS)
+tdmean9 <- raster("layers/tdmean9.asc", crs=CRS)
+ppt11 <- raster("layers/ppt11.asc", crs=CRS)
+tmax11 <- raster("layers/tmax11.asc", crs=CRS)
+tmean11 <- raster("layers/tmean11.asc", crs=CRS)
+tmin11 <- raster("layers/tmin11.asc", crs=CRS)
+vpdmax11 <- raster("layers/vpdmax11.asc", crs=CRS)
+vpdmin11 <- raster("layers/vpdmin11.asc", crs=CRS)
+tdmean11 <- raster("layers/tdmean11.asc", crs=CRS)
+
+## create stack of non-correlated layers (as determined by layerPrep.R)
+predictors9<- stack(tmean9, ppt9, vpdmax9)
+predictors11<- stack(tmean11, ppt11, vpdmin11, tdmean11)
+
 #making two objects for canadense that are permuted datasets: 
 #x.permuted.object contains half of the canadense occurrence points and will be run in maxent with 1929 layers in for loop
 #x.permuted.object2 contains half of the canadense occurrence points and will be run in maxent with 2011 layers in for loop
@@ -117,12 +140,12 @@ x.permuted.canadense2 <- canadense[x.permuted2,]
 #one dataset will run 100 times with 1929 layers in maxent, and an I statistic will be calculated for each run
 #the other dataset will run 100 times with 2011 layers in maxent, and an I statistic will be calculated for each run
 #The critical value (the fifth lowest I statistic out of 100) will be used to conclude whether the niches are significantly different for 1929 and 2011
-permut.vals <-NULL
+sink("permutation_results/canadense_permut_vals.csv")#creates a text file called ANOVA-Tukey.txt in your anova_results directory
 for (i in 1:100){
   #1929-runing maxent with jackknife, random seed, and response curves, followed by cross-validation
-  maxCanAdv9 <- maxent(
+  permutedMaxCanAdv9 <- maxent(
     x=predictors9,
-    p=canadense,
+    p=x.permuted.canadense1,
     removeDuplicates=TRUE,
     nbg=10000,
     args=c(
@@ -130,16 +153,16 @@ for (i in 1:100){
       'threads=2', #default=1
       'responsecurves=true', #default=false
       'jackknife=true', #default=false
-      'replicates=10', #default=1
+      'replicates=i', #default=1
       'replicatetype=crossvalidate',
       'maximumiterations=1000' #default=500
     )
   )
   
   #2011-maxent with jackknife, random seed, and response curves, followed by cross-validation
-  maxCanAdv11 <- maxent(
+  permutedMaxCanAdv11 <- maxent(
     x=predictors11,
-    p=canadense,
+    p=x.permuted.canadense2,
     removeDuplicates=TRUE,
     nbg=10000,
     args=c(
@@ -147,19 +170,19 @@ for (i in 1:100){
       'threads=2', #default=1
       'responsecurves=true', #default=false
       'jackknife=true', #default=false
-      'replicates=10', #default=1
+      'replicates=i', #default=1
       'replicatetype=crossvalidate',
       'maximumiterations=1000' #default=500
     )
   )
   
   #calculate nicheOverlap I statistic
-  nicheOverlap(rCanAdv9, rCanAdv11, stat='I', mask=TRUE, checkNegatives=TRUE)
+  CanAdvIstat<-nicheOverlap(permutedMaxCanAdv9, permutedMaxCanAdv11, stat='I', mask=TRUE, checkNegatives=TRUE)
   
-  #The critical value (the fifth lowest I statistic out of 100) will be used to conclude whether the niches are significantly different for 1929 and 2011
-  x <- read.csv("IDENTITY_1929_sorted.csv")
-  quantile(x[,1], 0.05)
-  
-fred<-
-permut.vals <- rbind(permut.vals,fred)
-}
+  print(CanAdvIstat)
+  }
+sink()
+
+#The critical value (the fifth lowest I statistic out of 100,you only got a value lower than this 5% of the time, P<0.05) will be used to conclude whether the niches are significantly different for 1929 and 2011
+x <- read.csv("canadense_permut_vals.csv")
+quantile(x[,1], 0.05)
