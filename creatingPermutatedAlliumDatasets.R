@@ -113,7 +113,7 @@ tdmean11 <- raster("layers/tdmean11.asc", crs=CRS)
 predictors9<- stack(tmean9, ppt9, vpdmax9)
 predictors11<- stack(tmean11, ppt11, vpdmin11, tdmean11)
 
-##For loop 
+##For loop for canadense - 1929 vs 2011
 #one dataset will run 100 times with 1929 layers in maxent, and an I statistic will be calculated for each run
 #the other dataset will run 100 times with 2011 layers in maxent, and an I statistic will be calculated for each run
 #The critical value (the fifth lowest I statistic out of 100) will be used to conclude whether the niches are significantly different for 1929 and 2011
@@ -188,7 +188,7 @@ PermutIstats <- PermutIstats[1:100,]
 #ordering permuted 100 I statistic values from least to greatest
 x<-sort(PermutIstats, decreasing = FALSE)
 #writes the 100 I statistic values from least to greatest
-write.csv(x, file="permutation_results/OrderedPermutIstats.csv")
+write.csv(x, file="permutation_results/canadense_OrderedPermutIstats.csv")
 #the critical value is the fifth lowest I statistic out of 100,
 #you only get a value lower than this 5% of the time, P<0.05)
 #When comparing the canadense niches in 1929 & 2011, the critical value is 0.9204252
