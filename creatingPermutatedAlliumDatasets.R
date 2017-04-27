@@ -3,8 +3,6 @@
 library(dplyr)
 library(raster)
 library(dismo)
-library(ecospat)
-library(ENMeval)
 
 ##using file made from textbook source
 #importing species csv file into R
