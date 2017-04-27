@@ -114,6 +114,13 @@ tdmean11 <- raster("layers/tdmean11.asc", crs=CRS)
 predictors9<- stack(tmean9, ppt9, vpdmax9)
 predictors11<- stack(tmean11, ppt11, vpdmin11, tdmean11)
 
+##For loop 
+#one dataset will run 100 times with 1929 layers in maxent, and an I statistic will be calculated for each run
+#the other dataset will run 100 times with 2011 layers in maxent, and an I statistic will be calculated for each run
+#The critical value (the fifth lowest I statistic out of 100) will be used to conclude whether the niches are significantly different for 1929 and 2011
+sink("permutation_results/canadense_permut_vals.csv")#creates a text file called ANOVA-Tukey.txt in your anova_results directory
+for (i in 1:100){
+
 #making two objects for canadense that are permuted datasets: 
 #x.permuted.object contains half of the canadense occurrence points and will be run in maxent with 1929 layers in for loop
 #x.permuted.object2 contains half of the canadense occurrence points and will be run in maxent with 2011 layers in for loop
@@ -136,12 +143,6 @@ x.permuted2
 x.permuted.canadense1 <- canadense[x.permuted,]
 x.permuted.canadense2 <- canadense[x.permuted2,]
 
-##For loop 
-#one dataset will run 100 times with 1929 layers in maxent, and an I statistic will be calculated for each run
-#the other dataset will run 100 times with 2011 layers in maxent, and an I statistic will be calculated for each run
-#The critical value (the fifth lowest I statistic out of 100) will be used to conclude whether the niches are significantly different for 1929 and 2011
-sink("permutation_results/canadense_permut_vals.csv")#creates a text file called ANOVA-Tukey.txt in your anova_results directory
-for (i in 1:100){
   #1929-runing maxent with jackknife, random seed, and response curves, followed by cross-validation
   permutedMaxCanAdv9 <- maxent(
     x=predictors9,
