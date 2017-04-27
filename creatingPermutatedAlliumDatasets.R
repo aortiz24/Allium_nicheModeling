@@ -5,6 +5,9 @@ library(raster)
 library(dismo)
 library(ENMeval)
 
+# create directory for saving the permutation results later
+dir.create("permutation_results")
+
 ##using file made from textbook source
 #importing species csv file into R
 alliumcanadense<-read.csv("alliumdataset_map_data.csv")
