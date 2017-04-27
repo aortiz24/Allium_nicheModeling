@@ -123,23 +123,19 @@ for (i in 1:100){
   #x.permuted.object contains half of the canadense occurrence points and will be run in maxent with 1929 layers in for loop
   #x.permuted.object2 contains half of the canadense occurrence points and will be run in maxent with 2011 layers in for loop
   #assign 10 occurrence points from the canadense object to the x.permuted object and do not replace the values
-  x.permuted<-replicate(100, {sample(1:nrow(canadense), size = 10, replace = FALSE)})
-  #contains the row names of the canadense object in numerical order. The information in these rows will be put into x.permuted. 
-  x.permuted[,i] <- (x.permuted[,i])[order(x.permuted[,i])]
-  #display row names
-  x.permuted[,i]
-
-  #put the remaining row names of the canadense object into x.permuted2. 
-  x.permuted2[,i] <- setdiff(1:nrow(canadense), (x.permuted[,i]))
-  #contains the row names of the canadense object in numerical order. The information in these rows will be put into x.permuted2. 
-  x.permuted2[,i] <- (x.permuted2[,i])[order(x.permuted2[,i])]
-  #display row names
-  x.permuted2[,i]
-
+  x.permuted<-replicate(100, {sample(1:nrow(canadense), size = 10, replace = FALSE)
+    #contains the row names of the canadense object in numerical order. The information in these rows will be put into x.permuted. 
+    x.permuted <- x.permuted[order(x.permuted)]
+        #put the remaining row names of the canadense object into x.permuted2. 
+    x.permuted2 <- setdiff(1:nrow(canadense), x.permuted)
+    #contains the row names of the canadense object in numerical order. The information in these rows will be put into x.permuted2. 
+    x.permuted2 <- x.permuted2[order(x.permuted2)]
+    })
+  
   #import specific rows of canadense locality data into x.permuted.object and x.permuted.object2
   #creates paired datasets
-  x.permuted.canadense1 <- canadense[(x.permuted[,i]),]
-  x.permuted.canadense2 <- canadense[(x.permuted2[,i]),]
+  x.permuted.canadense1 <- canadense[(x.permuted),]
+  x.permuted.canadense2 <- canadense[(x.permuted2),]
 
   #1929-runing maxent with jackknife, random seed, and response curves, followed by cross-validation
   permutedMaxCanAdv9 <- maxent(
@@ -152,7 +148,6 @@ for (i in 1:100){
       'threads=2', #default=1
       'responsecurves=true', #default=false
       'jackknife=true', #default=false
-      'replicates=100', #default=1
       'replicatetype=crossvalidate',
       'maximumiterations=1000' #default=500
     )
@@ -171,7 +166,6 @@ for (i in 1:100){
       'threads=2', #default=1
       'responsecurves=true', #default=false
       'jackknife=true', #default=false
-      'replicates=100', #default=1
       'replicatetype=crossvalidate',
       'maximumiterations=1000' #default=500
     )
@@ -180,10 +174,10 @@ for (i in 1:100){
   rPermutedMaxCanAdv11 <- predict(permutedMaxCanAdv11, predictors11)
   
   #calculate nicheOverlap I statistic
-  CanAdvIstat<-nicheOverlap(rPermutedMaxCanAdv9$layer.i, rPermutedMaxCanAdv11$layer.i, stat='I', mask=TRUE, checkNegatives=TRUE)
+  CanAdvIstat<-nicheOverlap(rPermutedMaxCanAdv9, rPermutedMaxCanAdv11, stat='I', mask=TRUE, checkNegatives=TRUE)
   
   #print the 100 I statistics in the first column in canadense_permut_vals.csv
-  print(CanAdvIstat)-> canadense_permut_vals.csv[,1]
+  print(CanAdvIstat)
   }
 sink()
 
