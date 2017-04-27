@@ -182,5 +182,8 @@ for (i in 1:100){
 sink()
 
 #The critical value (the fifth lowest I statistic out of 100,you only got a value lower than this 5% of the time, P<0.05) will be used to conclude whether the niches are significantly different for 1929 and 2011
-x <- read.csv("permutation_results/canadense_permut_vals.csv")
+PermutIstats <- read.csv("permutation_results/canadense_permut_vals.csv")
+#ordering permuted 100 I statistic values from least to greatest
+x<-sort(PermutIstats, decreasing = FALSE)
+#display the critical value
 quantile(x, 0.05)
