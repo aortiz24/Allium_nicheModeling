@@ -119,8 +119,47 @@ x.permuted.canadense2 <- canadense[x.permuted2,]
 #The critical value (the fifth lowest I statistic out of 100) will be used to conclude whether the niches are significantly different for 1929 and 2011
 permut.vals <-NULL
 for (i in 1:100){
+  #1929-runing maxent with jackknife, random seed, and response curves, followed by cross-validation
+  maxCanAdv9 <- maxent(
+    x=predictors9,
+    p=canadense,
+    removeDuplicates=TRUE,
+    nbg=10000,
+    args=c(
+      'randomseed=true', #default=false
+      'threads=2', #default=1
+      'responsecurves=true', #default=false
+      'jackknife=true', #default=false
+      'replicates=10', #default=1
+      'replicatetype=crossvalidate',
+      'maximumiterations=1000' #default=500
+    )
+  )
   
-
+  #2011-maxent with jackknife, random seed, and response curves, followed by cross-validation
+  maxCanAdv11 <- maxent(
+    x=predictors11,
+    p=canadense,
+    removeDuplicates=TRUE,
+    nbg=10000,
+    args=c(
+      'randomseed=true', #default=false
+      'threads=2', #default=1
+      'responsecurves=true', #default=false
+      'jackknife=true', #default=false
+      'replicates=10', #default=1
+      'replicatetype=crossvalidate',
+      'maximumiterations=1000' #default=500
+    )
+  )
+  
+  #calculate nicheOverlap I statistic
+  nicheOverlap(rCanAdv9, rCanAdv11, stat='I', mask=TRUE, checkNegatives=TRUE)
+  
+  #The critical value (the fifth lowest I statistic out of 100) will be used to conclude whether the niches are significantly different for 1929 and 2011
+  x <- read.csv("IDENTITY_1929_sorted.csv")
+  quantile(x[,1], 0.05)
+  
 fred<-
 permut.vals <- rbind(permut.vals,fred)
 }
