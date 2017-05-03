@@ -116,25 +116,26 @@ tdmean11 <- raster("layers/tdmean11.asc", crs=CRS)
 predictors9<- stack(tmean9, ppt9, vpdmax9)
 predictors11<- stack(tmean11, ppt11, vpdmin11, tdmean11)
 
-##For loop for canadense - 1929 vs 2011
-#one dataset will run 100 times with 1929 layers in maxent, and an I statistic will be calculated for each run
-#the other dataset will run 100 times with 2011 layers in maxent, and an I statistic will be calculated for each run
-#The critical value (the fifth lowest I statistic out of 100) will be used to conclude whether the niches are significantly different for 1929 and 2011
-sink("permutation_results/canadense_permut_vals.csv")#creates a text file called canadense_permut_vals.csv in your permutation_results directory
-for (i in 1:100){
-  #making two objects for canadense that are permuted datasets: 
-  #x.permuted.object contains half of the canadense occurrence points and will be run in maxent with 1929 layers in for loop
-  #x.permuted.object2 contains half of the canadense occurrence points and will be run in maxent with 2011 layers in for loop
-  #assign 10 occurrence points from the canadense object to the x.permuted object and do not replace the values
-  x.permuted<-replicate(100, {sample(1:nrow(canadense), size = 10, replace = FALSE)
-    #contains the row names of the canadense object in numerical order. The information in these rows will be put into x.permuted. 
-    x.permuted <- x.permuted[order(x.permuted)]
-        #put the remaining row names of the canadense object into x.permuted2. 
-    x.permuted2 <- setdiff(1:nrow(canadense), x.permuted)
-    #contains the row names of the canadense object in numerical order. The information in these rows will be put into x.permuted2. 
-    x.permuted2 <- x.permuted2[order(x.permuted2)]
-    })
-  
+#making two objects for canadense that are permuted datasets: 
+#x.permuted.object contains half of the canadense occurrence points and will be run in maxent with 1929 layers in for loop
+#x.permuted.object2 contains half of the canadense occurrence points and will be run in maxent with 2011 layers in for loop
+#assign 10 occurrence points from the canadense object to the x.permuted object and do not replace the values
+x.permuted<-replicate(100, {sample(1:nrow(canadense), size = 10, replace = FALSE)
+#contains the row names of the canadense object in numerical order. The information in these rows will be put into x.permuted. 
+x.permuted <- x.permuted[order(x.permuted)]
+#put the remaining row names of the canadense object into x.permuted2. 
+x.permuted2 <- setdiff(1:nrow(canadense), x.permuted)
+#contains the row names of the canadense object in numerical order. The information in these rows will be put into x.permuted2. 
+x.permuted2 <- x.permuted2[order(x.permuted2)]
+})
+
+  ##For loop for canadense - 1929 vs 2011
+  #one dataset will run 100 times with 1929 layers in maxent, and an I statistic will be calculated for each run
+  #the other dataset will run 100 times with 2011 layers in maxent, and an I statistic will be calculated for each run
+  #The critical value (the fifth lowest I statistic out of 100) will be used to conclude whether the niches are significantly different for 1929 and 2011
+  sink("permutation_results/canadense_permut_vals.csv")#creates a text file called canadense_permut_vals.csv in your permutation_results directory
+  for (i in 1:100){
+    
   #import specific rows of canadense locality data into x.permuted.object and x.permuted.object2
   #creates paired datasets
   x.permuted.canadense1 <- canadense[(x.permuted),]
