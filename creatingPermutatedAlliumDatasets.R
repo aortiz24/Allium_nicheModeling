@@ -19,7 +19,7 @@ alliumcanadense <- na.omit(alliumcanadense)
 target11<-c("Allium canadense var. canadense")
 #filtered allium canadense canadense csv file
 alliumcanadense11<-alliumcanadense %>%
-  select(Taxon,Latitude,Longitude) %>%
+  dplyr::select(Taxon,Latitude,Longitude) %>%
   filter(Taxon == target11)
 #assign variety name to object
 canadense <- (alliumcanadense11)
@@ -28,7 +28,7 @@ canadense <- (alliumcanadense11)
 target2<-c("Allium canadense var. ecristatum")
 #filtered allium canadense ecristatum csv file
 alliumcanadense2<-alliumcanadense %>%
-  select(Taxon,Latitude,Longitude) %>%
+  dplyr::select(Taxon,Latitude,Longitude) %>%
   filter(Taxon == target2)
 #assign variety name to object
 ecristatum <- (alliumcanadense2)
@@ -37,7 +37,7 @@ ecristatum <- (alliumcanadense2)
 target3<-c("Allium canadense var. Fraseri")
 #filtered allium canadense Fraseri csv file
 alliumcanadense3<-alliumcanadense %>%
-  select(Taxon,Latitude,Longitude) %>%
+  dplyr::select(Taxon,Latitude,Longitude) %>%
   filter(Taxon == target3)
 #assign variety name to object
 fraseri <- (alliumcanadense3)
@@ -46,7 +46,7 @@ fraseri <- (alliumcanadense3)
 target4<-c("Allium canadense var. hyacinthoides")
 #filtered allium canadense hyacinthoides csv file
 alliumcanadense4<-alliumcanadense %>%
-  select(Taxon,Latitude,Longitude) %>%
+  dplyr::select(Taxon,Latitude,Longitude) %>%
   filter(Taxon == target4)
 #assign variety name to object
 hyacinthoides <- (alliumcanadense4)
@@ -55,7 +55,7 @@ hyacinthoides <- (alliumcanadense4)
 target5<-c("Allium canadense var. lavendulare")
 #filtered allium canadense lavendulare csv file
 alliumcanadense5<-alliumcanadense %>%
-  select(Taxon,Latitude,Longitude) %>%
+  dplyr::select(Taxon,Latitude,Longitude) %>%
   filter(Taxon == target5)
 #assign variety name to object
 lavendulare <- (alliumcanadense5)
@@ -66,20 +66,20 @@ lavendulare<-lavendulare[c(1:6),]
 target6<-c("Allium canadense var. mobilense")
 #filtered allium canadense mobilense csv file
 alliumcanadense6<-alliumcanadense %>%
-  select(Taxon,Latitude,Longitude) %>%
+  dplyr::select(Taxon,Latitude,Longitude) %>%
   filter(Taxon == target6)
 #assign variety name to object
 mobilense <- (alliumcanadense6)
 
 #assign parentals(mobilense,fraseri) to a R object
 parentals11<-alliumcanadense %>%
-  select(Taxon,Latitude,Longitude)
+  dplyr::select(Taxon,Latitude,Longitude)
 parentals<-parentals11[c(23:31,41:55),]
 parentals<-na.omit(parentals)
 
 #assign hybrids(hyacinthoides,ecristatum,lavendulare) to a R object
 hybrids11<- alliumcanadense %>%
-  select(Taxon,Latitude,Longitude)
+  dplyr::select(Taxon,Latitude,Longitude)
 hybrids<-hybrids11[c(22,32:40),]
 hybrids<-na.omit(hybrids)
 
