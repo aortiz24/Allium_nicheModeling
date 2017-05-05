@@ -195,5 +195,83 @@ write.csv(a, file="permutation_results/canadense_OrderedPermutIstats.csv")
 #When comparing the canadense niches in 1929 & 2011, the critical value is 0.9204252
 a[5]
 
+##For loop for lavendulare - 1929 vs 2011
+#one dataset will run 100 times with 1929 layers in maxent, and an I statistic will be calculated for each run
+#the other dataset will run 100 times with 2011 layers in maxent, and an I statistic will be calculated for each run
+#The critical value (the fifth lowest I statistic out of 100) will be used to conclude whether the niches are significantly different for 1929 and 2011
+sink("permutation_results/lavendulare_permut_vals.csv")#creates a text file called lavendulare_permut_vals.csv in your permutation_results directory
+for (i in 1:100){
+  #making two objects for lavendulare that are permuted datasets:
+  #x.permuted.object contains half of the lavendulare occurrence points and will be run in maxent with 1929 layers in for loop
+  #x.permuted.object2 contains half of the lavendulare occurrence points and will be run in maxent with 2011 layers in for loop
+  #assign 3 occurrence points from the lavendulare object to the x.permuted object and do not replace the values
+  x.permuted<-sample(1:nrow(lavendulare), size = 3, replace = FALSE)
+  #contains the row names of the lavendulare object in numerical order. The information in these rows will be put into x.permuted.
+  x.permuted <- x.permuted[order(x.permuted)]
+  #put the remaining row names of the lavendulare object into x.permuted2.
+  x.permuted2 <- setdiff(1:nrow(lavendulare), x.permuted)
+  #contains the row names of the lavendulare object in numerical order. The information in these rows will be put into x.permuted2.
+  x.permuted2 <- x.permuted2[order(x.permuted2)]
+  #import specific rows of lavendulare locality data into x.permuted.object and x.permuted.object2
+  #creates paired datasets
+  x.permuted.lavendulare1 <- lavendulare[(x.permuted),]
+  x.permuted.lavendulare2 <- lavendulare[(x.permuted2),]
+  
+  #1929-runing maxent with jackknife, random seed, and response curves, followed by cross-validation
+  permutedMaxLavAdv9 <- maxent(
+    x=predictors9,
+    p=x.permuted.lavendulare1,
+    removeDuplicates=TRUE,
+    nbg=10000,
+    args=c(
+      'randomseed=true', #default=false
+      'threads=2', #default=1
+      'responsecurves=true', #default=false
+      'jackknife=true', #default=false
+      'replicatetype=crossvalidate',
+      'maximumiterations=1000' #default=500
+    )
+  )
+  #1929-creating model
+  rPermutedMaxLavAdv9 <- predict(permutedMaxLavAdv9, predictors9)
+  
+  #2011-maxent with jackknife, random seed, and response curves, followed by cross-validation
+  permutedMaxLavAdv11 <- maxent(
+    x=predictors11,
+    p=x.permuted.lavendulare2,
+    removeDuplicates=TRUE,
+    nbg=10000,
+    args=c(
+      'randomseed=true', #default=false
+      'threads=2', #default=1
+      'responsecurves=true', #default=false
+      'jackknife=true', #default=false
+      'replicatetype=crossvalidate',
+      'maximumiterations=1000' #default=500
+    )
+  )
+  #2011-creating model
+  rPermutedMaxLavAdv11 <- predict(permutedMaxLavAdv11, predictors11)
+  
+  #calculate nicheOverlap I statistic
+  LavAdvIstat<-nicheOverlap(rPermutedMaxLavAdv9, rPermutedMaxLavAdv11, stat='I', mask=TRUE, checkNegatives=TRUE)
+  
+  #print the 100 I statistics in the first column in lavendulare_permut_vals.csv
+  print(LavAdvIstat)
+}
+sink()
+
+#The critical value (the fifth lowest I statistic out of 100,you only got a value lower than this 5% of the time, P<0.05) will be used to conclude whether the niches are significantly different for 1929 and 2011
+LavPermutIstats <- read.csv("permutation_results/lavendulare_permut_vals.csv")
+#assign first 100 rows to the R object
+LavPermutIstats <- LavPermutIstats[1:100,]
+#ordering permuted 100 I statistic values from least to greatest
+b<-sort(LavPermutIstats, decreasing = FALSE)
+#writes the 100 I statistic values from least to greatest
+write.csv(b, file="permutation_results/lavendulare_OrderedPermutIstats.csv")
+#the critical value is the fifth lowest I statistic out of 100,
+#you only get a value lower than this 5% of the time, P<0.05)
+#When comparing the lavendulare niches in 1929 & 2011, the critical value is 
+b[5]
 
 
