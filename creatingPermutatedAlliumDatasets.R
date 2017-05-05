@@ -271,7 +271,7 @@ b<-sort(LavPermutIstats, decreasing = FALSE)
 write.csv(b, file="permutation_results/lavendulare_OrderedPermutIstats.csv")
 #the critical value is the fifth lowest I statistic out of 100,
 #you only get a value lower than this 5% of the time, P<0.05)
-#When comparing the lavendulare niches in 1929 & 2011, the critical value is 
+#When comparing the lavendulare niches in 1929 & 2011, the critical value is 0.7734544
 b[5]
 
 ###Error when running for loop because ecristatum only has one occurrence point
@@ -351,7 +351,7 @@ c<-sort(EcrPermutIstats, decreasing = FALSE)
 write.csv(c, file="permutation_results/ecristatum_OrderedPermutIstats.csv")
 #the critical value is the fifth lowest I statistic out of 100,
 #you only get a value lower than this 5% of the time, P<0.05)
-#When comparing the ecristatum niches in 1929 & 2011, the critical value is 
+#When comparing the ecristatum niches in 1929 & 2011, the critical value is 1
 c[5]
 
 ##For loop for fraseri - 1929 vs 2011
@@ -510,7 +510,7 @@ e<-sort(HyaPermutIstats, decreasing = FALSE)
 write.csv(e, file="permutation_results/hyacinthoides_OrderedPermutIstats.csv")
 #the critical value is the fifth lowest I statistic out of 100,
 #you only get a value lower than this 5% of the time, P<0.05)
-#When comparing the hyacinthoides niches in 1929 & 2011, the critical value is 
+#When comparing the hyacinthoides niches in 1929 & 2011, the critical value is 1
 e[5]
 
 ##For loop for mobilense - 1929 vs 2011
