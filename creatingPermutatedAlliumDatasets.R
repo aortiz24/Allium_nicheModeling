@@ -131,7 +131,7 @@ for (i in 1:100){
   x.permuted <- x.permuted[order(x.permuted)]
   #put the remaining row names of the canadense object into x.permuted2.
   x.permuted2 <- setdiff(1:nrow(canadense), x.permuted)
-#contains the row names of the canadense object in numerical order. The information in these rows will be put into x.permuted2.
+  #contains the row names of the canadense object in numerical order. The information in these rows will be put into x.permuted2.
   x.permuted2 <- x.permuted2[order(x.permuted2)]
   #import specific rows of canadense locality data into x.permuted.object and x.permuted.object2
   #creates paired datasets
