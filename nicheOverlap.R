@@ -23,6 +23,7 @@ alliumcanadense11<-alliumcanadense %>%
   filter(Taxon == target11)
 #assign variety name to object
 canadense <- (alliumcanadense11)
+canadense <-canadense[c(5,10:13,16:20),]
 
 #assign scientific name to an object
 target2<-c("Allium canadense var. ecristatum")
@@ -70,18 +71,17 @@ alliumcanadense6<-alliumcanadense %>%
   filter(Taxon == target6)
 #assign variety name to object
 mobilense <- (alliumcanadense6)
+mobilense <- mobilense[c(3:15),]
 
 #assign parentals(mobilense,fraseri) to a R object
-parentals11<-alliumcanadense %>%
+parentals<-alliumcanadense %>%
   dplyr::select(Taxon,Latitude,Longitude)
-parentals<-parentals11[c(23:31,41:55),]
-parentals<-na.omit(parentals)
+parentals<-parentals[c(5,10:13,16:20,22:39,43:55),]
 
 #assign hybrids(hyacinthoides,ecristatum,lavendulare) to a R object
-hybrids11<- alliumcanadense %>%
+hybrids<- alliumcanadense %>%
   dplyr::select(Taxon,Latitude,Longitude)
-hybrids<-hybrids11[c(22,32:40),]
-hybrids<-na.omit(hybrids)
+hybrids<-hybrids[c(5,10:13,16:20,22:39,43:55),]
 
 ##prepare varieties,parentals,and hybrids for modeling
 canadense <- canadense[,c(3,2)]
@@ -119,52 +119,36 @@ predictors11<- stack(tmean11, ppt11, vpdmin11, tdmean11)
 # extract layer data for each point and add label
 canPts9 <- raster::extract(predictors9, canadense)
 canPts9 <- cbind.data.frame(species="canadense", canPts9) #add column for canadense
-canPts9<-na.omit(canPts9)#removing NA values
 canPts11 <- raster::extract(predictors11, canadense)
 canPts11 <- cbind.data.frame(species="canadense", canPts11) #add column for canadense
-canPts11<-na.omit(canPts11)#removing NA values
 lavPts9 <- raster::extract(predictors9, lavendulare)
 lavPts9 <- cbind.data.frame(species="lavendulare", lavPts9) #add column for lavendulare
-lavPts9<-na.omit(lavPts9)#removing NA values
 lavPts11 <- raster::extract(predictors11, lavendulare)
 lavPts11 <- cbind.data.frame(species="lavendulare", lavPts11) #add column for lavendulare
-lavPts11<-na.omit(lavPts11)#removing NA values
 ecrPts9 <- raster::extract(predictors9, ecristatum)
 ecrPts9 <- cbind.data.frame(species="ecristatum", ecrPts9) #add column for ecristatum
-ecrPts9<-na.omit(ecrPts9)#removing NA values
 ecrPts11 <- raster::extract(predictors11, ecristatum)
 ecrPts11 <- cbind.data.frame(species="ecristatum", ecrPts11) #add column for ecristatum
-ecrPts11<-na.omit(ecrPts11)#removing NA values
 fraPts9 <- raster::extract(predictors9, fraseri)
 fraPts9 <- cbind.data.frame(species="fraseri", fraPts9) #add column for fraseri
-fraPts9<-na.omit(fraPts9)#removing NA values
 fraPts11 <- raster::extract(predictors11, fraseri)
 fraPts11 <- cbind.data.frame(species="fraseri", fraPts11) #add column for fraseri
-fraPts11<-na.omit(fraPts11)#removing NA values
 hyaPts9 <- raster::extract(predictors9, hyacinthoides)
 hyaPts9 <- cbind.data.frame(species="hyacinthoides", hyaPts9) #add column for hyacinthoides
-hyaPts9<-na.omit(hyaPts9)#removing NA values
 hyaPts11 <- raster::extract(predictors11, hyacinthoides)
 hyaPts11 <- cbind.data.frame(species="hyacinthoides", hyaPts11) #add column for hyacinthoides
-hyaPts11<-na.omit(hyaPts11)#removing NA values
 mobPts9 <- raster::extract(predictors9, mobilense)
 mobPts9 <- cbind.data.frame(species="mobilense", mobPts9) #add column for mobilense
-mobPts9<-na.omit(mobPts9)#removing NA values
 mobPts11 <- raster::extract(predictors11, mobilense)
 mobPts11 <- cbind.data.frame(species="mobilense", mobPts11) #add column for mobilense
-mobPts11<-na.omit(mobPts11)#removing NA values
 parPts9 <- raster::extract(predictors9, parentals)
 parPts9 <- cbind.data.frame(species="parentals", parPts9)
-parPts9<-na.omit(parPts9)#removing NA values
 parPts11 <- raster::extract(predictors11, parentals)
 parPts11 <- cbind.data.frame(species="parentals", parPts11)
-parPts11<-na.omit(parPts11)#removing NA values
 hybPts9 <- raster::extract(predictors9, hybrids)
 hybPts9 <- cbind.data.frame(species="hybrids", hybPts9) #add column for hybrids
-hybPts9<-na.omit(hybPts9)#removing NA values
 hybPts11 <- raster::extract(predictors11, hybrids)
 hybPts11 <- cbind.data.frame(species="hybrids", hybPts11) #add column for hybrids
-hybPts11<-na.omit(hybPts11)#removing NA values
 
 # assigned call varieties data to a different R object
 bothPts9 <- as.data.frame(rbind(canPts9, lavPts9, ecrPts9, fraPts9, hyaPts9, mobPts9))
