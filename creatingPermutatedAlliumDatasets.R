@@ -126,7 +126,7 @@ for (i in 1:100){
   #x.permuted.object contains half of the canadense occurrence points and will be run in maxent with 1929 layers in for loop
   #x.permuted.object2 contains half of the canadense occurrence points and will be run in maxent with 2011 layers in for loop
   #assign 10 occurrence points from the canadense object to the x.permuted object and do not replace the values
-  x.permuted<-sample(1:nrow(canadense), size = 10, replace = FALSE)
+  x.permuted<-sample(1:nrow(canadense), size = 5, replace = FALSE)
   #contains the row names of the canadense object in numerical order. The information in these rows will be put into x.permuted.
   x.permuted <- x.permuted[order(x.permuted)]
   #put the remaining row names of the canadense object into x.permuted2.
