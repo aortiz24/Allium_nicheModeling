@@ -23,6 +23,7 @@ alliumcanadense11<-alliumcanadense %>%
   filter(Taxon == target11)
 #assign variety name to object
 canadense <- (alliumcanadense11)
+canadense <-canadense[c(5,10:13,16:20),]
 
 #assign scientific name to an object
 target2<-c("Allium canadense var. ecristatum")
@@ -70,18 +71,17 @@ alliumcanadense6<-alliumcanadense %>%
   filter(Taxon == target6)
 #assign variety name to object
 mobilense <- (alliumcanadense6)
+mobilense <- mobilense[c(3:15),]
 
 #assign parentals(mobilense,fraseri) to a R object
-parentals11<-alliumcanadense %>%
+parentals<-alliumcanadense %>%
   dplyr::select(Taxon,Latitude,Longitude)
-parentals<-parentals11[c(23:31,41:55),]
-parentals<-na.omit(parentals)
+parentals<-parentals[c(5,10:13,16:20,22:39,43:55),]
 
 #assign hybrids(hyacinthoides,ecristatum,lavendulare) to a R object
-hybrids11<- alliumcanadense %>%
+hybrids<- alliumcanadense %>%
   dplyr::select(Taxon,Latitude,Longitude)
-hybrids<-hybrids11[c(22,32:40),]
-hybrids<-na.omit(hybrids)
+hybrids<-hybrids[c(5,10:13,16:20,22:39,43:55),]
 
 ##prepare varieties,parentals,and hybrids for modeling
 canadense <- canadense[,c(3,2)]
