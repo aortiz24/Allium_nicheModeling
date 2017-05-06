@@ -668,7 +668,7 @@ g<-sort(ParPermutIstats, decreasing = FALSE)
 write.csv(g, file="permutation_results/parentals_OrderedPermutIstats.csv")
 #the critical value is the fifth lowest I statistic out of 100,
 #you only get a value lower than this 5% of the time, P<0.05)
-#When comparing the parentals niches in 1929 & 2011, the critical value is 
+#When comparing the parentals niches in 1929 & 2011, the critical value is 0.9273717
 g[5]
 
 ##For loop for hybrids - 1929 vs 2011
