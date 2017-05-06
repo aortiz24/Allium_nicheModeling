@@ -274,7 +274,7 @@ write.csv(b, file="permutation_results/lavendulare_OrderedPermutIstats.csv")
 #When comparing the lavendulare niches in 1929 & 2011, the critical value is 0.7734544
 b[5]
 
-###Error when running for loop because ecristatum only has one occurrence point
+###CAUTION: nicheOverlap equals 1 when running for loop because ecristatum only has one occurrence point
 ##For loop for ecristatum - 1929 vs 2011
 #one dataset will run 100 times with 1929 layers in maxent, and an I statistic will be calculated for each run
 #the other dataset will run 100 times with 2011 layers in maxent, and an I statistic will be calculated for each run
@@ -430,10 +430,10 @@ d<-sort(FraPermutIstats, decreasing = FALSE)
 write.csv(d, file="permutation_results/fraseri_OrderedPermutIstats.csv")
 #the critical value is the fifth lowest I statistic out of 100,
 #you only get a value lower than this 5% of the time, P<0.05)
-#When comparing the fraseri niches in 1929 & 2011, the critical value is 
+#When comparing the fraseri niches in 1929 & 2011, the critical value is 0.8969706
 d[5]
 
-###Error when running for loop because hyacinthoides only has two occurrence points
+###CAUTION: nicheOverlap equals 1 when running for loop because hyacinthoides only has two occurrence points
 ##For loop for hyacinthoides - 1929 vs 2011
 #one dataset will run 100 times with 1929 layers in maxent, and an I statistic will be calculated for each run
 #the other dataset will run 100 times with 2011 layers in maxent, and an I statistic will be calculated for each run
@@ -589,7 +589,7 @@ f<-sort(MobPermutIstats, decreasing = FALSE)
 write.csv(f, file="permutation_results/mobilense_OrderedPermutIstats.csv")
 #the critical value is the fifth lowest I statistic out of 100,
 #you only get a value lower than this 5% of the time, P<0.05)
-#When comparing the mobilense niches in 1929 & 2011, the critical value is 
+#When comparing the mobilense niches in 1929 & 2011, the critical value is 0.8566591
 f[5]
 
 ##For loop for parentals - 1929 vs 2011
