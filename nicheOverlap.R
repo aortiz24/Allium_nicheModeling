@@ -187,7 +187,7 @@ pca_both9 <- prcomp(bothNum9, center = TRUE, scale. = TRUE) #PCA
 print(pca_both9) #print deviations and rotations
 summary(pca_both9) #print importance of components
 plot(pca_both9, type="l") #plot variances
-ncomp <- 3#specify number of components to load (representing 99% of variation)
+ncomp <- 2#specify number of components to load (representing 99% of variation)
 
 ## model-based approaches
 # read in default maxent models
@@ -223,7 +223,7 @@ pca_both11 <- prcomp(bothNum11, center = TRUE, scale. = TRUE) #PCA
 print(pca_both11) #print deviations and rotations
 summary(pca_both11) #print importance of components
 plot(pca_both11, type="l") #plot variances
-ncomp <- 4 #specify number of components to load (representing 99% of variation)
+ncomp <- 3 #specify number of components to load (representing 99% of variation)
 
 ## model-based approaches
 # read in default maxent models
