@@ -183,11 +183,11 @@ sink()
 
 # principle component analysis(PCA)
 bothNum9 <- bothPts9[ ,-1] #remove species names
-pca_both9 <- prcomp(bothNum9, center = TRUE, scale. = TRUE) #PCA=Error because only has one weather variable
-print(pca_both9) #print deviations and rotations=Error because only has one weather variable
-summary(pca_both9) #print importance of components=Error because only has one weather variable
-plot(pca_both9, type="l") #plot variances=Error because only has one weather variable
-ncomp <- 1#specify number of components to load (representing 99% of variation)=Error because only has one weather variable
+pca_both9 <- prcomp(bothNum9, center = TRUE, scale. = TRUE) #PCA
+print(pca_both9) #print deviations and rotations
+summary(pca_both9) #print importance of components
+plot(pca_both9, type="l") #plot variances
+ncomp <- 3#specify number of components to load (representing 99% of variation)
 
 ## model-based approaches
 # read in default maxent models
@@ -223,7 +223,7 @@ pca_both11 <- prcomp(bothNum11, center = TRUE, scale. = TRUE) #PCA
 print(pca_both11) #print deviations and rotations
 summary(pca_both11) #print importance of components
 plot(pca_both11, type="l") #plot variances
-ncomp <- 2 #specify number of components to load (representing 99% of variation)
+ncomp <- 4 #specify number of components to load (representing 99% of variation)
 
 ## model-based approaches
 # read in default maxent models
