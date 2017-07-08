@@ -1,0 +1,87 @@
+[1] "tmean9"
+            Df Sum Sq Mean Sq F value   Pr(>F)    
+species      5  237.3   47.47   6.535 0.000217 ***
+Residuals   35  254.2    7.26                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = bothPts9[, i] ~ species, data = bothPts9)
+
+$species
+                                 diff          lwr       upr     p adj
+lavendulare-canadense     -3.09314737  -7.28671479  1.100420 0.2534534
+ecristatum-canadense       5.49855413  -3.01862155 14.015730 0.3930464
+fraseri-canadense          2.81065592  -0.92059803  6.541910 0.2334079
+hyacinthoides-canadense    3.38467970  -2.90567143  9.675031 0.5905129
+mobilense-canadense        3.45813742   0.04234473  6.873930 0.0457988
+ecristatum-lavendulare     8.59170151  -0.17977406 17.363177 0.0576992
+fraseri-lavendulare        5.90380330   1.62376147 10.183845 0.0025253
+hyacinthoides-lavendulare  6.47782707  -0.15278521 13.108439 0.0587256
+mobilense-lavendulare      6.55128479   2.54327511 10.559294 0.0002721
+fraseri-ecristatum        -2.68789821 -11.24798185  5.872185 0.9314193
+hyacinthoides-ecristatum  -2.11387444 -12.05979285  7.832044 0.9870305
+mobilense-ecristatum      -2.04041672 -10.46777785  6.386944 0.9768806
+hyacinthoides-fraseri      0.57402378  -5.77430416  6.922352 0.9997776
+mobilense-fraseri          0.64748149  -2.87393726  4.168900 0.9933071
+mobilense-hyacinthoides    0.07345772  -6.09473904  6.241654 1.0000000
+
+[1] "ppt9"
+            Df  Sum Sq Mean Sq F value   Pr(>F)    
+species      5 1054449  210890   13.86 1.73e-07 ***
+Residuals   35  532553   15216                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = bothPts9[, i] ~ species, data = bothPts9)
+
+$species
+                                 diff        lwr         upr     p adj
+lavendulare-canadense        6.007904 -185.93375  197.949554 0.9999988
+ecristatum-canadense      -294.032623 -683.86796   95.802711 0.2321997
+fraseri-canadense         -292.618588 -463.39992 -121.837253 0.0001343
+hyacinthoides-canadense   -303.838074 -591.75055  -15.925599 0.0335859
+mobilense-canadense        100.119425  -56.22309  256.461942 0.4019485
+ecristatum-lavendulare    -300.040527 -701.51529  101.434238 0.2408524
+fraseri-lavendulare       -298.626492 -494.52612 -102.726866 0.0007211
+hyacinthoides-lavendulare -309.845978 -613.33237   -6.359582 0.0430852
+mobilense-lavendulare       94.111521  -89.33706  277.560102 0.6380213
+fraseri-ecristatum           1.414035 -390.38522  393.213288 1.0000000
+hyacinthoides-ecristatum    -9.805450 -465.03504  445.424143 0.9999998
+mobilense-ecristatum       394.152048    8.42757  779.876525 0.0428103
+hyacinthoides-fraseri      -11.219486 -301.78559  279.346617 0.9999967
+mobilense-fraseri          392.738013  231.56094  553.915087 0.0000002
+mobilense-hyacinthoides    403.957498  121.63609  686.278908 0.0016263
+
+[1] "vpdmax9"
+            Df Sum Sq Mean Sq F value   Pr(>F)    
+species      5  265.9   53.18   7.619 6.26e-05 ***
+Residuals   35  244.3    6.98                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = bothPts9[, i] ~ species, data = bothPts9)
+
+$species
+                                diff         lwr        upr     p adj
+lavendulare-canadense     -3.1382001  -7.2493572  0.9729570 0.2211416
+ecristatum-canadense       6.6203003  -1.7294992 14.9700998 0.1878289
+fraseri-canadense          4.4464112   0.7884824  8.1043401 0.0097876
+hyacinthoides-canadense    3.7918005  -2.3749351  9.9585361 0.4468844
+mobilense-canadense        1.6065309  -1.7421360  4.9551978 0.6996340
+ecristatum-lavendulare     9.7585004   1.1593984 18.3576024 0.0184642
+fraseri-lavendulare        7.5846114   3.3886792 11.7805435 0.0000575
+hyacinthoides-lavendulare  6.9300006   0.4296905 13.4303107 0.0310210
+mobilense-lavendulare      4.7447310   0.8154852  8.6739769 0.0104355
+fraseri-ecristatum        -2.1738891 -10.5657533  6.2179752 0.9690380
+hyacinthoides-ecristatum  -2.8284998 -12.5789650  6.9219654 0.9502137
+mobilense-ecristatum      -5.0137694 -13.2755193  3.2479806 0.4613911
+hyacinthoides-fraseri     -0.6546107  -6.8781839  5.5689624 0.9995340
+mobilense-fraseri         -2.8398803  -6.2920975  0.6123369 0.1582157
+mobilense-hyacinthoides   -2.1852696  -8.2322514  3.8617122 0.8824797
+
