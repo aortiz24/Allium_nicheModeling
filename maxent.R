@@ -255,8 +255,7 @@ plot(rMob9) # plot predictive model
 points(mobilense) # add points to predictive model
 writeRaster(rMob9, "models/mobilense1929.grd")
 
-# run maxent for parentals (default parameters for dismo)
-maxPar9 <- maxent(predictors9, parentals)
+# run maxent for parentals (default parameters for dismo)maxPar9 <- maxent(predictors9, parentals)
 maxPar9 # views results in browser window
 response(maxPar9) # show response curves for each layer
 rPar9 <- predict(maxPar9, predictors9) # create model
@@ -277,7 +276,7 @@ writeRaster(rHyb9, "models/hybrids1929.grd")
 # develop testing and training sets for canadense
 fold <- kfold(canadense, k=5) #split occurence points into 5 sets
 canTest9 <- canadense[fold == 1, ] #take 20% (1/5) for testing
-canTrain9 <- canadense[fold != 1, ] #leave 40% for training
+canTrain9 <- canadense[fold != 1, ] #leave 80% for training
 # fit training model for canadense
 maxCanTrain9 <- maxent(predictors9, canTrain9) #fit maxent model
 maxCanTrain9 #view results in html
