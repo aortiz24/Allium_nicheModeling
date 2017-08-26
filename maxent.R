@@ -329,7 +329,7 @@ writeRaster(rCanAdv9, "models/canadenseAdv1929.grd")
 # develop testing and training sets for lavendulare
 fold <- kfold(lavendulare, k=5) #split occurence points into 5 sets
 lavTest9 <- lavendulare[fold == 1, ] #take 20% (1/5) for testing
-lavTrain9 <- lavendulare[fold != 1, ] #leave 40% for training
+lavTrain9 <- lavendulare[fold != 1, ] #leave 80% for training
 # fit training model for lavendulare
 maxLavTrain9 <- maxent(predictors9, lavTrain9) #fit maxent model
 maxLavTrain9 #view results in html
