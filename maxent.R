@@ -125,7 +125,9 @@ predictors11<- stack(tmean11, ppt11, vpdmin11, tdmean11)
 
 # plot each layer individually
 plot(predictors9)
+#dev.copy2pdf(file="figures/Individual1929Layers.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 plot(predictors11)
+#dev.copy2pdf(file="figures/Individual2011Layers.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 
 ### basic bioclim modeling with PRISM 1929 layers for varieties, parentals, and hybrids
 # extract layer data for each point
@@ -136,6 +138,7 @@ canBC9 <- bioclim(canPts9)
 canBCpredict9 <- predict(predictors9, canBC9)
 # plot bioclim model
 plot(canBCpredict9)
+#dev.copy2pdf(file="figures/BioclimCanadense1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 
 # extract layer data for each point
 lavPts9 <- extract(predictors9, lavendulare)
@@ -145,6 +148,7 @@ lavBC9 <- bioclim(lavPts9)
 lavBCpredict9 <- predict(predictors9, lavBC9)
 # plot bioclim model
 plot(lavBCpredict9)
+#dev.copy2pdf(file="figures/BioclimLavendulare1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 
 # extract layer data for each point
 ecrPts9 <- extract(predictors9, ecristatum)
@@ -154,6 +158,7 @@ ecrBC9 <- bioclim(ecrPts9)
 ecrBCpredict9 <- predict(predictors9, ecrBC9)
 # plot bioclim model
 plot(ecrBCpredict9)
+#dev.copy2pdf(file="figures/BioclimEcristatum1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 
 # extract layer data for each point
 fraPts9 <- extract(predictors9, fraseri)
@@ -163,6 +168,7 @@ fraBC9 <- bioclim(fraPts9)
 fraBCpredict9 <- predict(predictors9, fraBC9)
 # plot bioclim model
 plot(fraBCpredict9)
+#dev.copy2pdf(file="figures/BioclimFraseri1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 
 # extract layer data for each point
 hyaPts9 <- extract(predictors9, hyacinthoides)
@@ -172,6 +178,7 @@ hyaBC9 <- bioclim(hyaPts9)
 hyaBCpredict9 <- predict(predictors9, hyaBC9)
 # plot bioclim model
 plot(hyaBCpredict9)
+#dev.copy2pdf(file="figures/BioclimHyacinthoides1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 
 # extract layer data for each point
 mobPts9 <- extract(predictors9, mobilense)
@@ -181,6 +188,7 @@ mobBC9 <- bioclim(mobPts9)
 mobBCpredict9 <- predict(predictors9, mobBC9)
 # plot bioclim model
 plot(mobBCpredict9)
+#dev.copy2pdf(file="figures/BioclimMobilense1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 
 # extract layer data for each point
 parPts9 <- extract(predictors9, parentals)
@@ -190,6 +198,7 @@ parBC9 <- bioclim(parPts9)
 parBCpredict9 <- predict(predictors9, parBC9)
 # plot bioclim model
 plot(parBCpredict9)
+#dev.copy2pdf(file="figures/BioclimParentals1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 
 # extract layer data for each point
 hybPts9 <- extract(predictors9, hybrids)
@@ -199,6 +208,7 @@ hybBC9 <- bioclim(hybPts9)
 hybBCpredict9 <- predict(predictors9, hybBC9)
 # plot bioclim model
 plot(hybBCpredict9)
+#dev.copy2pdf(file="figures/BioclimHybrids1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 
 ## Default maxent modeling
 # run maxent for canadense (default parameters for dismo)
@@ -207,6 +217,7 @@ maxCan9 # views results in browser window
 response(maxCan9) # show response curves for each layer
 rCan9 <- predict(maxCan9, predictors9) # create model
 plot(rCan9) # plot predictive model
+#dev.copy2pdf(file="figures/MaxCanadense1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(canadense) # add points to predictive model
 writeRaster(rCan9, "models/canadense1929.grd")
 
@@ -216,6 +227,7 @@ maxLav9 # views results in browser window
 response(maxLav9) # show response curves for each layer
 rLav9 <- predict(maxLav9, predictors9) # create model
 plot(rLav9) # plot predictive model
+#dev.copy2pdf(file="figures/MaxLavendulare1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(lavendulare) # add points to predictive model
 writeRaster(rLav9, "models/lavendulare1929.grd")
 
@@ -225,6 +237,7 @@ maxEcr9 # views results in browser window
 response(maxEcr9) 
 rEcr9 <- predict(maxEcr9, predictors9) 
 plot(rEcr9)
+#dev.copy2pdf(file="figures/MaxEcristatum1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(ecristatum)
 writeRaster(rEcr9, "models/ecristatum1929.grd")
 
@@ -234,6 +247,7 @@ maxFra9 # views results in browser window
 response(maxFra9) # show response curves for each layer
 rFra9 <- predict(maxFra9, predictors9) # create model
 plot(rFra9) # plot predictive model
+#dev.copy2pdf(file="figures/MaxFraseri1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(fraseri) # add points to predictive model
 writeRaster(rFra9, "models/fraseri1929.grd")
 
@@ -243,6 +257,7 @@ maxHya9
 response(maxHya9) 
 rHya9 <- predict(maxHya9, predictors9) 
 plot(rHya9)
+#dev.copy2pdf(file="figures/MaxHyacinthoides1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(hyacinthoides)
 writeRaster(rHya9, "models/hyacinthoides1929.grd")
 
@@ -252,6 +267,7 @@ maxMob9 # views results in browser window
 response(maxMob9) # show response curves for each layer
 rMob9 <- predict(maxMob9, predictors9) # create model
 plot(rMob9) # plot predictive model
+#dev.copy2pdf(file="figures/MaxMobilense1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(mobilense) # add points to predictive model
 writeRaster(rMob9, "models/mobilense1929.grd")
 
@@ -260,6 +276,7 @@ maxPar9 # views results in browser window
 response(maxPar9) # show response curves for each layer
 rPar9 <- predict(maxPar9, predictors9) # create model
 plot(rPar9) # plot predictive model
+#dev.copy2pdf(file="figures/MaxParentals1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(parentals) # add points to predictive model
 writeRaster(rPar9, "models/parentals1929.grd")
 
@@ -269,6 +286,7 @@ maxHyb9
 response(maxHyb9) 
 rHyb9 <- predict(maxHyb9, predictors9) 
 plot(rHyb9)
+#dev.copy2pdf(file="figures/MaxHybrids1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(hybrids)
 writeRaster(rHyb9, "models/hybrids1929.grd")
 
@@ -282,6 +300,7 @@ maxCanTrain9 <- maxent(predictors9, canTrain9) #fit maxent model
 maxCanTrain9 #view results in html
 rCanTrain9 <- predict(maxCanTrain9, predictors9) #predict full model
 plot(rCanTrain9) #visualize full model
+#dev.copy2pdf(file="figures/AdvTrainCanadense1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(canadense) #add points to plot
 # testing model for canadense
 # extract background points
@@ -290,7 +309,8 @@ bg9 <- randomPoints(predictors9, 1000)
 maxCanTest9 <- evaluate(maxCanTrain9, p=canTest9, a=bg9, x=predictors9)
 maxCanTest9 #print results
 threshold(maxCanTest9) #identify threshold for presence or absence
-plot(maxlavTest9, 'ROC') #plot AUC
+plot(maxCanTest9, 'ROC') #plot AUC
+#dev.copy2pdf(file="figures/AdvTestCanadense1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 # alternative methods for testing models (should give same answers)
 # Alternative 1: another way to test model for canadense
 pvtest9 <- data.frame(extract(predictors9, canTest9))
@@ -323,6 +343,7 @@ maxCanAdv9 #view output as html
 response(maxCanAdv9) # show response curves for each layer
 rCanAdv9 <- predict(maxCanAdv9, predictors9) # create model
 plot(rCanAdv9) # plot predictive model
+#dev.copy2pdf(file="figures/AdvCanadense1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(canadense) # add points to predictive model
 writeRaster(rCanAdv9, "models/canadenseAdv1929.grd")
 
@@ -335,6 +356,7 @@ maxLavTrain9 <- maxent(predictors9, lavTrain9) #fit maxent model
 maxLavTrain9 #view results in html
 rLavTrain9 <- predict(maxLavTrain9, predictors9) #predict full model
 plot(rLavTrain9) #visualize full model
+#dev.copy2pdf(file="figures/AdvTrainLavendulare1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(lavendulare) #add points to plot
 # testing model for lavendulare
 # extract background points
@@ -344,6 +366,7 @@ maxLavTest9 <- evaluate(maxLavTrain9, p=lavTest9, a=bg9, x=predictors9)
 maxLavTest9 #print results
 threshold(maxLavTest9) #identify threshold for presence or absence
 plot(maxLavTest9, 'ROC') #plot AUC
+#dev.copy2pdf(file="figures/AdvTestLavendulare1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 # alternative methods for testing models (should give same answers)
 # Alternative 1: another way to test model for lavendulare
 pvtest9 <- data.frame(extract(predictors9, lavTest9))
@@ -374,6 +397,7 @@ maxLavAdv9 #view output as html
 response(maxLavAdv9) # show response curves for each layer
 rLavAdv9 <- predict(maxLavAdv9, predictors9) # create model
 plot(rLavAdv9) # plot predictive model
+#dev.copy2pdf(file="figures/AdvLavendulare1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(lavendulare) # add points to predictive model
 writeRaster(rLavAdv9, "models/lavendulareAdv1929.grd")
 
@@ -386,6 +410,7 @@ maxEcrTrain9 <- maxent(predictors9, ecrTrain9) #fit maxent model
 maxEcrTrain9 #view results in html
 rEcrTrain9 <- predict(maxEcrTrain9, predictors9) #predict full model
 plot(rEcrTrain9) #visualize full model
+#dev.copy2pdf(file="figures/AdvTrainEcristatum1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(ecristatum) #add points to plot
 # testing model for ecristatum
 # extract background points
@@ -395,6 +420,7 @@ maxEcrTest9 <- evaluate(maxEcrTrain9, p=ecrTest9, a=bg9, x=predictors9)
 maxEcrTest9 #print results
 threshold(maxEcrTest9) #identify threshold for presence or absence
 plot(maxEcrTest9, 'ROC') #plot AUC
+#dev.copy2pdf(file="figures/AdvTestEcristatum1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 # alternative methods for testing models (should give same answers)
 # Alternative 1: another way to test model for ecristatum
 pvtest9 <- data.frame(extract(predictors9, ecrTest9))
@@ -425,6 +451,7 @@ maxEcrAdv9 #view output as html
 response(maxEcrAdv9) # show response curves for each layer
 rEcrAdv9 <- predict(maxEcrAdv9, predictors9) # create model
 plot(rEcrAdv9) # plot predictive model
+#dev.copy2pdf(file="figures/AdvEcristatum1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(ecristatum) # add points to predictive model
 writeRaster(rEcrAdv9, "models/ecristatumAdv1929.grd")
 
@@ -437,6 +464,7 @@ maxFraTrain9 <- maxent(predictors9, fraTrain9) #fit maxent model
 maxFraTrain9 #view results in html
 rFraTrain9 <- predict(maxFraTrain9, predictors9) #predict full model
 plot(rFraTrain9) #visualize full model
+#dev.copy2pdf(file="figures/AdvTrainFraseri1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(fraseri) #add points to plot
 # testing model for fraseri
 # extract background points
@@ -446,6 +474,7 @@ maxFraTest9 <- evaluate(maxFraTrain9, p=fraTest9, a=bg9, x=predictors9)
 maxFraTest9 #print results
 threshold(maxFraTest9) #identify threshold for presence or absence
 plot(maxFraTest9, 'ROC') #plot AUC
+#dev.copy2pdf(file="figures/AdvTestFraseri1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 # alternative methods for testing models (should give same answers)
 # Alternative 1: another way to test model for fraseri
 pvtest9 <- data.frame(extract(predictors9, fraTest9))
@@ -476,6 +505,7 @@ maxFraAdv9 #view output as html
 response(maxFraAdv9) # show response curves for each layer
 rFraAdv9 <- predict(maxFraAdv9, predictors9) # create model
 plot(rFraAdv9) # plot predictive model
+#dev.copy2pdf(file="figures/AdvFraseri1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(fraseri) # add points to predictive model
 writeRaster(rFraAdv9, "models/fraseriAdv1929.grd")
 
@@ -488,6 +518,7 @@ maxHyaTrain9 <- maxent(predictors9, hyaTrain9) #fit maxent model
 maxHyaTrain9 #view results in html
 rHyaTrain9 <- predict(maxHyaTrain9, predictors9) #predict full model
 plot(rHyaTrain9) #visualize full model
+#dev.copy2pdf(file="figures/AdvTrainHyacinthoides1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(hyacinthoides) #add points to plot
 # testing model for hyacinthoides
 # extract background points
@@ -497,6 +528,7 @@ maxHyaTest9 <- evaluate(maxHyaTrain9, p=hyaTest9, a=bg9, x=predictors9)
 maxHyaTest9 #print results
 threshold(maxHyaTest9) #identify threshold for presence or absence
 plot(maxHyaTest9, 'ROC') #plot AUC
+#dev.copy2pdf(file="figures/AdvTestHyacinthoides1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 # alternative methods for testing models (should give same answers)
 # Alternative 1: another way to test model for hyacinthoides
 pvtest9 <- data.frame(extract(predictors9, hyaTest9))
@@ -527,6 +559,7 @@ maxHyaAdv9 #view output as html
 response(maxHyaAdv9) # show response curves for each layer
 rHyaAdv9 <- predict(maxHyaAdv9, predictors9) # create model
 plot(rHyaAdv9) # plot predictive model
+#dev.copy2pdf(file="figures/AdvHyacinthoides1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(hyacinthoides) # add points to predictive model
 writeRaster(rHyaAdv9, "models/hyacinthoidesAdv1929.grd")
 
@@ -539,6 +572,7 @@ maxMobTrain9 <- maxent(predictors9, mobTrain9) #fit maxent model
 maxMobTrain9 #view results in html
 rMobTrain9 <- predict(maxMobTrain9, predictors9) #predict full model
 plot(rMobTrain9) #visualize full model
+#dev.copy2pdf(file="figures/AdvTrainMobilense1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(mobilense) #add points to plot
 # testing model for mobilense
 # extract background points
@@ -548,6 +582,7 @@ maxMobTest9 <- evaluate(maxMobTrain9, p=mobTest9, a=bg9, x=predictors9)
 maxMobTest9 #print results
 threshold(maxMobTest9) #identify threshold for presence or absence
 plot(maxMobTest9, 'ROC') #plot AUC
+#dev.copy2pdf(file="figures/AdvTestMobilense1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 # alternative methods for testing models (should give same answers)
 # Alternative 1: another way to test model for mobilense
 pvtest9 <- data.frame(extract(predictors9, mobTest9))
@@ -580,6 +615,7 @@ maxMobAdv9 #view output as html
 response(maxMobAdv9) # show response curves for each layer
 rMobAdv9 <- predict(maxMobAdv9, predictors9) # create model
 plot(rMobAdv9) # plot predictive model
+#dev.copy2pdf(file="figures/AdvMobilense1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(mobilense) # add points to predictive model
 writeRaster(rMobAdv9, "models/mobilenseAdv1929.grd")
 
@@ -592,6 +628,7 @@ maxParTrain9 <- maxent(predictors9, parTrain9) #fit maxent model
 maxParTrain9 #view results in html
 rParTrain9 <- predict(maxParTrain9, predictors9) #predict full model
 plot(rParTrain9) #visualize full model
+#dev.copy2pdf(file="figures/AdvTrainParentals1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(parentals) #add points to plot
 # testing model for parentals
 # extract background points
@@ -601,6 +638,7 @@ maxParTest9 <- evaluate(maxParTrain9, p=parTest9, a=bg9, x=predictors9)
 maxParTest9 #print results
 threshold(maxParTest9) #identify threshold for presence or absence
 plot(maxParTest9, 'ROC') #plot AUC
+#dev.copy2pdf(file="figures/AdvTestParetals1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 # alternative methods for testing models (should give same answers)
 # Alternative 1: another way to test model for parentals
 pvtest9 <- data.frame(extract(predictors9, parTest9))
@@ -633,6 +671,7 @@ maxParAdv9 #view output as html
 response(maxParAdv9) # show response curves for each layer
 rParAdv9 <- predict(maxParAdv9, predictors9) # create model
 plot(rParAdv9) # plot predictive model
+#dev.copy2pdf(file="figures/AdvParentals1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(parentals) # add points to predictive model
 writeRaster(rParAdv9, "models/parentalsAdv1929.grd")
 
@@ -645,6 +684,7 @@ maxHybTrain9 <- maxent(predictors9, hybTrain9) #fit maxent model
 maxHybTrain9 #view results in html
 rHybTrain9 <- predict(maxHybTrain9, predictors9) #predict full model
 plot(rHybTrain9) #visualize full model
+#dev.copy2pdf(file="figures/AdvTrainHybrids1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(hybrids) #add points to plot
 # testing model for hybrids
 # extract background points
@@ -654,6 +694,7 @@ maxHybTest9 <- evaluate(maxHybTrain9, p=hybTest9, a=bg9, x=predictors9)
 maxHybTest9 #print results
 threshold(maxHybTest9) #identify threshold for presence or absence
 plot(maxHybTest9, 'ROC') #plot AUC
+#dev.copy2pdf(file="figures/AdvTestHybrids1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 # alternative methods for testing models (should give same answers)
 # Alternative 1: another way to test model for hybrids
 pvtest9 <- data.frame(extract(predictors9, hybTest9))
@@ -684,6 +725,7 @@ maxHybAdv9 #view output as html
 response(maxHybAdv9) # show response curves for each layer
 rHybAdv9 <- predict(maxHybAdv9, predictors9) # create model
 plot(rHybAdv9) # plot predictive model
+#dev.copy2pdf(file="figures/AdvHybrids1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(hybrids) # add points to predictive model
 writeRaster(rHybAdv9, "models/hybridsAdv1929.grd")
 
@@ -696,6 +738,7 @@ canBC11 <- bioclim(canPts11)
 canBCpredict11 <- predict(predictors11, canBC11)
 # plot bioclim model
 plot(canBCpredict11)
+#dev.copy2pdf(file="figures/BioclimCanadense2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 
 # extract layer data for each point
 lavPts11 <- extract(predictors11, canadense)
@@ -705,6 +748,7 @@ lavBC11 <- bioclim(lavPts11)
 lavBCpredict11 <- predict(predictors11, lavBC11)
 # plot bioclim model
 plot(lavBCpredict11)
+#dev.copy2pdf(file="figures/BioclimLavendulare2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 
 # extract layer data for each point
 ecrPts11 <- extract(predictors11, ecristatum)
@@ -714,6 +758,7 @@ ecrBC11 <- bioclim(ecrPts11)
 ecrBCpredict11 <- predict(predictors11, ecrBC11)
 # plot bioclim model
 plot(ecrBCpredict11)
+#dev.copy2pdf(file="figures/BioclimEcristatum2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 
 # extract layer data for each point
 fraPts11 <- extract(predictors11, fraseri)
@@ -723,6 +768,7 @@ fraBC11 <- bioclim(fraPts11)
 fraBCpredict11 <- predict(predictors11, fraBC11)
 # plot bioclim model
 plot(fraBCpredict11)
+#dev.copy2pdf(file="figures/BioclimFraseri2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 
 # extract layer data for each point
 hyaPts11 <- extract(predictors11, hyacinthoides)
@@ -732,6 +778,7 @@ hyaBC11 <- bioclim(hyaPts11)
 hyaBCpredict11 <- predict(predictors11, hyaBC11)
 # plot bioclim model
 plot(hyaBCpredict11)
+#dev.copy2pdf(file="figures/BioclimHyacinthoides2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 
 # extract layer data for each point
 mobPts11 <- extract(predictors11, mobilense)
@@ -741,6 +788,7 @@ mobBC11 <- bioclim(mobPts11)
 mobBCpredict11 <- predict(predictors11, mobBC11)
 # plot bioclim model
 plot(mobBCpredict11)
+#dev.copy2pdf(file="figures/BioclimMobilense2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 
 # extract layer data for each point
 parPts11 <- extract(predictors11, parentals)
@@ -750,6 +798,7 @@ parBC11 <- bioclim(parPts11)
 parBCpredict11 <- predict(predictors11, parBC11)
 # plot bioclim model
 plot(parBCpredict11)
+#dev.copy2pdf(file="figures/BioclimParentals2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 
 # extract layer data for each point
 hybPts11 <- extract(predictors11, hybrids)
@@ -759,6 +808,7 @@ hybBC11 <- bioclim(hybPts11)
 hybBCpredict11 <- predict(predictors11, hybBC11)
 # plot bioclim model
 plot(hybBCpredict11)
+#dev.copy2pdf(file="figures/BioclimHybrids2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 
 ## Default maxent modeling
 # run maxent for canadense (default parameters for dismo)
@@ -767,6 +817,7 @@ maxCan11 # views results in browser window
 response(maxCan11) # show response curves for each layer
 rCan11 <- predict(maxCan11, predictors11) # create model
 plot(rCan11) # plot predictive model
+#dev.copy2pdf(file="figures/MaxCanadense2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(canadense) # add points to predictive model
 writeRaster(rCan11, "models/canadense2011.grd")
 
@@ -776,6 +827,7 @@ maxLav11 # views results in browser window
 response(maxLav11) # show response curves for each layer
 rLav11 <- predict(maxLav11, predictors11) # create model
 plot(rLav11) # plot predictive model
+#dev.copy2pdf(file="figures/MaxLavendulare2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(lavendulare) # add points to predictive model
 writeRaster(rLav11, "models/lavendulare2011.grd")
 
@@ -785,6 +837,7 @@ maxEcr11 # views results in browser window
 response(maxEcr11) 
 rEcr11 <- predict(maxEcr11, predictors11) 
 plot(rEcr11)
+#dev.copy2pdf(file="figures/MaxEcristatum2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(ecristatum)
 writeRaster(rEcr11, "models/ecristatum2011.grd")
 
@@ -794,6 +847,7 @@ maxFra11 # views results in browser window
 response(maxFra11) # show response curves for each layer
 rFra11 <- predict(maxFra11, predictors11) # create model
 plot(rFra11) # plot predictive model
+#dev.copy2pdf(file="figures/MaxFraseri2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(fraseri) # add points to predictive model
 writeRaster(rFra11, "models/fraseri2011.grd")
 
@@ -803,6 +857,7 @@ maxHya11
 response(maxHya11) 
 rHya11 <- predict(maxHya11, predictors11) 
 plot(rHya11)
+#dev.copy2pdf(file="figures/MaxHyacinthoides2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(hyacinthoides)
 writeRaster(rHya11, "models/hyacinthoides2011.grd")
 
@@ -812,6 +867,7 @@ maxMob11 # views results in browser window
 response(maxMob11) # show response curves for each layer
 rMob11 <- predict(maxMob11, predictors11) # create model
 plot(rMob11) # plot predictive model
+#dev.copy2pdf(file="figures/MaxMobilense2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(mobilense) # add points to predictive model
 writeRaster(rMob11, "models/mobilense2011.grd")
 
@@ -821,6 +877,7 @@ maxPar11 # views results in browser window
 response(maxPar11) # show response curves for each layer
 rPar11 <- predict(maxPar11, predictors11) # create model
 plot(rPar11) # plot predictive model
+#dev.copy2pdf(file="figures/MaxParentals2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(parentals) # add points to predictive model
 writeRaster(rPar11, "models/parentals2011.grd")
 
@@ -830,6 +887,7 @@ maxHyb11 # views results in browser window
 response(maxHyb11) # show response curves for each layer
 rHyb11 <- predict(maxHyb11, predictors11) # create model
 plot(rHyb11) # plot predictive model
+#dev.copy2pdf(file="figures/MaxHybrids2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(hybrids) # add points to predictive model
 writeRaster(rHyb11, "models/hybrids2011.grd")
 
@@ -843,6 +901,7 @@ maxCanTrain11 <- maxent(predictors11, canTrain11) #fit maxent model
 maxCanTrain11 #view results in html
 rCanTrain11 <- predict(maxCanTrain11, predictors11) #predict full model
 plot(rCanTrain11) #visualize full model
+#dev.copy2pdf(file="figures/AdvTrainCanadense2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(canadense) #add points to plot
 # testing model for canadense
 # extract background points
@@ -852,6 +911,7 @@ maxCanTest11 <- evaluate(maxCanTrain11, p=canTest11, a=bg11, x=predictors11)
 maxCanTest11 #print results
 threshold(maxCanTest11) #identify threshold for presence or absence
 plot(maxlavTest11, 'ROC') #plot AUC
+#dev.copy2pdf(file="figures/AdvTestCanadense2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 # alternative methods for testing models (should give same answers)
 # Alternative 1: another way to test model for canadense
 pvtest11 <- data.frame(extract(predictors11, canTest11))
@@ -884,6 +944,7 @@ maxCanAdv11 #view output as html
 response(maxCanAdv11) # show response curves for each layer
 rCanAdv11 <- predict(maxCanAdv11, predictors11) # create model
 plot(rCanAdv11) # plot predictive model
+#dev.copy2pdf(file="figures/AdvCanadense2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(canadense) # add points to predictive model
 writeRaster(rCanAdv11, "models/canadenseAdv2011.grd")
 
@@ -896,6 +957,7 @@ maxLavTrain11 <- maxent(predictors11, lavTrain11) #fit maxent model
 maxLavTrain11 #view results in html
 rLavTrain11 <- predict(maxLavTrain11, predictors11) #predict full model
 plot(rLavTrain11) #visualize full model
+#dev.copy2pdf(file="figures/AdvTrainLavendulare2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(lavendulare) #add points to plot
 # testing model for lavendulare
 # extract background points
@@ -905,6 +967,7 @@ maxLavTest11 <- evaluate(maxLavTrain11, p=lavTest11, a=bg11, x=predictors11)
 maxLavTest11 #print results
 threshold(maxLavTest11) #identify threshold for presence or absence
 plot(maxLavTest11, 'ROC') #plot AUC
+#dev.copy2pdf(file="figures/AdvTestLavendulare2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 # alternative methods for testing models (should give same answers)
 # Alternative 1: another way to test model for lavendulare
 pvtest11 <- data.frame(extract(predictors11, lavTest11))
@@ -935,6 +998,7 @@ maxLavAdv11 #view output as html
 response(maxLavAdv11) # show response curves for each layer
 rLavAdv11 <- predict(maxLavAdv11, predictors11) # create model
 plot(rLavAdv11) # plot predictive model
+#dev.copy2pdf(file="figures/AdvLavendulare2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(lavendulare) # add points to predictive model
 writeRaster(rLavAdv11, "models/lavendulareAdv2011.grd")
 
@@ -947,6 +1011,7 @@ maxEcrTrain11 <- maxent(predictors11, ecrTrain11) #fit maxent model
 maxEcrTrain11 #view results in html
 rEcrTrain11 <- predict(maxEcrTrain11, predictors11) #predict full model
 plot(rEcrTrain11) #visualize full model
+#dev.copy2pdf(file="figures/AdvTrainEcristatum2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(ecristatum) #add points to plot
 # testing model for ecristatum
 # extract background points
@@ -956,6 +1021,7 @@ maxEcrTest11 <- evaluate(maxEcrTrain11, p=ecrTest11, a=bg11, x=predictors11)
 maxEcrTest11 #print results
 threshold(maxEcrTest11) #identify threshold for presence or absence
 plot(maxEcrTest11, 'ROC') #plot AUC
+#dev.copy2pdf(file="figures/AdvTestEcristatum2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 # alternative methods for testing models (should give same answers)
 # Alternative 1: another way to test model for ecristatum
 pvtest11 <- data.frame(extract(predictors11, ecrTest11))
@@ -986,6 +1052,7 @@ maxEcrAdv11 #view output as html
 response(maxEcrAdv11) # show response curves for each layer
 rEcrAdv11 <- predict(maxEcrAdv11, predictors11) # create model
 plot(rEcrAdv11) # plot predictive model
+#dev.copy2pdf(file="figures/AdvEcristatum2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(ecristatum) # add points to predictive model
 writeRaster(rEcrAdv11, "models/ecristatumAdv2011.grd")
 
@@ -998,6 +1065,7 @@ maxFraTrain11 <- maxent(predictors11, fraTrain11) #fit maxent model
 maxFraTrain11 #view results in html
 rFraTrain11 <- predict(maxFraTrain11, predictors11) #predict full model
 plot(rFraTrain11) #visualize full model
+#dev.copy2pdf(file="figures/AdvTrainFraseri2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(fraseri) #add points to plot
 # testing model for fraseri
 # extract background points
@@ -1007,6 +1075,7 @@ maxFraTest11 <- evaluate(maxFraTrain11, p=fraTest11, a=bg11, x=predictors11)
 maxFraTest11 #print results
 threshold(maxFraTest11) #identify threshold for presence or absence
 plot(maxFraTest11, 'ROC') #plot AUC
+#dev.copy2pdf(file="figures/AdvTestFraseri2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 # alternative methods for testing models (should give same answers)
 # Alternative 1: another way to test model for fraseri
 pvtest11 <- data.frame(extract(predictors11, fraTest11))
@@ -1037,6 +1106,7 @@ maxFraAdv11 #view output as html
 response(maxFraAdv11) # show response curves for each layer
 rFraAdv11 <- predict(maxFraAdv11, predictors11) # create model
 plot(rFraAdv11) # plot predictive model
+#dev.copy2pdf(file="figures/AdvFraseri2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(fraseri) # add points to predictive model
 writeRaster(rFraAdv11, "models/fraseriAdv2011.grd")
 
@@ -1049,6 +1119,7 @@ maxHyaTrain11 <- maxent(predictors11, hyaTrain11) #fit maxent model
 maxHyaTrain11 #view results in html
 rHyaTrain11 <- predict(maxHyaTrain11, predictors11) #predict full model
 plot(rHyaTrain11) #visualize full model
+#dev.copy2pdf(file="figures/AdvTrainHyacinthoides2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(hyacinthoides) #add points to plot
 # testing model for hyacinthoides
 # extract background points
@@ -1058,6 +1129,7 @@ maxHyaTest11 <- evaluate(maxHyaTrain11, p=hyaTest11, a=bg11, x=predictors11)
 maxHyaTest11 #print results
 threshold(maxHyaTest11) #identify threshold for presence or absence
 plot(maxHyaTest11, 'ROC') #plot AUC
+#dev.copy2pdf(file="figures/AdvTestHyacinthoides2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 # alternative methods for testing models (should give same answers)
 # Alternative 1: another way to test model for hyacinthoides
 pvtest11 <- data.frame(extract(predictors11, hyaTest11))
@@ -1088,6 +1160,7 @@ maxHyaAdv11 #view output as html
 response(maxHyaAdv11) # show response curves for each layer
 rHyaAdv11 <- predict(maxHyaAdv11, predictors11) # create model
 plot(rHyaAdv11) # plot predictive model
+#dev.copy2pdf(file="figures/AdvHyacinthoides2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(hyacinthoides) # add points to predictive model
 writeRaster(rHyaAdv11, "models/hyacinthoidesAdv2011.grd")
 
@@ -1100,6 +1173,7 @@ maxMobTrain11 <- maxent(predictors11, mobTrain11) #fit maxent model
 maxMobTrain11 #view results in html
 rMobTrain11 <- predict(maxMobTrain11, predictors11) #predict full model
 plot(rMobTrain11) #visualize full model
+#dev.copy2pdf(file="figures/AdvTrainMobilense2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(mobilense) #add points to plot
 # testing model for mobilense
 # extract background points
@@ -1109,6 +1183,7 @@ maxMobTest11 <- evaluate(maxMobTrain11, p=mobTest11, a=bg11, x=predictors11)
 maxMobTest11 #print results
 threshold(maxMobTest11) #identify threshold for presence or absence
 plot(maxMobTest11, 'ROC') #plot AUC
+#dev.copy2pdf(file="figures/AdvTestMobilense2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 # alternative methods for testing models (should give same answers)
 # Alternative 1: another way to test model for mobilense
 pvtest11 <- data.frame(extract(predictors11, mobTest11))
@@ -1141,6 +1216,7 @@ maxMobAdv11 #view output as html
 response(maxMobAdv11) # show response curves for each layer
 rMobAdv11 <- predict(maxMobAdv11, predictors11) # create model
 plot(rMobAdv11) # plot predictive model
+#dev.copy2pdf(file="figures/AdvMobilense2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(mobilense) # add points to predictive model
 writeRaster(rMobAdv11, "models/mobilenseAdv2011.grd")
 
@@ -1153,6 +1229,7 @@ maxParTrain11 <- maxent(predictors11, parTrain11) #fit maxent model
 maxParTrain11 #view results in html
 rParTrain11 <- predict(maxParTrain11, predictors11) #predict full model
 plot(rParTrain11) #visualize full model
+#dev.copy2pdf(file="figures/AdvTrainParentals2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(parentals) #add points to plot
 # testing model for parentals
 # extract background points
@@ -1162,6 +1239,7 @@ maxParTest11 <- evaluate(maxParTrain11, p=parTest11, a=bg11, x=predictors11)
 maxParTest11 #print results
 threshold(maxParTest11) #identify threshold for presence or absence
 plot(maxParTest11, 'ROC') #plot AUC
+#dev.copy2pdf(file="figures/AdvTestParentals2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 # alternative methods for testing models (should give same answers)
 # Alternative 1: another way to test model for parentals
 pvtest11 <- data.frame(extract(predictors11, parTest11))
@@ -1194,6 +1272,7 @@ maxParAdv11 #view output as html
 response(maxParAdv11) # show response curves for each layer
 rParAdv11 <- predict(maxParAdv11, predictors11) # create model
 plot(rParAdv11) # plot predictive model
+#dev.copy2pdf(file="figures/AdvParentals2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(parentals) # add points to predictive model
 writeRaster(rParAdv11, "models/parentalsAdv2011.grd")
 
@@ -1206,6 +1285,7 @@ maxHybTrain11 <- maxent(predictors11, hybTrain11) #fit maxent model
 maxHybTrain11 #view results in html
 rHybTrain11 <- predict(maxHybTrain11, predictors11) #predict full model
 plot(rHybTrain11) #visualize full model
+#dev.copy2pdf(file="figures/AdvTrainHybrids2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(hybrids) #add points to plot
 # testing model for hybrids
 # extract background points
@@ -1215,6 +1295,7 @@ maxHybTest11 <- evaluate(maxHybTrain11, p=hybTest11, a=bg11, x=predictors11)
 maxHybTest11 #print results
 threshold(maxHybTest11) #identify threshold for presence or absence
 plot(maxHybTest11, 'ROC') #plot AUC
+#dev.copy2pdf(file="figures/AdvTestHybrids2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 # alternative methods for testing models (should give same answers)
 # Alternative 1: another way to test model for hybrids
 pvtest11 <- data.frame(extract(predictors11, hybTest11))
@@ -1245,5 +1326,6 @@ maxHybAdv11 #view output as html
 response(maxHybAdv11) # show response curves for each layer
 rHybAdv11 <- predict(maxHybAdv11, predictors11) # create model
 plot(rHybAdv11) # plot predictive model
+#dev.copy2pdf(file="figures/AdvHybrids2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(hybrids) # add points to predictive model
 writeRaster(rHybAdv11, "models/hybridsAdv2011.grd")
