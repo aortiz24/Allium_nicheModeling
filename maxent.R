@@ -910,7 +910,7 @@ bg11 <- randomPoints(predictors11, 1000)
 maxCanTest11 <- evaluate(maxCanTrain11, p=canTest11, a=bg11, x=predictors11)
 maxCanTest11 #print results
 threshold(maxCanTest11) #identify threshold for presence or absence
-plot(maxlavTest11, 'ROC') #plot AUC
+plot(maxCanTest11, 'ROC') #plot AUC
 #dev.copy2pdf(file="figures/AdvTestCanadense2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 # alternative methods for testing models (should give same answers)
 # Alternative 1: another way to test model for canadense
