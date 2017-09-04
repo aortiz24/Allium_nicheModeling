@@ -1,5 +1,4 @@
 ### prepping layers for modeling
-
 ## load libraries (not all used directly, but required as dependencies)
 library(dismo)
 library(fields)
