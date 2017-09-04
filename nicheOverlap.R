@@ -1,5 +1,5 @@
 ##### evaluating niche overlap between taxa
-
+# load libraries
 library(dplyr)
 library(raster)
 library(dismo)
