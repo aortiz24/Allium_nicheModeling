@@ -1,6 +1,5 @@
 ### running maxent in R
 ## use ?maxent to check documentation for correct installation of maxent.jar
-
 # load libraries
 library(dismo)
 library(fields)
