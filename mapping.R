@@ -93,7 +93,7 @@ writeSpatialShape(middleUS, "shapefiles/middleUS")
 
 # map using custom shapefile and save to file
 dir.create("figures")
-pdf(file="figures/midUSmappingmob.pdf")
+pdf(file="figures/midUSmapping.pdf")
 map(middleUS)
 points(alliumcanadense1$Longitude, alliumcanadense1$Latitude, col='purple', pch=20, cex=2)
 points(alliumcanadense2$Longitude, alliumcanadense2$Latitude, col='orange', pch=20, cex=2)
