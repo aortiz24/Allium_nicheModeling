@@ -122,12 +122,6 @@ tdmean11 <- raster("layers/tdmean11.asc", crs=CRS)
 predictors9<- stack(tmean9, ppt9, vpdmax9)
 predictors11<- stack(tmean11, ppt11, vpdmin11, tdmean11)
 
-# plot each layer individually
-plot(predictors9)
-#dev.copy2pdf(file="figures/Individual1929Layers.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
-plot(predictors11)
-#dev.copy2pdf(file="figures/Individual2011Layers.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
-
 ## Default maxent modeling
 # run maxent for canadense (default parameters for dismo)
 maxCan9 <- maxent(predictors9, canadense)
