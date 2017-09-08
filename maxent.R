@@ -216,10 +216,14 @@ maxCanAdv9 <- maxent(
     'jackknife=true', #default=false
     'replicates=10', #default=1
     'replicatetype=crossvalidate',
-    'maximumiterations=1000' #default=500
+    'maximumiterations=1000', #default=500
+    "-J" #jackknife = true
   )
 )
 maxCanAdv9 #view output as html
+dir.create("models/canadense1929Maxent")
+# save output files
+file.copy(maxCanAdv9@path, "models/canadense1929Maxent/", recursive=TRUE)
 response(maxCanAdv9) # show response curves for each layer
 rCanAdv9 <- predict(maxCanAdv9, predictors9) # create model
 plot(rCanAdv9) # plot predictive model
@@ -238,10 +242,14 @@ maxLavAdv9 <- maxent(
     'threads=2', #default=1
     'responsecurves=true', #default=false
     'jackknife=true', #default=false
-    'maximumiterations=1000' #default=500
+    'maximumiterations=1000', #default=500
+    "-J" #jackknife = true
   )
 )
 maxLavAdv9 #view output as html
+dir.create("models/lavendulare1929Maxent")
+# save output files
+file.copy(maxLavAdv9@path, "models/lavendulare1929Maxent/", recursive=TRUE)
 response(maxLavAdv9) # show response curves for each layer
 rLavAdv9 <- predict(maxLavAdv9, predictors9) # create model
 plot(rLavAdv9) # plot predictive model
@@ -260,10 +268,14 @@ maxEcrAdv9 <- maxent(
     'threads=2', #default=1
     'responsecurves=true', #default=false
     'jackknife=true', #default=false
-    'maximumiterations=1000' #default=500
+    'maximumiterations=1000', #default=500
+    "-J" #jackknife = true
   )
 )
 maxEcrAdv9 #view output as html
+dir.create("models/ecristatum1929Maxent")
+# save output files
+file.copy(maxEcrAdv9@path, "models/ecristatum1929Maxent/", recursive=TRUE)
 response(maxEcrAdv9) # show response curves for each layer
 rEcrAdv9 <- predict(maxEcrAdv9, predictors9) # create model
 plot(rEcrAdv9) # plot predictive model
@@ -282,10 +294,14 @@ maxFraAdv9 <- maxent(
     'threads=2', #default=1
     'responsecurves=true', #default=false
     'jackknife=true', #default=false
-    'maximumiterations=1000' #default=500
+    'maximumiterations=1000', #default=500
+    "-J" #jackknife = true
   )
 )
 maxFraAdv9 #view output as html
+dir.create("models/fraseri1929Maxent")
+# save output files
+file.copy(maxFraAdv9@path, "models/fraseri1929Maxent/", recursive=TRUE)
 response(maxFraAdv9) # show response curves for each layer
 rFraAdv9 <- predict(maxFraAdv9, predictors9) # create model
 plot(rFraAdv9) # plot predictive model
@@ -304,10 +320,14 @@ maxHyaAdv9 <- maxent(
     'threads=2', #default=1
     'responsecurves=true', #default=false
     'jackknife=true', #default=false
-    'maximumiterations=1000' #default=500
+    'maximumiterations=1000', #default=500
+    "-J" #jackknife = true
   )
 )
 maxHyaAdv9 #view output as html
+dir.create("models/hyacinthoides1929Maxent")
+# save output files
+file.copy(maxHyaAdv9@path, "models/hyacinthoides1929Maxent/", recursive=TRUE)
 response(maxHyaAdv9) # show response curves for each layer
 rHyaAdv9 <- predict(maxHyaAdv9, predictors9) # create model
 plot(rHyaAdv9) # plot predictive model
@@ -328,10 +348,14 @@ maxMobAdv9 <- maxent(
     'jackknife=true', #default=false
     'replicates=10', #default=1
     'replicatetype=crossvalidate',
-    'maximumiterations=1000' #default=500
+    'maximumiterations=1000', #default=500
+    "-J" #jackknife = true
   )
 )
 maxMobAdv9 #view output as html
+dir.create("models/mobilense1929Maxent")
+# save output files
+file.copy(maxMobAdv9@path, "models/mobilense1929Maxent/", recursive=TRUE)
 response(maxMobAdv9) # show response curves for each layer
 rMobAdv9 <- predict(maxMobAdv9, predictors9) # create model
 plot(rMobAdv9) # plot predictive model
@@ -352,10 +376,14 @@ maxParAdv9 <- maxent(
     'jackknife=true', #default=false
     'replicates=10', #default=1
     'replicatetype=crossvalidate',
-    'maximumiterations=1000' #default=500
+    'maximumiterations=1000', #default=500
+    "-J" #jackknife = true
   )
 )
 maxParAdv9 #view output as html
+dir.create("models/parentals1929Maxent")
+# save output files
+file.copy(maxParAdv9@path, "models/parentals1929Maxent/", recursive=TRUE)
 response(maxParAdv9) # show response curves for each layer
 rParAdv9 <- predict(maxParAdv9, predictors9) # create model
 plot(rParAdv9) # plot predictive model
@@ -374,10 +402,14 @@ maxHybAdv9 <- maxent(
     'threads=2', #default=1
     'responsecurves=true', #default=false
     'jackknife=true', #default=false
-    'maximumiterations=1000' #default=500
+    'maximumiterations=1000', #default=500
+    "-J" #jackknife = true
   )
 )
 maxHybAdv9 #view output as html
+dir.create("models/hybrids1929Maxent")
+# save output files
+file.copy(maxHybAdv9@path, "models/hybrids1929Maxent/", recursive=TRUE)
 response(maxHybAdv9) # show response curves for each layer
 rHybAdv9 <- predict(maxHybAdv9, predictors9) # create model
 plot(rHybAdv9) # plot predictive model
@@ -480,10 +512,14 @@ maxCanAdv11 <- maxent(
     'jackknife=true', #default=false
     'replicates=10', #default=1
     'replicatetype=crossvalidate',
-    'maximumiterations=1000' #default=500
+    'maximumiterations=1000', #default=500
+    "-J" #jackknife = true
   )
 )
 maxCanAdv11 #view output as html
+dir.create("models/canadense2011Maxent")
+# save output files
+file.copy(maxCanAdv11@path, "models/canadense2011Maxent/", recursive=TRUE)
 response(maxCanAdv11) # show response curves for each layer
 rCanAdv11 <- predict(maxCanAdv11, predictors11) # create model
 plot(rCanAdv11) # plot predictive model
@@ -502,10 +538,14 @@ maxLavAdv11 <- maxent(
     'threads=2', #default=1
     'responsecurves=true', #default=false
     'jackknife=true', #default=false
-    'maximumiterations=1000' #default=500
+    'maximumiterations=1000', #default=500
+    "-J" #jackknife = true
   )
 )
 maxLavAdv11 #view output as html
+dir.create("models/lavendulare2011Maxent")
+# save output files
+file.copy(maxLavAdv11@path, "models/lavendulare2011Maxent/", recursive=TRUE)
 response(maxLavAdv11) # show response curves for each layer
 rLavAdv11 <- predict(maxLavAdv11, predictors11) # create model
 plot(rLavAdv11) # plot predictive model
@@ -524,10 +564,14 @@ maxEcrAdv11 <- maxent(
     'threads=2', #default=1
     'responsecurves=true', #default=false
     'jackknife=true', #default=false
-    'maximumiterations=1000' #default=500
+    'maximumiterations=1000', #default=500
+    "-J" #jackknife = true
   )
 )
 maxEcrAdv11 #view output as html
+dir.create("models/ecristatum2011Maxent")
+# save output files
+file.copy(maxEcrAdv11@path, "models/ecristatum2011Maxent/", recursive=TRUE)
 response(maxEcrAdv11) # show response curves for each layer
 rEcrAdv11 <- predict(maxEcrAdv11, predictors11) # create model
 plot(rEcrAdv11) # plot predictive model
@@ -546,10 +590,14 @@ maxFraAdv11 <- maxent(
     'threads=2', #default=1
     'responsecurves=true', #default=false
     'jackknife=true', #default=false
-    'maximumiterations=1000' #default=500
+    'maximumiterations=1000', #default=500
+    "-J" #jackknife = true
   )
 )
 maxFraAdv11 #view output as html
+dir.create("models/fraseri2011Maxent")
+# save output files
+file.copy(maxFraAdv11@path, "models/fraseri2011Maxent/", recursive=TRUE)
 response(maxFraAdv11) # show response curves for each layer
 rFraAdv11 <- predict(maxFraAdv11, predictors11) # create model
 plot(rFraAdv11) # plot predictive model
@@ -568,10 +616,14 @@ maxHyaAdv11 <- maxent(
     'threads=2', #default=1
     'responsecurves=true', #default=false
     'jackknife=true', #default=false
-    'maximumiterations=1000' #default=500
+    'maximumiterations=1000', #default=500
+    "-J" #jackknife = true
   )
 )
 maxHyaAdv11 #view output as html
+dir.create("models/hyacinthoides2011Maxent")
+# save output files
+file.copy(maxHyaAdv11@path, "models/hyacinthoides2011Maxent/", recursive=TRUE)
 response(maxHyaAdv11) # show response curves for each layer
 rHyaAdv11 <- predict(maxHyaAdv11, predictors11) # create model
 plot(rHyaAdv11) # plot predictive model
@@ -592,10 +644,14 @@ maxMobAdv11 <- maxent(
     'jackknife=true', #default=false
     'replicates=10', #default=1
     'replicatetype=crossvalidate',
-    'maximumiterations=1000' #default=500
+    'maximumiterations=1000', #default=500
+    "-J" #jackknife = true
   )
 )
 maxMobAdv11 #view output as html
+dir.create("models/mobilense2011Maxent")
+# save output files
+file.copy(maxMobAdv11@path, "models/mobilense2011Maxent/", recursive=TRUE)
 response(maxMobAdv11) # show response curves for each layer
 rMobAdv11 <- predict(maxMobAdv11, predictors11) # create model
 plot(rMobAdv11) # plot predictive model
@@ -616,10 +672,14 @@ maxParAdv11 <- maxent(
     'jackknife=true', #default=false
     'replicates=10', #default=1
     'replicatetype=crossvalidate',
-    'maximumiterations=1000' #default=500
+    'maximumiterations=1000', #default=500
+    "-J" #jackknife = true
   )
 )
 maxParAdv11 #view output as html
+dir.create("models/parentals2011Maxent")
+# save output files
+file.copy(maxParAdv11@path, "models/parentals2011Maxent/", recursive=TRUE)
 response(maxParAdv11) # show response curves for each layer
 rParAdv11 <- predict(maxParAdv11, predictors11) # create model
 plot(rParAdv11) # plot predictive model
@@ -638,10 +698,14 @@ maxHybAdv11 <- maxent(
     'threads=2', #default=1
     'responsecurves=true', #default=false
     'jackknife=true', #default=false
-    'maximumiterations=1000' #default=500
+    'maximumiterations=1000', #default=500
+    "-J" #jackknife = true
   )
 )
 maxHybAdv11 #view output as html
+dir.create("models/hybrids2011Maxent")
+# save output files
+file.copy(maxHybAdv11@path, "models/hybrids2011Maxent/", recursive=TRUE)
 response(maxHybAdv11) # show response curves for each layer
 rHybAdv11 <- predict(maxHybAdv11, predictors11) # create model
 plot(rHybAdv11) # plot predictive model
