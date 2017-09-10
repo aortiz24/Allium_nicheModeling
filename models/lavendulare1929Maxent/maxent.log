@@ -1,0 +1,160 @@
+Sat Sep 09 20:48:09 CDT 2017
+MaxEnt version 3.4.0
+Reading file absence
+readGrid: max memory 477626368, total allocated 215482368, free 130645968, used 84836400, increment 8668296
+Reading samples from presence
+Read samples: max memory 477626368, total allocated 215482368, free 86192576, used 129289792, increment 44453392
+Adding samples to background in feature space
+Command line used:  autorun -e C:\Users\aortiz\AppData\Local\Temp\RtmpoNkboW/raster/maxent/5346366768/absence -o C:\Users\aortiz\AppData\Local\Temp\RtmpoNkboW/raster/maxent/5346366768 -s C:\Users\aortiz\AppData\Local\Temp\RtmpoNkboW/raster/maxent/5346366768/presence -z randomseed=true threads=2 responsecurves=true maximumiterations=1000 -J
+Command line to repeat: java density.MaxEnt nowarnings noprefixes responsecurves jackknife outputdirectory=C:\Users\aortiz\AppData\Local\Temp\RtmpoNkboW/raster/maxent/5346366768 samplesfile=C:\Users\aortiz\AppData\Local\Temp\RtmpoNkboW/raster/maxent/5346366768/presence environmentallayers=C:\Users\aortiz\AppData\Local\Temp\RtmpoNkboW/raster/maxent/5346366768/absence randomseed autorun novisible maximumiterations=1000 threads=2
+Species: species
+Layers: ppt9 tmean9 vpdmax9
+Layertypes: Continuous Continuous Continuous
+responsecurves: true
+jackknife: true
+outputdirectory: C:\Users\aortiz\AppData\Local\Temp\RtmpoNkboW/raster/maxent/5346366768
+samplesfile: C:\Users\aortiz\AppData\Local\Temp\RtmpoNkboW/raster/maxent/5346366768/presence
+environmentallayers: C:\Users\aortiz\AppData\Local\Temp\RtmpoNkboW/raster/maxent/5346366768/absence
+randomseed: true
+autorun: true
+visible: false
+maximumiterations: 1000
+threads: 2
+
+getSamples: max memory 477626368, total allocated 215482368, free 86192576, used 129289792, increment 0
+Making features
+makeFeatures: max memory 477626368, total allocated 215482368, free 86192576, used 129289792, increment 0
+species: 
+Regularization values: linear/quadratic/product: 1.000, categorical: 0.560, threshold: 1.940, hinge: 0.500
+6 samples
+Density: max memory 477626368, total allocated 215482368, free 86192576, used 129289792, increment 0
+linearPredictor: max memory 477626368, total allocated 215482368, free 86192576, used 129289792, increment 0
+FeaturedSpace: max memory 477626368, total allocated 215482368, free 86192576, used 129289792, increment 0
+Sequential: max memory 477626368, total allocated 215482368, free 86192576, used 129289792, increment 0
+Initial loss: 9.21094019204815
+80: time = 0.256000 loss = 7.960795
+Resulting gain: 1.250145583061217
+Time since start: 1.11
+Projecting...
+Writing file C:\Users\aortiz\AppData\Local\Temp\RtmpoNkboW\raster\maxent\5346366768\species.csv
+species response curves
+Response curve: only ppt9
+Response curve: only tmean9
+Response curve: only vpdmax9
+Making features
+Making features
+makeFeatures: max memory 477626368, total allocated 215482368, free 53093600, used 162388768, increment 33098976
+species tmean9: 
+Regularization values: linear/quadratic/product: 1.000, categorical: 0.560, threshold: 1.940, hinge: 0.500
+6 samples
+Density: max memory 477626368, total allocated 215482368, free 53093600, used 162388768, increment 0
+linearPredictor: max memory 477626368, total allocated 215482368, free 53093600, used 162388768, increment 0
+FeaturedSpace: max memory 477626368, total allocated 215482368, free 53093600, used 162388768, increment 0
+makeFeatures: max memory 477626368, total allocated 215482368, free 53093600, used 162388768, increment 0
+species ppt9: 
+Sequential: max memory 477626368, total allocated 215482368, free 53093600, used 162388768, increment 0
+Regularization values: linear/quadratic/product: 1.000, categorical: 0.560, threshold: 1.940, hinge: 0.500
+Initial loss: 9.21094019204815
+6 samples
+Density: max memory 477626368, total allocated 215482368, free 53093600, used 162388768, increment 0
+linearPredictor: max memory 477626368, total allocated 215482368, free 53093600, used 162388768, increment 0
+FeaturedSpace: max memory 477626368, total allocated 215482368, free 53093600, used 162388768, increment 0
+Sequential: max memory 477626368, total allocated 215482368, free 53093600, used 162388768, increment 0
+Initial loss: 9.21094019204815
+60: time = 0.256000 loss = 8.948793
+Resulting gain: 0.2621470457880637
+species response curves
+60: time = 0.287000 loss = 8.574613
+Resulting gain: 0.636327242985617
+species response curves
+Making features
+makeFeatures: max memory 477626368, total allocated 215482368, free 46603744, used 168878624, increment 6489856
+species vpdmax9: 
+Regularization values: linear/quadratic/product: 1.000, categorical: 0.560, threshold: 1.940, hinge: 0.500
+6 samples
+Density: max memory 477626368, total allocated 215482368, free 46603744, used 168878624, increment 0
+linearPredictor: max memory 477626368, total allocated 215482368, free 46603744, used 168878624, increment 0
+FeaturedSpace: max memory 477626368, total allocated 215482368, free 46603744, used 168878624, increment 0
+Sequential: max memory 477626368, total allocated 215482368, free 46603744, used 168878624, increment 0
+Initial loss: 9.21094019204815
+Time since start: 2.17
+60: time = 0.210000 loss = 7.963353
+Resulting gain: 1.2475869337279448
+species response curves
+Jackknife: leave ppt9 out
+Jackknife: leave tmean9 out
+Jackknife: leave vpdmax9 out
+Jackknife: only ppt9
+Jackknife: only tmean9
+Jackknife: only vpdmax9
+Making features
+Making features
+makeFeatures: max memory 477626368, total allocated 215482368, free 32793056, used 182689312, increment 13810688
+species tmean9: 
+Regularization values: linear/quadratic/product: 1.000, categorical: 0.560, threshold: 1.940, hinge: 0.500
+6 samples
+Density: max memory 477626368, total allocated 215482368, free 32793056, used 182689312, increment 0
+linearPredictor: max memory 477626368, total allocated 215482368, free 32793056, used 182689312, increment 0
+makeFeatures: max memory 477626368, total allocated 215482368, free 32793056, used 182689312, increment 0
+species ppt9: 
+Regularization values: linear/quadratic/product: 1.000, categorical: 0.560, threshold: 1.940, hinge: 0.500
+FeaturedSpace: max memory 477626368, total allocated 215482368, free 32793056, used 182689312, increment 0
+6 samples
+Sequential: max memory 477626368, total allocated 215482368, free 32793056, used 182689312, increment 0
+Initial loss: 9.21094019204815
+Density: max memory 477626368, total allocated 215482368, free 32793056, used 182689312, increment 0
+linearPredictor: max memory 477626368, total allocated 215482368, free 32793056, used 182689312, increment 0
+FeaturedSpace: max memory 477626368, total allocated 215482368, free 32793056, used 182689312, increment 0
+Sequential: max memory 477626368, total allocated 215482368, free 32793056, used 182689312, increment 0
+Initial loss: 9.21094019204815
+60: time = 0.225000 loss = 7.963353
+Making features
+makeFeatures: max memory 477626368, total allocated 215482368, free 32472800, used 183009568, increment 320256
+species vpdmax9: 
+Regularization values: linear/quadratic/product: 1.000, categorical: 0.560, threshold: 1.940, hinge: 0.500
+6 samples
+Density: max memory 477626368, total allocated 215482368, free 32392736, used 183089632, increment 80064
+linearPredictor: max memory 477626368, total allocated 215482368, free 32312672, used 183169696, increment 80064
+FeaturedSpace: max memory 477626368, total allocated 215482368, free 32312672, used 183169696, increment 0
+Sequential: max memory 477626368, total allocated 215482368, free 32312672, used 183169696, increment 0
+Initial loss: 9.21094019204815
+80: time = 0.272000 loss = 7.960795
+Making features
+makeFeatures: max memory 477626368, total allocated 215482368, free 30612560, used 184869808, increment 1700112
+species ppt9: 
+Regularization values: linear/quadratic/product: 1.000, categorical: 0.560, threshold: 1.940, hinge: 0.500
+6 samples
+Density: max memory 477626368, total allocated 215482368, free 30612560, used 184869808, increment 0
+linearPredictor: max memory 477626368, total allocated 215482368, free 30612560, used 184869808, increment 0
+FeaturedSpace: max memory 477626368, total allocated 215482368, free 30612560, used 184869808, increment 0
+Sequential: max memory 477626368, total allocated 215482368, free 30612560, used 184869808, increment 0
+Initial loss: 9.21094019204815
+60: time = 0.232000 loss = 8.282947
+Making features
+makeFeatures: max memory 477626368, total allocated 215482368, free 28912448, used 186569920, increment 1700112
+species tmean9: 
+Regularization values: linear/quadratic/product: 1.000, categorical: 0.560, threshold: 1.940, hinge: 0.500
+6 samples
+Density: max memory 477626368, total allocated 215482368, free 28912448, used 186569920, increment 0
+linearPredictor: max memory 477626368, total allocated 215482368, free 28912448, used 186569920, increment 0
+FeaturedSpace: max memory 477626368, total allocated 215482368, free 28912448, used 186569920, increment 0
+Sequential: max memory 477626368, total allocated 215482368, free 28912448, used 186569920, increment 0
+Initial loss: 9.21094019204815
+60: time = 0.266000 loss = 8.948793
+Res.gain: 0.2621470457880637
+Making features
+makeFeatures: max memory 477626368, total allocated 215482368, free 28912448, used 186569920, increment 0
+species vpdmax9: 
+Regularization values: linear/quadratic/product: 1.000, categorical: 0.560, threshold: 1.940, hinge: 0.500
+6 samples
+Density: max memory 477626368, total allocated 215482368, free 28912448, used 186569920, increment 0
+linearPredictor: max memory 477626368, total allocated 215482368, free 28912448, used 186569920, increment 0
+FeaturedSpace: max memory 477626368, total allocated 215482368, free 28912448, used 186569920, increment 0
+Sequential: max memory 477626368, total allocated 215482368, free 28912448, used 186569920, increment 0
+Initial loss: 9.21094019204815
+Time since start: 3.19
+60: time = 0.269000 loss = 8.574613
+Res.gain: 0.636327242985617
+60: time = 0.231000 loss = 7.963353
+Res.gain: 1.2475869337279448
+Ending
