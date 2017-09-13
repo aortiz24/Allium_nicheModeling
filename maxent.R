@@ -213,10 +213,11 @@ maxCanAdv9 <- maxent(
     'randomseed=true', #default=false
     'threads=2', #default=1
     'responsecurves=true', #default=false
-    'replicates=10', #default=1
+    'randomtestpoints=0', # not using 80/20 split, occurrence points < 30
+    'replicates=10', #default=1 # no. of reps are equal to no. of occurrence points for each taxon 
     'replicatetype=crossvalidate',
     'maximumiterations=1000', #default=500
-    "-J" #jackknife = true
+    "-J" #jackknife parameter
   )
 )
 maxCanAdv9 #view output as html
@@ -240,8 +241,11 @@ maxLavAdv9 <- maxent(
     'randomseed=true', #default=false
     'threads=2', #default=1
     'responsecurves=true', #default=false
+    'randomtestpoints=0', # not using 80/20 split, occurrence points < 30
+    'replicates=6', #default=1 # no. of reps are equal to no. of occurrence points for each taxon 
+    'replicatetype=crossvalidate',
     'maximumiterations=1000', #default=500
-    "-J" #jackknife = true
+    "-J" #jackknife parameter
   )
 )
 maxLavAdv9 #view output as html
@@ -265,8 +269,11 @@ maxEcrAdv9 <- maxent(
     'randomseed=true', #default=false
     'threads=2', #default=1
     'responsecurves=true', #default=false
+    'randomtestpoints=0', # not using 80/20 split, occurrence points < 30
+    'replicates=1', #default=1 # no. of reps are equal to no. of occurrence points for each taxon 
+    'replicatetype=crossvalidate',
     'maximumiterations=1000', #default=500
-    "-J" #jackknife = true
+    "-J" #jackknife parameter
   )
 )
 maxEcrAdv9 #view output as html
@@ -290,8 +297,11 @@ maxFraAdv9 <- maxent(
     'randomseed=true', #default=false
     'threads=2', #default=1
     'responsecurves=true', #default=false
+    'randomtestpoints=0', # not using 80/20 split, occurrence points < 30
+    'replicates=9', #default=1 # no. of reps are equal to no. of occurrence points for each taxon 
+    'replicatetype=crossvalidate',
     'maximumiterations=1000', #default=500
-    "-J" #jackknife = true
+    "-J" #jackknife parameter
   )
 )
 maxFraAdv9 #view output as html
@@ -315,8 +325,11 @@ maxHyaAdv9 <- maxent(
     'randomseed=true', #default=false
     'threads=2', #default=1
     'responsecurves=true', #default=false
+    'randomtestpoints=0', # not using 80/20 split, occurrence points < 30
+    'replicates=2', #default=1 # no. of reps are equal to no. of occurrence points for each taxon 
+    'replicatetype=crossvalidate',
     'maximumiterations=1000', #default=500
-    "-J" #jackknife = true
+    "-J" #jackknife parameter
   )
 )
 maxHyaAdv9 #view output as html
@@ -340,10 +353,11 @@ maxMobAdv9 <- maxent(
     'randomseed=true', #default=false
     'threads=2', #default=1
     'responsecurves=true', #default=false
-    'replicates=10', #default=1
+    'randomtestpoints=0', # not using 80/20 split, occurrence points < 30
+    'replicates=13', #default=1 # no. of reps are equal to no. of occurrence points for each taxon
     'replicatetype=crossvalidate',
     'maximumiterations=1000', #default=500
-    "-J" #jackknife = true
+    "-J" #jackknife parameter
   )
 )
 maxMobAdv9 #view output as html
@@ -367,10 +381,11 @@ maxParAdv9 <- maxent(
     'randomseed=true', #default=false
     'threads=2', #default=1
     'responsecurves=true', #default=false
-    'replicates=10', #default=1
+    'randomtestpoints=20', # using 80/20 split, occurrence points > 30
+    'replicates=1', #default=1 # using 80/20 split 
     'replicatetype=crossvalidate',
     'maximumiterations=1000', #default=500
-    "-J" #jackknife = true
+    "-J" #jackknife parameter
   )
 )
 maxParAdv9 #view output as html
@@ -394,10 +409,11 @@ maxHybAdv9 <- maxent(
     'randomseed=true', #default=false
     'threads=2', #default=1
     'responsecurves=true', #default=false
-    'replicates=10', #default=1
+    'randomtestpoints=20', # using 80/20 split, occurrence points > 30
+    'replicates=1', #default=1 # using 80/20 split 
     'replicatetype=crossvalidate',
     'maximumiterations=1000', #default=500
-    "-J" #jackknife = true
+    "-J" #jackknife parameter
   )
 )
 maxHybAdv9 #view output as html
@@ -503,10 +519,11 @@ maxCanAdv11 <- maxent(
     'randomseed=true', #default=false
     'threads=2', #default=1
     'responsecurves=true', #default=false
-    'replicates=10', #default=1
+    'randomtestpoints=0', # not using 80/20 split, occurrence points < 30
+    'replicates=10', #default=1 # no. of reps are equal to no. of occurrence points for each taxon 
     'replicatetype=crossvalidate',
     'maximumiterations=1000', #default=500
-    "-J" #jackknife = true
+    "-J" #jackknife parameter
   )
 )
 maxCanAdv11 #view output as html
@@ -530,8 +547,11 @@ maxLavAdv11 <- maxent(
     'randomseed=true', #default=false
     'threads=2', #default=1
     'responsecurves=true', #default=false
+    'randomtestpoints=0', # not using 80/20 split, occurrence points < 30
+    'replicates=6', #default=1 # no. of reps are equal to no. of occurrence points for each taxon 
+    'replicatetype=crossvalidate',
     'maximumiterations=1000', #default=500
-    "-J" #jackknife = true
+    "-J" #jackknife parameter
   )
 )
 maxLavAdv11 #view output as html
@@ -555,8 +575,11 @@ maxEcrAdv11 <- maxent(
     'randomseed=true', #default=false
     'threads=2', #default=1
     'responsecurves=true', #default=false
+    'randomtestpoints=0', # not using 80/20 split, occurrence points < 30
+    'replicates=1', #default=1 # no. of reps are equal to no. of occurrence points for each taxon 
+    'replicatetype=crossvalidate',
     'maximumiterations=1000', #default=500
-    "-J" #jackknife = true
+    "-J" #jackknife parameter
   )
 )
 maxEcrAdv11 #view output as html
@@ -580,8 +603,11 @@ maxFraAdv11 <- maxent(
     'randomseed=true', #default=false
     'threads=2', #default=1
     'responsecurves=true', #default=false
+    'randomtestpoints=0', # not using 80/20 split, occurrence points < 30
+    'replicates=9', #default=1 # no. of reps are equal to no. of occurrence points for each taxon 
+    'replicatetype=crossvalidate',
     'maximumiterations=1000', #default=500
-    "-J" #jackknife = true
+    "-J" #jackknife parameter
   )
 )
 maxFraAdv11 #view output as html
@@ -605,8 +631,11 @@ maxHyaAdv11 <- maxent(
     'randomseed=true', #default=false
     'threads=2', #default=1
     'responsecurves=true', #default=false
+    'randomtestpoints=0', # not using 80/20 split, occurrence points < 30
+    'replicates=2', #default=1 # no. of reps are equal to no. of occurrence points for each taxon 
+    'replicatetype=crossvalidate',
     'maximumiterations=1000', #default=500
-    "-J" #jackknife = true
+    "-J" #jackknife parameter
   )
 )
 maxHyaAdv11 #view output as html
@@ -630,10 +659,11 @@ maxMobAdv11 <- maxent(
     'randomseed=true', #default=false
     'threads=2', #default=1
     'responsecurves=true', #default=false
-    'replicates=10', #default=1
+    'randomtestpoints=0', # not using 80/20 split, occurrence points < 30
+    'replicates=13', #default=1 # no. of reps are equal to no. of occurrence points for each taxon 
     'replicatetype=crossvalidate',
     'maximumiterations=1000', #default=500
-    "-J" #jackknife = true
+    "-J" #jackknife parameter
   )
 )
 maxMobAdv11 #view output as html
@@ -657,10 +687,11 @@ maxParAdv11 <- maxent(
     'randomseed=true', #default=false
     'threads=2', #default=1
     'responsecurves=true', #default=false
-    'replicates=10', #default=1
+    'randomtestpoints=20', # using 80/20 split, occurrence points > 30
+    'replicates=1', #default=1 # using 80/20 split 
     'replicatetype=crossvalidate',
     'maximumiterations=1000', #default=500
-    "-J" #jackknife = true
+    "-J" #jackknife parameter
   )
 )
 maxParAdv11 #view output as html
@@ -684,10 +715,11 @@ maxHybAdv11 <- maxent(
     'randomseed=true', #default=false
     'threads=2', #default=1
     'responsecurves=true', #default=false
-    'replicates=10', #default=1
+    'randomtestpoints=20', # using 80/20 split, occurrence points > 30
+    'replicates=1', #default=1 # using 80/20 split 
     'replicatetype=crossvalidate',
     'maximumiterations=1000', #default=500
-    "-J" #jackknife = true
+    "-J" #jackknife parameter
   )
 )
 maxHybAdv11 #view output as html
