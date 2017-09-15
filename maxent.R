@@ -354,7 +354,7 @@ maxMobAdv9 <- maxent(
     'threads=2', #default=1
     'responsecurves=true', #default=false
     'randomtestpoints=0', # not using 80/20 split, occurrence points < 30
-    'replicates=13', #default=1 # no. of reps are equal to no. of occurrence points for each taxon
+    'replicates=11', #default=1 # no. of reps are equal to no. of occurrence points for each taxon #maximum replications = 11
     'replicatetype=crossvalidate',
     'maximumiterations=1000', #default=500
     "-J" #jackknife parameter
@@ -660,7 +660,7 @@ maxMobAdv11 <- maxent(
     'threads=2', #default=1
     'responsecurves=true', #default=false
     'randomtestpoints=0', # not using 80/20 split, occurrence points < 30
-    'replicates=13', #default=1 # no. of reps are equal to no. of occurrence points for each taxon 
+    'replicates=11', #default=1 # no. of reps are equal to no. of occurrence points for each taxon #maximum replications = 11
     'replicatetype=crossvalidate',
     'maximumiterations=1000', #default=500
     "-J" #jackknife parameter
