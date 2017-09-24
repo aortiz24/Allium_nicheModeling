@@ -198,14 +198,14 @@ ggbiplot(pca_both9, obs.scale =1, var.scale = 1, groups= varieties9, ellipse = T
 
 ## model-based approaches
 # read in default maxent models
-rCan9 <- raster("models/canadense1929.grd")
-rLav9 <- raster("models/lavendulare1929.grd")
-rEcr9 <- raster("models/ecristatum1929.grd")
-rFra9 <- raster("models/fraseri1929.grd")
-rHya9 <- raster("models/hyacinthoides1929.grd")
-rMob9 <- raster("models/mobilense1929.grd")
-rPar9 <- raster("models/parentals1929.grd")
-rHyb9 <- raster("models/hybrids1929.grd")
+rCan9 <- raster("models/canadense1929Maxent/canadense1929.grd")
+rLav9 <- raster("models/lavendulare1929Maxent/lavendulare1929.grd")
+rEcr9 <- raster("models/ecristatum1929Maxent/ecristatum1929.grd")
+rFra9 <- raster("models/fraseri1929Maxent/fraseri1929.grd")
+rHya9 <- raster("models/hyacinthoides1929Maxent/hyacinthoides1929.grd")
+rMob9 <- raster("models/mobilense1929Maxent/mobilense1929.grd")
+rPar9 <- raster("models/parentals1929Maxent/parentals1929.grd")
+rHyb9 <- raster("models/hybrids1929Maxent/hybrids1929.grd")
 
 ###Using PRISM 2011 weather data
 ##for loop of one-way ANOVA with Tukey's post-hoc(for all uncorrelated weather variables)
@@ -239,14 +239,14 @@ ggbiplot(pca_both11, obs.scale =1, var.scale = 1, groups= varieties11, ellipse =
 
 ## model-based approaches
 # read in default maxent models
-rCan11 <- raster("models/canadense2011.grd")
-rLav11 <- raster("models/lavendulare2011.grd")
-rEcr11 <- raster("models/ecristatum2011.grd")
-rFra11 <- raster("models/fraseri2011.grd")
-rHya11 <- raster("models/hyacinthoides2011.grd")
-rMob11 <- raster("models/mobilense2011.grd")
-rPar11 <- raster("models/parentals2011.grd")
-rHyb11 <- raster("models/hybrids2011.grd")
+rCan11 <- raster("models/canadense2011Maxent/canadense2011.grd")
+rLav11 <- raster("models/lavendulare2011Maxent/lavendulare2011.grd")
+rEcr11 <- raster("models/ecristatum2011Maxent/ecristatum2011.grd")
+rFra11 <- raster("models/fraseri2011Maxent/fraseri2011.grd")
+rHya11 <- raster("models/hyacinthoides2011Maxent/hyacinthoides2011.grd")
+rMob11 <- raster("models/mobilense2011Maxent/mobilense2011.grd")
+rPar11 <- raster("models/parentals2011Maxent/parentals2011.grd")
+rHyb11 <- raster("models/hybrids2011Maxent/hybrids2011.grd")
 
 #assessing changes in canadense niche from 1929 to 2011
 nicheOverlap(rCan9, rCan11, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic
@@ -290,22 +290,22 @@ nicheOverlap(rPar11, rHyb11, stat='I', mask=TRUE, checkNegatives=TRUE) # I stati
 
 ## model-based approaches
 # read in advanced maxent models
-rCanAdv9 <- raster("models/canadenseAdv1929.grd")
-rLavAdv9 <- raster("models/lavendulareAdv1929.grd")
-rEcrAdv9 <- raster("models/ecristatumAdv1929.grd")
-rFraAdv9 <- raster("models/fraseriAdv1929.grd")
-rHyaAdv9 <- raster("models/hyacinthoidesAdv1929.grd")
-rMobAdv9 <- raster("models/mobilenseAdv1929.grd")
-rParAdv9 <- raster("models/parentalsAdv1929.grd")
-rHybAdv9 <- raster("models/hybridsAdv1929.grd")
-rCanAdv11 <- raster("models/canadenseAdv2011.grd")
-rLavAdv11 <- raster("models/lavendulareAdv2011.grd")
-rEcrAdv11 <- raster("models/ecristatumAdv2011.grd")
-rFraAdv11 <- raster("models/fraseriAdv2011.grd")
-rHyaAdv11 <- raster("models/hyacinthoidesAdv2011.grd")
-rMobAdv11 <- raster("models/mobilenseAdv2011.grd")
-rParAdv11 <- raster("models/parentalsAdv2011.grd")
-rHybAdv11 <- raster("models/hybridsAdv2011.grd")
+rCanAdv9 <- raster("models/canadense1929Maxent/canadenseAdv1929.grd")
+rLavAdv9 <- raster("models/lavendulare1929Maxent/lavendulareAdv1929.grd")
+rEcrAdv9 <- raster("models/ecristatum1929Maxent/ecristatumAdv1929.grd")
+rFraAdv9 <- raster("models/fraseri1929Maxent/fraseriAdv1929.grd")
+rHyaAdv9 <- raster("models/hyacinthoides1929Maxent/hyacinthoidesAdv1929.grd")
+rMobAdv9 <- raster("models/mobilense1929Maxent/mobilenseAdv1929.grd")
+rParAdv9 <- raster("models/parentals1929Maxent/parentalsAdv1929.grd")
+rHybAdv9 <- raster("models/hybrids1929Maxent/hybridsAdv1929.grd")
+rCanAdv11 <- raster("models/canadense2011Maxent/canadenseAdv2011.grd")
+rLavAdv11 <- raster("models/lavendulare2011Maxent/lavendulareAdv2011.grd")
+rEcrAdv11 <- raster("models/ecristatum2011Maxent/ecristatumAdv2011.grd")
+rFraAdv11 <- raster("models/fraseri2011Maxent/fraseriAdv2011.grd")
+rHyaAdv11 <- raster("models/hyacinthoides2011Maxent/hyacinthoidesAdv2011.grd")
+rMobAdv11 <- raster("models/mobilense2011Maxent/mobilenseAdv2011.grd")
+rParAdv11 <- raster("models/parentals2011Maxent/parentalsAdv2011.grd")
+rHybAdv11 <- raster("models/hybrids2011Maxent/hybridsAdv2011.grd")
 
 #assessing changes in canadense niche from 1929 to 2011
 nicheOverlap(rCanAdv9, rCanAdv11, stat='D', mask=TRUE, checkNegatives=TRUE) # D statistic

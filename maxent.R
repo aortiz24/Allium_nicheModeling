@@ -10,8 +10,24 @@ library(maptools)
 library(dplyr)
 library(rJava)
 
-# create directory for saving models later
+# create directories for saving models later
 dir.create("models")
+dir.create("models/canadense1929Maxent")
+dir.create("models/ecristatum1929Maxent")
+dir.create("models/fraseri1929Maxent")
+dir.create("models/hyacinthoides1929Maxent")
+dir.create("models/hybrids1929Maxent")
+dir.create("models/lavendulare1929Maxent")
+dir.create("models/mobilense1929Maxent")
+dir.create("models/parentals1929Maxent")
+dir.create("models/canadense2011Maxent")
+dir.create("models/ecristatum2011Maxent")
+dir.create("models/fraseri2011Maxent")
+dir.create("models/hyacinthoides2011Maxent")
+dir.create("models/hybrids2011Maxent")
+dir.create("models/lavendulare2011Maxent")
+dir.create("models/mobilense2011Maxent")
+dir.create("models/parentals2011Maxent")
 
 ### import occurrence data and convert to format required by maxent
 ##using file made from textbook source
@@ -131,7 +147,7 @@ rCan9 <- predict(maxCan9, predictors9) # create model
 plot(rCan9) # plot predictive model
 #dev.copy2pdf(file="figures/MaxCanadense1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(canadense) # add points to predictive model
-writeRaster(rCan9, "models/canadense1929.grd")
+writeRaster(rCan9, "models/canadense1929Maxent/canadense1929.grd")
 
 # run maxent for lavendulare (default parameters for dismo)
 maxLav9 <- maxent(predictors9, lavendulare)
@@ -141,7 +157,7 @@ rLav9 <- predict(maxLav9, predictors9) # create model
 plot(rLav9) # plot predictive model
 #dev.copy2pdf(file="figures/MaxLavendulare1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(lavendulare) # add points to predictive model
-writeRaster(rLav9, "models/lavendulare1929.grd")
+writeRaster(rLav9, "models/lavendulare1929Maxent/lavendulare1929.grd")
 
 # run maxent for ecristatum (default parameters for dismo)
 maxEcr9 <- maxent(predictors9, ecristatum) 
@@ -151,7 +167,7 @@ rEcr9 <- predict(maxEcr9, predictors9)
 plot(rEcr9)
 #dev.copy2pdf(file="figures/MaxEcristatum1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(ecristatum)
-writeRaster(rEcr9, "models/ecristatum1929.grd")
+writeRaster(rEcr9, "models/ecristatum1929Maxent/ecristatum1929.grd")
 
 # run maxent for fraseri (default parameters for dismo)
 maxFra9 <- maxent(predictors9, fraseri)
@@ -161,7 +177,7 @@ rFra9 <- predict(maxFra9, predictors9) # create model
 plot(rFra9) # plot predictive model
 #dev.copy2pdf(file="figures/MaxFraseri1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(fraseri) # add points to predictive model
-writeRaster(rFra9, "models/fraseri1929.grd")
+writeRaster(rFra9, "models/fraseri1929Maxent/fraseri1929.grd")
 
 # run maxent for hyacinthoides (default parameters for dismo)
 maxHya9 <- maxent(predictors9, hyacinthoides) 
@@ -171,7 +187,7 @@ rHya9 <- predict(maxHya9, predictors9)
 plot(rHya9)
 #dev.copy2pdf(file="figures/MaxHyacinthoides1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(hyacinthoides)
-writeRaster(rHya9, "models/hyacinthoides1929.grd")
+writeRaster(rHya9, "models/hyacinthoides1929Maxent/hyacinthoides1929.grd")
 
 # run maxent for mobilense (default parameters for dismo)
 maxMob9 <- maxent(predictors9, mobilense)
@@ -181,7 +197,7 @@ rMob9 <- predict(maxMob9, predictors9) # create model
 plot(rMob9) # plot predictive model
 #dev.copy2pdf(file="figures/MaxMobilense1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(mobilense) # add points to predictive model
-writeRaster(rMob9, "models/mobilense1929.grd")
+writeRaster(rMob9, "models/mobilense1929Maxent/mobilense1929.grd")
 
 # run maxent for parentals (default parameters for dismo)maxPar9 <- maxent(predictors9, parentals)
 maxPar9 # views results in browser window
@@ -190,7 +206,7 @@ rPar9 <- predict(maxPar9, predictors9) # create model
 plot(rPar9) # plot predictive model
 #dev.copy2pdf(file="figures/MaxParentals1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(parentals) # add points to predictive model
-writeRaster(rPar9, "models/parentals1929.grd")
+writeRaster(rPar9, "models/parentals1929Maxent/parentals1929.grd")
 
 # run maxent for hybrids (default parameters for dismo)
 maxHyb9 <- maxent(predictors9, hybrids) 
@@ -200,7 +216,7 @@ rHyb9 <- predict(maxHyb9, predictors9)
 plot(rHyb9)
 #dev.copy2pdf(file="figures/MaxHybrids1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(hybrids)
-writeRaster(rHyb9, "models/hybrids1929.grd")
+writeRaster(rHyb9, "models/hybrids1929Maxent/hybrids1929.grd")
 
 ## Advanced modeling
 # maxent with jackknife, random seed, and response curves, followed by cross-validation
@@ -229,7 +245,7 @@ rCanAdv9 <- predict(maxCanAdv9, predictors9) # create model
 plot(rCanAdv9) # plot predictive model
 #dev.copy2pdf(file="figures/AdvCanadense1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(canadense) # add points to predictive model
-writeRaster(rCanAdv9, "models/canadenseAdv1929.grd")
+writeRaster(rCanAdv9, "models/canadense1929Maxent/canadenseAdv1929.grd")
 
 # maxent with jackknife, random seed, and response curves, followed by cross-validation
 maxLavAdv9 <- maxent(
@@ -257,7 +273,7 @@ rLavAdv9 <- predict(maxLavAdv9, predictors9) # create model
 plot(rLavAdv9) # plot predictive model
 #dev.copy2pdf(file="figures/AdvLavendulare1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(lavendulare) # add points to predictive model
-writeRaster(rLavAdv9, "models/lavendulareAdv1929.grd")
+writeRaster(rLavAdv9, "models/lavendulare1929Maxent/lavendulareAdv1929.grd")
 
 # maxent with jackknife, random seed, and response curves, followed by cross-validation
 maxEcrAdv9 <- maxent(
@@ -285,7 +301,7 @@ rEcrAdv9 <- predict(maxEcrAdv9, predictors9) # create model
 plot(rEcrAdv9) # plot predictive model
 #dev.copy2pdf(file="figures/AdvEcristatum1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(ecristatum) # add points to predictive model
-writeRaster(rEcrAdv9, "models/ecristatumAdv1929.grd")
+writeRaster(rEcrAdv9, "models/ecristatum1929Maxent/ecristatumAdv1929.grd")
 
 # maxent with jackknife, random seed, and response curves, followed by cross-validation
 maxFraAdv9 <- maxent(
@@ -313,7 +329,7 @@ rFraAdv9 <- predict(maxFraAdv9, predictors9) # create model
 plot(rFraAdv9) # plot predictive model
 #dev.copy2pdf(file="figures/AdvFraseri1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(fraseri) # add points to predictive model
-writeRaster(rFraAdv9, "models/fraseriAdv1929.grd")
+writeRaster(rFraAdv9, "models/fraseri1929Maxent/fraseriAdv1929.grd")
 
 # maxent with jackknife, random seed, and response curves, followed by cross-validation
 maxHyaAdv9 <- maxent(
@@ -341,7 +357,7 @@ rHyaAdv9 <- predict(maxHyaAdv9, predictors9) # create model
 plot(rHyaAdv9) # plot predictive model
 #dev.copy2pdf(file="figures/AdvHyacinthoides1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(hyacinthoides) # add points to predictive model
-writeRaster(rHyaAdv9, "models/hyacinthoidesAdv1929.grd")
+writeRaster(rHyaAdv9, "models/hyacinthoides1929Maxent/hyacinthoidesAdv1929.grd")
 
 # maxent with jackknife, random seed, and response curves, followed by cross-validation
 maxMobAdv9 <- maxent(
@@ -369,7 +385,7 @@ rMobAdv9 <- predict(maxMobAdv9, predictors9) # create model
 plot(rMobAdv9) # plot predictive model
 #dev.copy2pdf(file="figures/AdvMobilense1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(mobilense) # add points to predictive model
-writeRaster(rMobAdv9, "models/mobilenseAdv1929.grd")
+writeRaster(rMobAdv9, "models/mobilense1929Maxent/mobilenseAdv1929.grd")
 
 # maxent with jackknife, random seed, and response curves, followed by cross-validation
 maxParAdv9 <- maxent(
@@ -397,7 +413,7 @@ rParAdv9 <- predict(maxParAdv9, predictors9) # create model
 plot(rParAdv9) # plot predictive model
 #dev.copy2pdf(file="figures/AdvParentals1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(parentals) # add points to predictive model
-writeRaster(rParAdv9, "models/parentalsAdv1929.grd")
+writeRaster(rParAdv9, "models/parentals1929Maxent/parentalsAdv1929.grd")
 
 # maxent with jackknife, random seed, and response curves, followed by cross-validation
 maxHybAdv9 <- maxent(
@@ -425,7 +441,7 @@ rHybAdv9 <- predict(maxHybAdv9, predictors9) # create model
 plot(rHybAdv9) # plot predictive model
 #dev.copy2pdf(file="figures/AdvHybrids1929.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(hybrids) # add points to predictive model
-writeRaster(rHybAdv9, "models/hybridsAdv1929.grd")
+writeRaster(rHybAdv9, "models/hybrids1929Maxent/hybridsAdv1929.grd")
 
 ## Default maxent modeling
 # run maxent for canadense (default parameters for dismo)
@@ -436,7 +452,7 @@ rCan11 <- predict(maxCan11, predictors11) # create model
 plot(rCan11) # plot predictive model
 #dev.copy2pdf(file="figures/MaxCanadense2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(canadense) # add points to predictive model
-writeRaster(rCan11, "models/canadense2011.grd")
+writeRaster(rCan11, "models/canadense2011Maxent/canadense2011.grd")
 
 # run maxent for lavendulare (default parameters for dismo)
 maxLav11 <- maxent(predictors11, lavendulare)
@@ -446,7 +462,7 @@ rLav11 <- predict(maxLav11, predictors11) # create model
 plot(rLav11) # plot predictive model
 #dev.copy2pdf(file="figures/MaxLavendulare2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(lavendulare) # add points to predictive model
-writeRaster(rLav11, "models/lavendulare2011.grd")
+writeRaster(rLav11, "models/lavendulare2011Maxent/lavendulare2011.grd")
 
 # run maxent for ecristatum (default parameters for dismo)
 maxEcr11 <- maxent(predictors11, ecristatum) 
@@ -456,7 +472,7 @@ rEcr11 <- predict(maxEcr11, predictors11)
 plot(rEcr11)
 #dev.copy2pdf(file="figures/MaxEcristatum2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(ecristatum)
-writeRaster(rEcr11, "models/ecristatum2011.grd")
+writeRaster(rEcr11, "models/ecristatum2011Maxent/ecristatum2011.grd")
 
 # run maxent for fraseri (default parameters for dismo)
 maxFra11 <- maxent(predictors11, fraseri)
@@ -466,7 +482,7 @@ rFra11 <- predict(maxFra11, predictors11) # create model
 plot(rFra11) # plot predictive model
 #dev.copy2pdf(file="figures/MaxFraseri2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(fraseri) # add points to predictive model
-writeRaster(rFra11, "models/fraseri2011.grd")
+writeRaster(rFra11, "models/fraseri2011Maxent/fraseri2011.grd")
 
 # run maxent for hyacinthoides (default parameters for dismo)
 maxHya11 <- maxent(predictors11, hyacinthoides) 
@@ -476,7 +492,7 @@ rHya11 <- predict(maxHya11, predictors11)
 plot(rHya11)
 #dev.copy2pdf(file="figures/MaxHyacinthoides2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(hyacinthoides)
-writeRaster(rHya11, "models/hyacinthoides2011.grd")
+writeRaster(rHya11, "models/hyacinthoides2011Maxent/hyacinthoides2011.grd")
 
 # run maxent for mobilense (default parameters for dismo)
 maxMob11 <- maxent(predictors11, mobilense)
@@ -486,7 +502,7 @@ rMob11 <- predict(maxMob11, predictors11) # create model
 plot(rMob11) # plot predictive model
 #dev.copy2pdf(file="figures/MaxMobilense2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(mobilense) # add points to predictive model
-writeRaster(rMob11, "models/mobilense2011.grd")
+writeRaster(rMob11, "models/mobilense2011Maxent/mobilense2011.grd")
 
 # run maxent for parentals (default parameters for dismo)
 maxPar11 <- maxent(predictors11, parentals)
@@ -496,7 +512,7 @@ rPar11 <- predict(maxPar11, predictors11) # create model
 plot(rPar11) # plot predictive model
 #dev.copy2pdf(file="figures/MaxParentals2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(parentals) # add points to predictive model
-writeRaster(rPar11, "models/parentals2011.grd")
+writeRaster(rPar11, "models/parentals2011Maxent/parentals2011.grd")
 
 # run maxent for hybrids (default parameters for dismo)
 maxHyb11 <- maxent(predictors11, hybrids) 
@@ -506,7 +522,7 @@ rHyb11 <- predict(maxHyb11, predictors11) # create model
 plot(rHyb11) # plot predictive model
 #dev.copy2pdf(file="figures/MaxHybrids2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(hybrids) # add points to predictive model
-writeRaster(rHyb11, "models/hybrids2011.grd")
+writeRaster(rHyb11, "models/hybrids2011Maxent/hybrids2011.grd")
 
 ## Advanced modeling
 # maxent with jackknife, random seed, and response curves, followed by cross-validation
@@ -535,7 +551,7 @@ rCanAdv11 <- predict(maxCanAdv11, predictors11) # create model
 plot(rCanAdv11) # plot predictive model
 #dev.copy2pdf(file="figures/AdvCanadense2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(canadense) # add points to predictive model
-writeRaster(rCanAdv11, "models/canadenseAdv2011.grd")
+writeRaster(rCanAdv11, "models/canadense2011Maxent/canadenseAdv2011.grd")
 
 # maxent with jackknife, random seed, and response curves, followed by cross-validation
 maxLavAdv11 <- maxent(
@@ -563,7 +579,7 @@ rLavAdv11 <- predict(maxLavAdv11, predictors11) # create model
 plot(rLavAdv11) # plot predictive model
 #dev.copy2pdf(file="figures/AdvLavendulare2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(lavendulare) # add points to predictive model
-writeRaster(rLavAdv11, "models/lavendulareAdv2011.grd")
+writeRaster(rLavAdv11, "models/lavendulare2011Maxent/lavendulareAdv2011.grd")
 
 # maxent with jackknife, random seed, and response curves, followed by cross-validation
 maxEcrAdv11 <- maxent(
@@ -591,7 +607,7 @@ rEcrAdv11 <- predict(maxEcrAdv11, predictors11) # create model
 plot(rEcrAdv11) # plot predictive model
 #dev.copy2pdf(file="figures/AdvEcristatum2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(ecristatum) # add points to predictive model
-writeRaster(rEcrAdv11, "models/ecristatumAdv2011.grd")
+writeRaster(rEcrAdv11, "models/ecristatum2011Maxent/ecristatumAdv2011.grd")
 
 # maxent with jackknife, random seed, and response curves, followed by cross-validation
 maxFraAdv11 <- maxent(
@@ -619,7 +635,7 @@ rFraAdv11 <- predict(maxFraAdv11, predictors11) # create model
 plot(rFraAdv11) # plot predictive model
 #dev.copy2pdf(file="figures/AdvFraseri2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(fraseri) # add points to predictive model
-writeRaster(rFraAdv11, "models/fraseriAdv2011.grd")
+writeRaster(rFraAdv11, "models/fraseri2011Maxent/fraseriAdv2011.grd")
 
 # maxent with jackknife, random seed, and response curves, followed by cross-validation
 maxHyaAdv11 <- maxent(
@@ -647,7 +663,7 @@ rHyaAdv11 <- predict(maxHyaAdv11, predictors11) # create model
 plot(rHyaAdv11) # plot predictive model
 #dev.copy2pdf(file="figures/AdvHyacinthoides2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(hyacinthoides) # add points to predictive model
-writeRaster(rHyaAdv11, "models/hyacinthoidesAdv2011.grd")
+writeRaster(rHyaAdv11, "models/hyacinthoides2011Maxent/hyacinthoidesAdv2011.grd")
 
 # maxent with jackknife, random seed, and response curves, followed by cross-validation
 maxMobAdv11 <- maxent(
@@ -675,7 +691,7 @@ rMobAdv11 <- predict(maxMobAdv11, predictors11) # create model
 plot(rMobAdv11) # plot predictive model
 #dev.copy2pdf(file="figures/AdvMobilense2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(mobilense) # add points to predictive model
-writeRaster(rMobAdv11, "models/mobilenseAdv2011.grd")
+writeRaster(rMobAdv11, "models/mobilense2011Maxent/mobilenseAdv2011.grd")
 
 # maxent with jackknife, random seed, and response curves, followed by cross-validation
 maxParAdv11 <- maxent(
@@ -703,7 +719,7 @@ rParAdv11 <- predict(maxParAdv11, predictors11) # create model
 plot(rParAdv11) # plot predictive model
 #dev.copy2pdf(file="figures/AdvParentals2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(parentals) # add points to predictive model
-writeRaster(rParAdv11, "models/parentalsAdv2011.grd")
+writeRaster(rParAdv11, "models/parentals2011Maxent/parentalsAdv2011.grd")
 
 # maxent with jackknife, random seed, and response curves, followed by cross-validation
 maxHybAdv11 <- maxent(
@@ -731,4 +747,4 @@ rHybAdv11 <- predict(maxHybAdv11, predictors11) # create model
 plot(rHybAdv11) # plot predictive model
 #dev.copy2pdf(file="figures/AdvHybrids2011.pdf", width = 7, height = 5) #save plot as pdf to the figures directory
 points(hybrids) # add points to predictive model
-writeRaster(rHybAdv11, "models/hybridsAdv2011.grd")
+writeRaster(rHybAdv11, "models/hybrids2011Maxent/hybridsAdv2011.grd")
