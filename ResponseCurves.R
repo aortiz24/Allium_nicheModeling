@@ -36,15 +36,15 @@ for(i in 1:predictor.number){
   
 }
 
-#precipitation 1929 layer
-Can9.ppt <- read.csv("models/canadense1929Maxent/ppt9.csv")
-pCan9X <- Can9.ppt[,2]
-pCan9Y <- Can9.ppt[,3]
-
 #mean temperature layer
 Can9.tmean <- read.csv("models/canadense1929Maxent/tmean9.csv")
 tCan9X <- Can9.tmean[,2]
 tCan9Y <- Can9.tmean[,3]
+
+#precipitation 1929 layer
+Can9.ppt <- read.csv("models/canadense1929Maxent/ppt9.csv")
+pCan9X <- Can9.ppt[,2]
+pCan9Y <- Can9.ppt[,3]
 
 #maximum vapor pressure deficit layer
 Can9.vpdmax <- read.csv("models/canadense1929Maxent/vpdmax9.csv")
@@ -56,10 +56,10 @@ vCan9Y <- Can9.vpdmax[,3]
 png(filename="figures/canadense_response_curves_1929.png")
 #plot multiple response curve in png file in figures directory
 par(mfrow=c(1,3))
-#plot precipitation 1929 layer
-plot(pCan9Y ~ pCan9X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Precipitation (mm)", main = "(a)")
 #plot mean temperature 1929 layer
-plot(tCan9Y ~ tCan9X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Mean Temperature (Celsius)", main = "(b)")
+plot(tCan9Y ~ tCan9X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Mean Temperature (Celsius)", main = "(a)")
+#plot precipitation 1929 layer
+plot(pCan9Y ~ pCan9X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Precipitation (mm)", main = "(b)")
 #plot maxiumum vapor pressure deficit 1929 layer
 plot(vCan9Y ~ vCan9X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Maximum Vapor Pressure Deficit", main = "(c)")
 dev.off()
@@ -101,15 +101,15 @@ for(i in 1:predictor.number){
   
 }
 
-#precipitation 1929 layer
-Lav9.ppt <- read.csv("models/lavendulare1929Maxent/ppt9.csv")
-pLav9X <- Lav9.ppt[,2]
-pLav9Y <- Lav9.ppt[,3]
-
 #mean temperature layer
 Lav9.tmean <- read.csv("models/lavendulare1929Maxent/tmean9.csv")
 tLav9X <- Lav9.tmean[,2]
 tLav9Y <- Lav9.tmean[,3]
+
+#precipitation 1929 layer
+Lav9.ppt <- read.csv("models/lavendulare1929Maxent/ppt9.csv")
+pLav9X <- Lav9.ppt[,2]
+pLav9Y <- Lav9.ppt[,3]
 
 #maximum vapor pressure deficit layer
 Lav9.vpdmax <- read.csv("models/lavendulare1929Maxent/vpdmax9.csv")
@@ -121,10 +121,10 @@ vLav9Y <- Lav9.vpdmax[,3]
 png(filename="figures/lavendulare_response_curves_1929.png")
 #plot multiple response curve in png file in figures directory
 par(mfrow=c(1,3))
-#plot precipitation 1929 layer
-plot(pLav9Y ~ pLav9X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Precipitation (mm)", main = "(a)")
 #plot mean temperature 1929 layer
-plot(tLav9Y ~ tLav9X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Mean Temperature (Celsius)", main = "(b)")
+plot(tLav9Y ~ tLav9X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Mean Temperature (Celsius)", main = "(a)")
+#plot precipitation 1929 layer
+plot(pLav9Y ~ pLav9X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Precipitation (mm)", main = "(b)")
 #plot maxiumum vapor pressure deficit 1929 layer
 plot(vLav9Y ~ vLav9X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Maximum Vapor Pressure Deficit", main = "(c)")
 dev.off()
@@ -166,15 +166,15 @@ for(i in 1:predictor.number){
   
 }
 
-#precipitation 1929 layer
-Mob9.ppt <- read.csv("models/mobilense1929Maxent/ppt9.csv")
-pMob9X <- Mob9.ppt[,2]
-pMob9Y <- Mob9.ppt[,3]
-
 #mean temperature layer
 Mob9.tmean <- read.csv("models/mobilense1929Maxent/tmean9.csv")
 tMob9X <- Mob9.tmean[,2]
 tMob9Y <- Mob9.tmean[,3]
+
+#precipitation 1929 layer
+Mob9.ppt <- read.csv("models/mobilense1929Maxent/ppt9.csv")
+pMob9X <- Mob9.ppt[,2]
+pMob9Y <- Mob9.ppt[,3]
 
 #maximum vapor pressure deficit layer
 Mob9.vpdmax <- read.csv("models/mobilense1929Maxent/vpdmax9.csv")
@@ -186,10 +186,10 @@ vMob9Y <- Mob9.vpdmax[,3]
 png(filename="figures/mobilense_response_curves_1929.png")
 #plot multiple response curve in png file in figures directory
 par(mfrow=c(1,3))
-#plot precipitation 1929 layer
-plot(pMob9Y ~ pMob9X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Precipitation (mm)", main = "(a)")
 #plot mean temperature 1929 layer
-plot(tMob9Y ~ tMob9X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Mean Temperature (Celsius)", main = "(b)")
+plot(tMob9Y ~ tMob9X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Mean Temperature (Celsius)", main = "(a)")
+#plot precipitation 1929 layer
+plot(pMob9Y ~ pMob9X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Precipitation (mm)", main = "(b)")
 #plot maxiumum vapor pressure deficit 1929 layer
 plot(vMob9Y ~ vMob9X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Maximum Vapor Pressure Deficit", main = "(c)")
 dev.off()
@@ -231,15 +231,15 @@ for(i in 1:predictor.number){
   
 }
 
-#precipitation 1929 layer
-Fra9.ppt <- read.csv("models/fraseri1929Maxent/ppt9.csv")
-pFra9X <- Fra9.ppt[,2]
-pFra9Y <- Fra9.ppt[,3]
-
 #mean temperature layer
 Fra9.tmean <- read.csv("models/fraseri1929Maxent/tmean9.csv")
 tFra9X <- Fra9.tmean[,2]
 tFra9Y <- Fra9.tmean[,3]
+
+#precipitation 1929 layer
+Fra9.ppt <- read.csv("models/fraseri1929Maxent/ppt9.csv")
+pFra9X <- Fra9.ppt[,2]
+pFra9Y <- Fra9.ppt[,3]
 
 #maximum vapor pressure deficit layer
 Fra9.vpdmax <- read.csv("models/fraseri1929Maxent/vpdmax9.csv")
@@ -251,10 +251,10 @@ vFra9Y <- Fra9.vpdmax[,3]
 png(filename="figures/fraseri_response_curves_1929.png")
 #plot multiple response curve in png file in figures directory
 par(mfrow=c(1,3))
-#plot precipitation 1929 layer
-plot(pFra9Y ~ pFra9X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Precipitation (mm)", main = "(a)")
 #plot mean temperature 1929 layer
-plot(tFra9Y ~ tFra9X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Mean Temperature (Celsius)", main = "(b)")
+plot(tFra9Y ~ tFra9X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Mean Temperature (Celsius)", main = "(a)")
+#plot precipitation 1929 layer
+plot(pFra9Y ~ pFra9X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Precipitation (mm)", main = "(b)")
 #plot maxiumum vapor pressure deficit 1929 layer
 plot(vFra9Y ~ vFra9X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Maximum Vapor Pressure Deficit", main = "(c)")
 dev.off()
