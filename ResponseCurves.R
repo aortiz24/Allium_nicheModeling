@@ -51,6 +51,7 @@ Can9.vpdmax <- read.csv("models/canadense1929Maxent/vpdmax9.csv")
 vCan9X <- Can9.vpdmax[,2]
 vCan9Y <- Can9.vpdmax[,3]
 
+#The exported image is elongated, use the 'Export' button under the global environment to export the image at custom length & height
 #open png file
 png(filename="figures/canadense_response_curves_1929.png")
 #plot multiple response curve in png file in figures directory
@@ -115,6 +116,7 @@ Lav9.vpdmax <- read.csv("models/lavendulare1929Maxent/vpdmax9.csv")
 vLav9X <- Lav9.vpdmax[,2]
 vLav9Y <- Lav9.vpdmax[,3]
 
+#The exported image is elongated, use the 'Export' button under the global environment to export the image at custom length & height
 #open png file
 png(filename="figures/lavendulare_response_curves_1929.png")
 #plot multiple response curve in png file in figures directory
@@ -179,6 +181,7 @@ Mob9.vpdmax <- read.csv("models/mobilense1929Maxent/vpdmax9.csv")
 vMob9X <- Mob9.vpdmax[,2]
 vMob9Y <- Mob9.vpdmax[,3]
 
+#The exported image is elongated, use the 'Export' button under the global environment to export the image at custom length & height
 #open png file
 png(filename="figures/mobilense_response_curves_1929.png")
 #plot multiple response curve in png file in figures directory
@@ -243,6 +246,7 @@ Fra9.vpdmax <- read.csv("models/fraseri1929Maxent/vpdmax9.csv")
 vFra9X <- Fra9.vpdmax[,2]
 vFra9Y <- Fra9.vpdmax[,3]
 
+#The exported image is elongated, use the 'Export' button under the global environment to export the image at custom length & height
 #open png file
 png(filename="figures/fraseri_response_curves_1929.png")
 #plot multiple response curve in png file in figures directory
@@ -261,6 +265,7 @@ tPar1 <- response(maxParAdv9, var = 1) #mean temperature
 pPar2 <- response(maxParAdv9, var = 2) #precipitation
 vPar3 <- response(maxParAdv9, var = 3) #maximum vapor pressure deficit
 
+#The exported image is elongated, use the 'Export' button under the global environment to export the image at custom length & height
 #open png file
 png(filename="figures/parentals_response_curves_1929.png")
 # combined figure
@@ -279,6 +284,7 @@ tHyb1 <- response(maxHybAdv9, var = 1) #mean temperature
 pHyb2 <- response(maxHybAdv9, var = 2) #precipitation
 vHyb3 <- response(maxHybAdv9, var = 3) #maximum vapor pressure deficit
 
+#The exported image is elongated, use the 'Export' button under the global environment to export the image at custom length & height
 #open png file
 png(filename="figures/hybrids_response_curves_1929.png")
 # combined figure
