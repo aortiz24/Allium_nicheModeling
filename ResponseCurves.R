@@ -334,15 +334,15 @@ for(i in 1:predictor.number){
   
 }
 
-#precipitation 2011 layer
-Can11.ppt <- read.csv("models/canadense2011Maxent/ppt11.csv")
-pCan11X <- Can11.ppt[,2]
-pCan11Y <- Can11.ppt[,3]
-
 #mean temperature layer
 Can11.tmean <- read.csv("models/canadense2011Maxent/tmean11.csv")
 tCan11X <- Can11.tmean[,2]
 tCan11Y <- Can11.tmean[,3]
+
+#precipitation 2011 layer
+Can11.ppt <- read.csv("models/canadense2011Maxent/ppt11.csv")
+pCan11X <- Can11.ppt[,2]
+pCan11Y <- Can11.ppt[,3]
 
 #maximum vapor pressure deficit layer
 Can11.vpdmin <- read.csv("models/canadense2011Maxent/vpdmin11.csv")
@@ -358,10 +358,10 @@ dCan11Y <- Can11.tdmean[,3]
 png(filename="figures/canadense_response_curves_2011.png")
 #plot multiple response curve in png file in figures directory
 par(mfrow=c(2,2))
-#plot precipitation 2011 layer
-plot(pCan11Y ~ pCan11X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Precipitation (mm)", main = "(a)")
 #plot mean temperature 2011 layer
-plot(tCan11Y ~ tCan11X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Mean Temperature (Celsius)", main = "(b)")
+plot(tCan11Y ~ tCan11X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Mean Temperature (Celsius)", main = "(a)")
+#plot precipitation 2011 layer
+plot(pCan11Y ~ pCan11X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Precipitation (mm)", main = "(b)")
 #plot miniumum vapor pressure deficit 2011 layer
 plot(vCan11Y ~ vCan11X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Minimum Vapor Pressure Deficit", main = "(c)")
 #plot mean dewpoint temperature 2011 layer
@@ -405,15 +405,15 @@ for(i in 1:predictor.number){
   
 }
 
-#precipitation 2011 layer
-Lav11.ppt <- read.csv("models/lavendulare2011Maxent/ppt11.csv")
-pLav11X <- Lav11.ppt[,2]
-pLav11Y <- Lav11.ppt[,3]
-
 #mean temperature layer
 Lav11.tmean <- read.csv("models/lavendulare2011Maxent/tmean11.csv")
 tLav11X <- Lav11.tmean[,2]
 tLav11Y <- Lav11.tmean[,3]
+
+#precipitation 2011 layer
+Lav11.ppt <- read.csv("models/lavendulare2011Maxent/ppt11.csv")
+pLav11X <- Lav11.ppt[,2]
+pLav11Y <- Lav11.ppt[,3]
 
 #maximum vapor pressure deficit layer
 Lav11.vpdmin <- read.csv("models/lavendulare2011Maxent/vpdmin11.csv")
@@ -429,10 +429,10 @@ dLav11Y <- Lav11.tdmean[,3]
 png(filename="figures/lavendulare_response_curves_2011.png")
 #plot multiple response curve in png file in figures directory
 par(mfrow=c(2,2))
-#plot precipitation 2011 layer
-plot(pLav11Y ~ pLav11X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Precipitation (mm)", main = "(a)")
 #plot mean temperature 2011 layer
 plot(tLav11Y ~ tLav11X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Mean Temperature (Celsius)", main = "(b)")
+#plot precipitation 2011 layer
+plot(pLav11Y ~ pLav11X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Precipitation (mm)", main = "(a)")
 #plot miniumum vapor pressure deficit 2011 layer
 plot(vLav11Y ~ vLav11X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Minimum Vapor Pressure Deficit", main = "(c)")
 #plot mean dewpoint temperature 2011 layer
@@ -476,17 +476,17 @@ for(i in 1:predictor.number){
   
 }
 
-#precipitation 2011 layer
-Mob11.ppt <- read.csv("models/mobilense2011Maxent/ppt11.csv")
-pMob11X <- Mob11.ppt[,2]
-pMob11Y <- Mob11.ppt[,3]
-
 #mean temperature layer
 Mob11.tmean <- read.csv("models/mobilense2011Maxent/tmean11.csv")
 tMob11X <- Mob11.tmean[,2]
 tMob11Y <- Mob11.tmean[,3]
 
-#maximum vapor pressure deficit layer
+#precipitation 2011 layer
+Mob11.ppt <- read.csv("models/mobilense2011Maxent/ppt11.csv")
+pMob11X <- Mob11.ppt[,2]
+pMob11Y <- Mob11.ppt[,3]
+
+#minimum vapor pressure deficit layer
 Mob11.vpdmin <- read.csv("models/mobilense2011Maxent/vpdmin11.csv")
 vMob11X <- Mob11.vpdmin[,2]
 vMob11Y <- Mob11.vpdmin[,3]
@@ -500,10 +500,10 @@ dMob11Y <- Mob11.tdmean[,3]
 png(filename="figures/mobilense_response_curves_2011.png")
 #plot multiple response curve in png file in figures directory
 par(mfrow=c(2,2))
-#plot precipitation 2011 layer
-plot(pMob11Y ~ pMob11X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Precipitation (mm)", main = "(a)")
 #plot mean temperature 2011 layer
 plot(tMob11Y ~ tMob11X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Mean Temperature (Celsius)", main = "(b)")
+#plot precipitation 2011 layer
+plot(pMob11Y ~ pMob11X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Precipitation (mm)", main = "(a)")
 #plot miniumum vapor pressure deficit 2011 layer
 plot(vMob11Y ~ vMob11X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Minimum Vapor Pressure Deficit", main = "(c)")
 #plot mean dewpoint temperature 2011 layer
@@ -547,17 +547,17 @@ for(i in 1:predictor.number){
   
 }
 
-#precipitation 2011 layer
-Fra11.ppt <- read.csv("models/fraseri2011Maxent/ppt11.csv")
-pFra11X <- Fra11.ppt[,2]
-pFra11Y <- Fra11.ppt[,3]
-
 #mean temperature layer
 Fra11.tmean <- read.csv("models/fraseri2011Maxent/tmean11.csv")
 tFra11X <- Fra11.tmean[,2]
 tFra11Y <- Fra11.tmean[,3]
 
-#maximum vapor pressure deficit layer
+#precipitation 2011 layer
+Fra11.ppt <- read.csv("models/fraseri2011Maxent/ppt11.csv")
+pFra11X <- Fra11.ppt[,2]
+pFra11Y <- Fra11.ppt[,3]
+
+#minimum vapor pressure deficit layer
 Fra11.vpdmin <- read.csv("models/fraseri2011Maxent/vpdmin11.csv")
 vFra11X <- Fra11.vpdmin[,2]
 vFra11Y <- Fra11.vpdmin[,3]
@@ -571,10 +571,10 @@ dFra11Y <- Fra11.tdmean[,3]
 png(filename="figures/fraseri_response_curves_2011.png")
 #plot multiple response curve in png file in figures directory
 par(mfrow=c(2,2))
-#plot precipitation 2011 layer
-plot(pFra11Y ~ pFra11X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Precipitation (mm)", main = "(a)")
 #plot mean temperature 2011 layer
 plot(tFra11Y ~ tFra11X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Mean Temperature (Celsius)", main = "(b)")
+#plot precipitation 2011 layer
+plot(pFra11Y ~ pFra11X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Precipitation (mm)", main = "(a)")
 #plot miniumum vapor pressure deficit 2011 layer
 plot(vFra11Y ~ vFra11X, type = "l", col="red", lwd=5, ylim=c(0,1), ylab = "Habitat Suitability", xlab = "Minimum Vapor Pressure Deficit", main = "(c)")
 #plot mean dewpoint temperature 2011 layer
