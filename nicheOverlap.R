@@ -184,6 +184,8 @@ for (i in 2:ncol(bothPts9)) {
 sink()
 
 # principle component analysis(PCA)
+#open png file to save PCA plot in figures directory 
+png(filename="figures/PCA_All1929.png")
 varieties9 <- bothPts9[ ,1] #holds names of varieites and will be used in PCA plot
 bothNum9 <- bothPts9[ ,-1] #remove species names
 pca_both9 <- prcomp(bothNum9, center = TRUE, scale. = TRUE) #PCA
@@ -194,7 +196,8 @@ ncomp <- 2#specify number of components to load (representing 99% of variation)
 #make a PCA plot
 ggbiplot(pca_both9, obs.scale =1, var.scale = 1, groups= varieties9, ellipse = TRUE, circle = TRUE) +
   scale_color_discrete(name = '') +
-  theme(legend.direction = 'horizontal', legend.position = 'top')
+  theme(legend.direction = 'horizontal', legend.position = 'top', panel.background = element_blank())
+dev.off() #close png file
 
 ## model-based approaches
 # read in default maxent models
@@ -225,6 +228,8 @@ for (i in 2:ncol(bothPts11)) {
 sink()
 
 # principle component analysis(PCA)
+#open png file to save PCA plot in figures directory 
+png(filename="figures/PCA_All2011.png")
 varieties11 <- bothPts11[ ,1] #holds names of varieites and will be used in PCA plot 
 bothNum11 <- bothPts11[ ,-1] #remove species names
 pca_both11 <- prcomp(bothNum11, center = TRUE, scale. = TRUE) #PCA
@@ -235,7 +240,8 @@ ncomp <- 3 #specify number of components to load (representing 99% of variation)
 #make a PCA plot
 ggbiplot(pca_both11, obs.scale =1, var.scale = 1, groups= varieties11, ellipse = TRUE, circle = TRUE) +
   scale_color_discrete(name = '') +
-  theme(legend.direction = 'horizontal', legend.position = 'top')
+  theme(legend.direction = 'horizontal', legend.position = 'top', panel.background = element_blank())
+dev.off() #close png file
 
 ## model-based approaches
 # read in default maxent models
